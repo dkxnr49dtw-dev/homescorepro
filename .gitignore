@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Test results
+test-results/
+playwright-report/
+*.webm
+*.png
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+
+# Archives and backups
+archive/
+*.bak
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+create_standalone_embedded.py
+
+# Logs
+*.log
+

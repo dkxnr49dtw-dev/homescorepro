@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - HomeScorePro</title>
+    <meta name="description" content="HomeScorePro Privacy Policy. Learn how we collect, use, and protect your data.">
+    
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000428">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #000428;
+            --secondary: #764ba2;
+            --accent: #00AEEF;
+            --gradient: linear-gradient(135deg, #000428 0%, #764ba2 100%);
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --radius-lg: 1rem;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            color: var(--gray-900);
+            background: var(--white);
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: var(--space-xl);
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover { color: var(--primary); }
+        
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--white);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .page-hero {
+            margin-top: 80px;
+            padding: var(--space-3xl) var(--space-xl);
+            background: linear-gradient(135deg, rgba(0,4,40,0.03) 0%, rgba(118,75,162,0.03) 100%);
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            padding: var(--space-3xl) var(--space-xl);
+        }
+        
+        .section-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .policy-section {
+            margin-bottom: var(--space-3xl);
+        }
+        
+        .policy-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-lg);
+            margin-top: var(--space-2xl);
+        }
+        
+        .policy-section h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .policy-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+        
+        .policy-section p {
+            color: var(--gray-700);
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+        }
+        
+        .policy-section ul {
+            margin-left: var(--space-xl);
+            margin-bottom: var(--space-md);
+            color: var(--gray-700);
+        }
+        
+        .policy-section li {
+            margin-bottom: var(--space-sm);
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background: var(--gray-50);
+            border-left: 4px solid var(--accent);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+        
+        .footer {
+            background: var(--gradient);
+            color: var(--white);
+            padding: var(--space-3xl) var(--space-xl) var(--space-xl);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-3xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: var(--space-md);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            padding: var(--space-sm) 0;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            padding-top: var(--space-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .footer-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">HomeScorePro</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#location-scout" class="nav-link">Suburb Scout</a></li>
+                <li><a href="index.html#calculator" class="nav-link">Property Evaluator</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div>
+                <a href="members.html" class="nav-cta">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="page-hero">
+        <div class="section-container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us. This policy explains how we collect, use, and protect your information.</p>
+            <p style="font-size: 0.875rem; color: var(--gray-600); margin-top: var(--space-md);">
+                <strong>Last Updated:</strong> January 13, 2025<br>
+                <strong>PLACEHOLDER:</strong> This policy needs legal review before publication
+            </p>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="section-container">
+            <div class="policy-section">
+                <h2>1. Introduction</h2>
+                <p>
+                    HomeScorePro ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains 
+                    how we collect, use, disclose, and safeguard your information when you use our website and services.
+                </p>
+                <p>
+                    <!-- PLACEHOLDER: Company legal name and details need to be added -->
+                    <strong>PLACEHOLDER:</strong> Company legal name, ABN, and registered address need to be added here.
+                </p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>2. Information We Collect</h2>
+                
+                <h3>2.1 Information You Provide</h3>
+                <p>We collect information that you voluntarily provide to us, including:</p>
+                <ul>
+                    <li><strong>Account Information:</strong> Name, email address, password (for paid users)</li>
+                    <li><strong>Property Data:</strong> Property addresses, prices, and evaluation details you save</li>
+                    <li><strong>Preferences:</strong> Budget ranges, geographic preferences, family status, safety priorities</li>
+                    <li><strong>Contact Information:</strong> Information provided through contact forms or support requests</li>
+                </ul>
+                
+                <h3>2.2 Automatically Collected Information</h3>
+                <p>When you use our website, we may automatically collect:</p>
+                <ul>
+                    <li><strong>Usage Data:</strong> Pages visited, features used, time spent on site</li>
+                    <li><strong>Device Information:</strong> Browser type, device type, operating system</li>
+                    <li><strong>Location Data:</strong> If you grant permission, we use your location to find nearby suburbs</li>
+                    <li><strong>Cookies and Tracking:</strong> We use cookies to improve your experience (see Cookie Policy below)</li>
+                </ul>
+                
+                <h3>2.3 Third-Party Data</h3>
+                <p>
+                    We use data from third-party sources to calculate scores:
+                </p>
+                <ul>
+                    <li>ABS SEIFA data (publicly available)</li>
+                    <li>Victoria Police crime statistics (publicly available)</li>
+                    <li>Public property data (from publicly available sources)</li>
+                    <li>Walk Score and transit data (licensed)</li>
+                </ul>
+            </div>
+            
+            <div class="policy-section">
+                <h2>3. How We Use Your Information</h2>
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li>Provide and improve our scoring services</li>
+                    <li>Personalize your experience based on your preferences</li>
+                    <li>Calculate A-Scores and B-Scores for suburbs and properties</li>
+                    <li>Save your property evaluations (with your permission)</li>
+                    <li>Send you service-related communications</li>
+                    <li>Respond to your inquiries and support requests</li>
+                    <li>Comply with legal obligations</li>
+                </ul>
+            </div>
+            
+            <div class="policy-section">
+                <h2>4. Data Storage and Security</h2>
+                
+                <h3>4.1 Free Tier Users</h3>
+                <p>
+                    For free tier users, property evaluations are stored locally in your browser using localStorage. 
+                    This data never leaves your device unless you explicitly export it.
+                </p>
+                
+                <h3>4.2 Paid Users</h3>
+                <p>
+                    For paid users, data may be stored on our secure servers to enable:
+                </p>
+                <ul>
+                    <li>Access from multiple devices</li>
+                    <li>Data backup and recovery</li>
+                    <li>Enhanced features and personalization</li>
+                </ul>
+                <p>
+                    <!-- PLACEHOLDER: Security measures need to be detailed -->
+                    <strong>PLACEHOLDER:</strong> Specific security measures (encryption, access controls, etc.) need to be detailed here.
+                </p>
+                
+                <h3>4.3 Data Retention</h3>
+                <p>
+                    <!-- PLACEHOLDER: Data retention periods need to be defined -->
+                    We retain your data for as long as necessary to provide our services. 
+                    <strong>PLACEHOLDER:</strong> Specific retention periods need to be defined (e.g., "Account data: until account deletion, Property evaluations: 2 years after last access").
+                </p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>5. Data Sharing and Disclosure</h2>
+                <p>We do not sell your personal information. We may share your information only in the following circumstances:</p>
+                <ul>
+                    <li><strong>Service Providers:</strong> With trusted third-party service providers who assist in operating our website</li>
+                    <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
+                    <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
+                    <li><strong>With Your Consent:</strong> When you explicitly authorize us to share your information</li>
+                </ul>
+            </div>
+            
+            <div class="policy-section">
+                <h2>6. Your Rights and Choices</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request a copy of your personal data</li>
+                    <li><strong>Correction:</strong> Update or correct your information</li>
+                    <li><strong>Deletion:</strong> Request deletion of your account and data</li>
+                    <li><strong>Export:</strong> Export your property evaluations as JSON files</li>
+                    <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications</li>
+                    <li><strong>Location:</strong> Revoke location permissions at any time</li>
+                </ul>
+                <p>
+                    To exercise these rights, please contact us at 
+                    <a href="mailto:privacy@homescorepro.com" style="color: var(--accent);">privacy@homescorepro.com</a>
+                    <!-- PLACEHOLDER: Privacy contact email needs to be confirmed -->
+                    <small style="color: var(--gray-600);">(PLACEHOLDER - Confirm privacy email)</small>
+                </p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>7. Cookies and Tracking</h2>
+                <p>
+                    We use cookies and similar technologies to:
+                </p>
+                <ul>
+                    <li>Remember your preferences and settings</li>
+                    <li>Track usage for analytics and improvement</li>
+                    <li>Enable essential website functionality</li>
+                </ul>
+                <p>
+                    You can control cookies through your browser settings. However, disabling cookies may affect website functionality.
+                </p>
+                <!-- PLACEHOLDER: Cookie consent banner implementation needed -->
+                <div class="highlight-box">
+                    <p>
+                        <strong>PLACEHOLDER:</strong> Cookie consent banner needs to be implemented for GDPR compliance.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="policy-section">
+                <h2>8. Children's Privacy</h2>
+                <p>
+                    Our services are not intended for users under the age of 18. We do not knowingly collect personal information 
+                    from children. If you believe we have collected information from a child, please contact us immediately.
+                </p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>9. International Data Transfers</h2>
+                <p>
+                    <!-- PLACEHOLDER: Data transfer details need to be defined -->
+                    Your information may be transferred to and processed in countries other than your country of residence. 
+                    <strong>PLACEHOLDER:</strong> Specific data transfer details (if applicable) need to be defined.
+                </p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>10. Changes to This Policy</h2>
+                <p>
+                    We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new 
+                    policy on this page and updating the "Last Updated" date. You are advised to review this policy periodically.
+                </p>
+            </div>
+            
+            <div class="policy-section">
+                <h2>11. Contact Us</h2>
+                <p>
+                    If you have questions about this Privacy Policy, please contact us:
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        <!-- PLACEHOLDER: Contact details need to be added -->
+                        <strong>HomeScorePro</strong><br>
+                        <!-- PLACEHOLDER: Company address -->
+                        [Company Address]<br>
+                        Melbourne, VIC, Australia<br><br>
+                        Email: <a href="mailto:privacy@homescorepro.com" style="color: var(--accent);">privacy@homescorepro.com</a><br>
+                        <!-- PLACEHOLDER: Data Protection Officer contact -->
+                        Data Protection Officer: <a href="mailto:dpo@homescorepro.com" style="color: var(--accent);">dpo@homescorepro.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: var(--space-3xl);">
+                <p>
+                    <strong>⚠️ IMPORTANT:</strong> This Privacy Policy is a template and requires legal review before publication. 
+                    Please consult with a lawyer to ensure compliance with GDPR, CCPA, Australian Privacy Act, and other applicable laws.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>HomeScorePro</h3>
+                <p>Australia's most transparent property scoring system. Every calculation exposed, every weight adjustable, every data source verified.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="index.html#location-scout">Suburb Scout</a></li>
+                    <li><a href="index.html#calculator">Property Evaluator</a></li>
+                    <li><a href="index.html#my-properties">My Properties</a></li>
+                    <li><a href="index.html#data">Suburb Data</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Data Sources</h4>
+                <ul>
+                    <li><a href="#" title="PLACEHOLDER - Add ABS SEIFA link">ABS SEIFA</a></li>
+                    <li><a href="#" title="PLACEHOLDER - Add Victoria Police link">Victoria Police</a></li>
+                    <li><a href="#" title="PLACEHOLDER - Add Walk Score link">Walk Score</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HomeScorePro. Built with complete transparency in Melbourne.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

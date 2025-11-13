@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - HomeScorePro</title>
+    <meta name="description" content="Learn about HomeScorePro, Australia's most transparent property scoring system. Built by experienced professionals with 30+ years of Melbourne real estate expertise.">
+    
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000428">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #000428;
+            --secondary: #764ba2;
+            --accent: #00AEEF;
+            --gradient: linear-gradient(135deg, #000428 0%, #764ba2 100%);
+            --gradient-soft: linear-gradient(135deg, rgba(0,4,40,0.1) 0%, rgba(118,75,162,0.1) 100%);
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--gray-900);
+            background: var(--white);
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-md) var(--space-xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: var(--space-xl);
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover { color: var(--primary); }
+        
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--white);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .page-hero {
+            margin-top: 80px;
+            padding: var(--space-3xl) var(--space-xl);
+            background: linear-gradient(135deg, rgba(0,4,40,0.03) 0%, rgba(118,75,162,0.03) 100%);
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            padding: var(--space-3xl) var(--space-xl);
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-content {
+            font-size: 1.125rem;
+            color: var(--gray-700);
+            line-height: 1.8;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .highlight-box {
+            background: var(--gradient-soft);
+            border-left: 4px solid var(--accent);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            margin: var(--space-xl) 0;
+        }
+        
+        .highlight-box h3 {
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+        }
+        
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .team-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .team-card .role {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .team-card .bio {
+            color: var(--gray-700);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            background: var(--gradient);
+            color: var(--white);
+            padding: var(--space-3xl) var(--space-xl) var(--space-xl);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-3xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: var(--space-md);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            padding: var(--space-sm) 0;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            padding-top: var(--space-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .footer-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">HomeScorePro</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#location-scout" class="nav-link">Suburb Scout</a></li>
+                <li><a href="index.html#calculator" class="nav-link">Property Evaluator</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div>
+                <a href="members.html" class="nav-cta">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="page-hero">
+        <div class="section-container">
+            <h1>About HomeScorePro</h1>
+            <p>Australia's most transparent property scoring system, built by experienced professionals</p>
+        </div>
+    </section>
+    
+    <section class="content-section">
+        <div class="section-container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="section-content">
+                <p>
+                    <!-- PLACEHOLDER: Company story needs to be written -->
+                    HomeScorePro was born from a simple observation: property buyers in Melbourne needed a better way to evaluate suburbs and properties. 
+                    Traditional methods rely on gut feeling, limited data, or expensive consultants. We set out to change that.
+                </p>
+                <p>
+                    With over 30 years of combined experience in Melbourne's real estate market, our team understands what makes a great suburb 
+                    and a great property. We've combined this expertise with comprehensive data analysis to create a transparent, data-driven scoring system.
+                </p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 Our Mission</h3>
+                <p>
+                    To provide every property buyer with transparent, data-driven insights that help them make informed decisions. 
+                    No black boxes, no hidden algorithms—just clear, understandable scoring based on real data and professional expertise.
+                </p>
+            </div>
+            
+            <h2 class="section-title" style="margin-top: var(--space-3xl);">Our Methodology</h2>
+            <div class="section-content">
+                <p>
+                    HomeScorePro uses 38+ data points to calculate A-Scores (suburb analysis) and 23+ data points for B-Scores (property analysis). 
+                    Every metric is sourced from verified data providers:
+                </p>
+                <ul style="margin-left: var(--space-xl); margin-top: var(--space-md); line-height: 2;">
+                    <li><strong>ABS SEIFA</strong> - Socio-Economic Indexes for Areas (IRSD, IER, IEO)</li>
+                    <li><strong>Victoria Police</strong> - Crime statistics by LGA</li>
+                    <li><strong>Public Property Data</strong> - Property prices, growth rates, rental yields (sourced from publicly available data)</li>
+                    <li><strong>Local Government Data</strong> - Schools, amenities, infrastructure</li>
+                    <li><strong>Walk Score & Transit Data</strong> - Accessibility metrics</li>
+                </ul>
+                <p style="margin-top: var(--space-lg);">
+                    Our scoring weights are derived from 30+ years of professional auctioneer experience in Melbourne, 
+                    ensuring that the calculations reflect real-world property value factors.
+                </p>
+            </div>
+            
+            <h2 class="section-title" style="margin-top: var(--space-3xl);">The Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <h3>Jason</h3>
+                    <div class="role">Founder & Lead Developer</div>
+                    <div class="bio">
+                        <!-- PLACEHOLDER: Team member bio needs to be written -->
+                        Creator of HomeScorePro, combining technical expertise with a passion for transparent property analysis.
+                    </div>
+                </div>
+                <div class="team-card">
+                    <h3>Professional Auctioneer</h3>
+                    <div class="role">Scoring Methodology Advisor</div>
+                    <div class="bio">
+                        <!-- PLACEHOLDER: Team member bio needs to be written -->
+                        30+ years of experience in Melbourne real estate, providing expert weightings for our scoring algorithms.
+                    </div>
+                </div>
+                <!-- PLACEHOLDER: Add more team members as needed -->
+            </div>
+            
+            <div class="highlight-box" style="margin-top: var(--space-3xl);">
+                <h3>📍 Location</h3>
+                <p>
+                    <!-- PLACEHOLDER: Office address needs to be added -->
+                    <strong>PLACEHOLDER:</strong> Office address, Melbourne, Australia<br>
+                    <!-- PLACEHOLDER: Contact information -->
+                    Email: <a href="mailto:contact@homescorepro.com" style="color: var(--primary);">contact@homescorepro.com</a> (PLACEHOLDER)<br>
+                    Phone: <a href="tel:+61XXXXXXXXX" style="color: var(--primary);">+61 X XXXX XXXX</a> (PLACEHOLDER)
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>HomeScorePro</h3>
+                <p>Australia's most transparent property scoring system. Every calculation exposed, every weight adjustable, every data source verified.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="index.html#location-scout">Suburb Scout</a></li>
+                    <li><a href="index.html#calculator">Property Evaluator</a></li>
+                    <li><a href="index.html#my-properties">My Properties</a></li>
+                    <li><a href="index.html#data">Suburb Data</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Data Sources</h4>
+                <ul>
+                    <li><a href="#" title="PLACEHOLDER - Add ABS SEIFA link">ABS SEIFA</a></li>
+                    <li><a href="#" title="PLACEHOLDER - Add Victoria Police link">Victoria Police</a></li>
+                    <li><a href="#" title="PLACEHOLDER - Add Walk Score link">Walk Score</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 HomeScorePro. Built with complete transparency in Melbourne.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

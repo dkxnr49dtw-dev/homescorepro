@@ -1,0 +1,19 @@
+{
+  "name": "homescorepro-tests",
+  "version": "1.0.0",
+  "description": "Automated test suite for HomeScorePro using Playwright",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:safari": "playwright test --project=webkit",
+    "test:edge": "playwright test --project=msedge",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
+

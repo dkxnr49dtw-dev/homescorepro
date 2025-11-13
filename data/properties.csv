@@ -1,0 +1,33 @@
+id,address,suburb,postcode,price,propertyType,landSize,bedrooms,bathrooms,streetQuality,renovationCost,hampzScore,gaheeScore,bScore,isFavorite,tags,notes,dateAdded
+1730608983000,1/12 Gattinara Drive,Frankston,3199,655000,unit,293,3,1,3,0,0,0,51,No,FALSE,,Parking: 1
+1730614500000,5 Oaklands Crescent,Frankston,3199,630000,house,546,4,1,3,0,0,0,57,No,FALSE,,Parking: 1
+1730613495123,2/63 Oakwood Crescent,Waurn Ponds,3216,525000,unit,0,2,1,3,0,80,80,57,No,FALSE,,Parking: 1
+1730617203000,22 Harry Street,Cranbourne,3977,650000,house,605,3,1,3,0,0,0,52,No,FALSE,,Parking: 1
+1730608356000,160 Cranbourne Road,Frankston,3199,734499,house,0,3,1,3,0,0,0,56,No,FALSE,,Parking: 2
+1730609825000,2 Leighton Court,Frankston,3199,756000,house,0,3,2,3,0,0,0,56,No,FALSE,,Parking: 3
+1730618400000,47 Raisell Road,Cranbourne West,3977,620000,house,363,3,1,3,0,0,0,55,No,FALSE,,Parking: 1
+1762135117804,40 Remus Circuit,Cranbourne West,3977,620000,house,650,3,2,3,0,0,0,57,No,FALSE,,Parking: 2
+1730616183000,1/22 Ann Street,Dandenong,3175,795000,unit,0,3,2,3,0,0,0,63,No,FALSE,,Parking: 2
+1730617523000,86 Excelsior Drive,Frankston North,3200,588000,house,591,3,1,3,0,0,0,54,No,FALSE,,Parking: 1
+1730620015000,3/297 Nepean Highway,Seaford,3198,495000,unit,0,2,1,3,0,0,0,56,No,FALSE,,Parking: 1
+1730695358123,64 Wallace Road,Cranbourne,3977,670000,house,651,3,2,3,0,0,0,53,No,FALSE,,Parking: 4
+1730612345678,11 Cone Street,Eumemmerring,3177,672500,house,734,3,2,3,0,1,1,61,No,FALSE,,Parking: 2
+1730612345678,53 Harper Crescent,Cranbourne West,3977,615000,house,272,3,2,3,0,0,0,56,No,FALSE,,Parking: 2
+1730612345678,25 Billy Buttons Drive,Narre Warren,3805,640000,house,0,3,3,3,0,0,0,65,No,FALSE,,Parking: 2
+1730612345678,17 Creekview Way,Cranbourne West,3977,585000,house,0,3,2,3,0,0,0,61,No,FALSE,,Parking: 2
+1730612345678,8 Monahans Road,Cranbourne,3977,595000,house,653,3,1,3,0,0,0,53,No,FALSE,,Parking: 2
+1730612345678,12 Harry Street,Cranbourne,3977,675000,house,604,3,1,3,0,0,0,56,No,FALSE,,Parking: 1
+1730612345678,3 Hargrave Court,Cranbourne,3977,670000,house,666,3,1,3,0,0,0,57,No,FALSE,,Parking: 2
+1730612345678,11 Cone Street,Eumemmerring,3177,672500,house,734,3,2,3,0,0,0,61,No,FALSE,,Parking: 2
+1730612345678,1/15 Edinborough Street,Hallam,3803,630000,unit,530,2,1,3,0,0,0,46,No,FALSE,,Parking: 1
+1730612345678,1/20 Narcissus Avenue,Boronia,3155,645000,townhouse,459,2,1,3,0,0,0,57,No,FALSE,,Parking: 1
+1730612345678,103 Creekside Street,Clyde,3978,630000,house,0,3,2,3,0,0,0,45,No,FALSE,,Parking: 1
+1730612345678,89 Viewbright Road,Clyde North,3978,630000,house,189,4,2,3,0,0,0,59,No,FALSE,,Parking: 2
+1730612345678,96 Majestic Boulevard,Cranbourne,3977,629450,house,376,3,1,3,0,0,0,56,No,FALSE,,Parking: 2
+1730612345678,16 Leanna Court,Cranbourne West,3977,637500,house,450,3,1,3,0,0,0,60,No,FALSE,,Parking: 2
+1730612345678,1 Brunel Road,Seaford,3198,630000,house,423,3,1,3,0,0,0,60,No,FALSE,,Parking: 1
+1730612345678,8/21 Elizabeth Street,Cranbourne North,3977,607500,unit,325,3,2,3,0,0,0,55,No,FALSE,,Parking: 2
+1730612345678,8 Nesbit Court,Cranbourne North,3977,630000,house,500,3,1,3,0,0,0,65,No,FALSE,,Parking: 2
+1730612345678,1/75 Monterey Boulevard,Frankston North,3200,561500,unit,322,3,1,3,0,0,0,48,No,FALSE,,Parking: 1
+1730612345678,7/64 East Road,Seaford,3198,670000,unit,301,3,2,3,0,0,0,55,No,FALSE,,Parking: 1
+1730612345678,1/101 Foot Street,Frankston South,3199,670000,unit,301,2,1,3,0,0,0,59,No,FALSE,,Parking: 1
