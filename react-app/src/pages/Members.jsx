@@ -531,7 +531,26 @@ function Members() {
               onClick={() => setActiveTab('suburb')}
               style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}
             >
-              <span>📍</span>
+              <span style={{
+                display: 'inline-block',
+                width: '16px',
+                height: '16px',
+                background: 'var(--orange-primary)',
+                borderRadius: '50%',
+                position: 'relative',
+                flexShrink: 0
+              }}>
+                <span style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '8px',
+                  height: '8px',
+                  background: 'var(--dark-950)',
+                  borderRadius: '50%'
+                }}></span>
+              </span>
               <span>Suburb Analysis (A-Score)</span>
             </button>
             <button 
@@ -539,18 +558,41 @@ function Members() {
               onClick={() => setActiveTab('property')}
               style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}
             >
-              <span>🏠</span>
+              <span style={{
+                display: 'inline-block',
+                width: '16px',
+                height: '14px',
+                border: '2px solid var(--orange-primary)',
+                borderRadius: '2px 2px 0 0',
+                position: 'relative',
+                flexShrink: 0
+              }}>
+                <span style={{
+                  position: 'absolute',
+                  bottom: '-4px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '20px',
+                  height: '4px',
+                  background: 'var(--orange-primary)',
+                  borderRadius: '0 0 2px 2px'
+                }}></span>
+              </span>
               <span>Property Evaluation (B-Score)</span>
             </button>
             <button 
               className={`tab-btn ${activeTab === 'ranked' ? 'active' : ''}`}
-              onClick={() => {
-                console.log('Ranked tab clicked, activeTab:', activeTab)
-                setActiveTab('ranked')
-              }}
+              onClick={() => setActiveTab('ranked')}
               style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}
             >
-              <span>🏆</span>
+              <span style={{
+                display: 'inline-block',
+                width: '16px',
+                height: '16px',
+                background: 'var(--orange-primary)',
+                clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+                flexShrink: 0
+              }}></span>
               <span>Ranked Properties</span>
             </button>
           </div>
@@ -740,7 +782,7 @@ function Members() {
                             fontWeight: 600,
                             color: 'var(--text-primary)'
                           }}>
-                            {property.address || 'Address not provided'}
+                            {(property.address && property.address.trim()) ? property.address.trim().replace(/,$/, '') : 'Address not provided'}
                           </h4>
                           <p style={{ 
                             margin: 0, 
@@ -748,7 +790,7 @@ function Members() {
                             fontSize: '0.9375rem', 
                             marginBottom: 'var(--space-2)' 
                           }}>
-                            {property.suburb} {property.postcode} • ${(property.price || 0).toLocaleString()}
+                            {property.suburb || ''} {property.postcode || ''} {property.price ? `• $${parseInt(property.price).toLocaleString()}` : ''}
                           </p>
                           <div style={{ 
                             display: 'flex', 
@@ -757,10 +799,10 @@ function Members() {
                             color: 'var(--text-tertiary)',
                             flexWrap: 'wrap'
                           }}>
-                            <span>{property.bedrooms || 0} bed</span>
-                            <span>{property.bathrooms || 0} bath</span>
-                            {property.landSize && <span>{property.landSize} m²</span>}
-                            <span style={{ textTransform: 'capitalize' }}>{property.propertyType || 'house'}</span>
+                            {property.bedrooms && <span>{parseInt(property.bedrooms) || 0} bed</span>}
+                            {property.bathrooms && <span>{parseFloat(property.bathrooms) || 0} bath</span>}
+                            {property.landSize && <span>{parseInt(property.landSize)} m²</span>}
+                            {property.propertyType && <span style={{ textTransform: 'capitalize' }}>{property.propertyType}</span>}
                           </div>
                         </div>
                         

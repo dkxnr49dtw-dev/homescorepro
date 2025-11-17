@@ -79,13 +79,22 @@ export function parseCSV(text) {
     const lines = text.trim().split('\n').filter(line => line.trim());
     if (lines.length < 2) return [];
     
+    // Find the header line (skip comment lines starting with #)
+    let headerIndex = 0;
+    for (let i = 0; i < lines.length; i++) {
+        if (!lines[i].trim().startsWith('#')) {
+            headerIndex = i;
+            break;
+        }
+    }
+    
     // Parse header
-    const headers = parseCSVLine(lines[0]).map(h => h.replace(/^"|"$/g, '').trim());
+    const headers = parseCSVLine(lines[headerIndex]).map(h => h.replace(/^"|"$/g, '').trim());
     const data = [];
     
-    for (let i = 1; i < lines.length; i++) {
+    for (let i = headerIndex + 1; i < lines.length; i++) {
         const line = lines[i];
-        if (!line.trim()) continue;
+        if (!line.trim() || line.trim().startsWith('#')) continue;
         
         // Parse line with proper quote handling
         const values = parseCSVLine(line);
