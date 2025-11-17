@@ -330,4 +330,36 @@ footer {
     .nav-cta { display: none; }
     .hero { padding: var(--space-16) var(--space-4); }
     .features-grid { grid-template-columns: 1fr; }
+    
+    /* Touch-friendly navigation - WCAG 2.1 minimum 44x44px */
+    .nav-mobile-toggle {
+        min-width: 44px;
+        min-height: 44px;
+        padding: var(--space-3);
+    }
+    
+    .nav-mobile-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        padding: var(--space-4);
+    }
+    
+    /* Touch-friendly buttons - WCAG 2.1 minimum 44x44px */
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: var(--space-4) var(--space-6);
+        font-size: 16px; /* Prevents iOS zoom on focus */
+    }
+    
+    /* Touch-friendly form inputs */
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select,
+    textarea {
+        min-height: 44px;
+        font-size: 16px; /* Prevents iOS zoom on focus */
+    }
 }

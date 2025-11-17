@@ -897,17 +897,15 @@
             box-shadow: 0 0 0 4px var(--orange-subtle);
         }
         
-        /* Option elements - ensure readability */
+        /* Option elements - minimal styling (browser defaults work best) */
         .form-select option {
             background-color: var(--bg-tertiary);
             color: var(--text-primary);
             padding: var(--space-2) var(--space-4);
         }
         
-        .form-select option:checked {
-            background-color: var(--orange-primary);
-            color: var(--bg-primary);
-        }
+        /* Note: option:checked doesn't work reliably in Safari/Firefox
+           Browser default styling is used for selected options */
         
         .form-select optgroup {
             background-color: var(--bg-secondary);

@@ -289,9 +289,9 @@
     </style>
 </head>
 <body>
-    <nav>
+    <nav class="nav" id="mainNav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">🏡 HomeScorePro</a>
+            <a href="index.html" class="nav-logo">HomeScorePro</a>
             <ul class="nav-links">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="calculator.html" class="nav-link">Calculator</a></li>
@@ -300,6 +300,23 @@
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             <a href="members.html" class="nav-cta">Sign In</a>
+            <button class="nav-mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="nav-mobile-menu" id="mobileMenu">
+            <ul class="nav-mobile-links">
+                <li><a href="index.html" class="nav-mobile-link" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="calculator.html" class="nav-mobile-link" onclick="toggleMobileMenu()">Calculator</a></li>
+                <li><a href="pricing.html" class="nav-mobile-link" onclick="toggleMobileMenu()">Pricing</a></li>
+                <li><a href="about.html" class="nav-mobile-link" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="contact.html" class="nav-mobile-link" onclick="toggleMobileMenu()">Contact</a></li>
+                <li><a href="members.html" class="nav-mobile-link" onclick="toggleMobileMenu()">Sign In</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -558,5 +575,7 @@
             © 2024 HomeScorePro. Built with precision. Powered by data.
         </div>
     </footer>
+    
+    <script src="js/navigation.js"></script>
 </body>
 </html>

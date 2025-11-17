@@ -134,24 +134,15 @@
         border: 2px solid var(--dark-600);
     }
     
-    /* Option elements in dropdowns - critical for readability */
+    /* Option elements in dropdowns - minimal styling (browser defaults work best) */
     select option {
         background-color: var(--bg-tertiary);
         color: var(--text-primary);
         padding: var(--space-2) var(--space-4);
     }
     
-    /* Selected option */
-    select option:checked {
-        background-color: var(--orange-primary);
-        color: var(--bg-primary);
-    }
-    
-    /* Hover state for options (when dropdown is open) */
-    select option:hover {
-        background-color: var(--orange-subtle);
-        color: var(--text-primary);
-    }
+    /* Note: option:checked and option:hover don't work reliably in Safari/Firefox
+       Browser default styling is used for selected/hovered options */
     
     /* Disabled options */
     select option:disabled {
