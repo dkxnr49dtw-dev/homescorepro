@@ -527,15 +527,14 @@ function Members() {
           
           <div className="calculator-tabs" style={{ display: 'flex', gap: 'var(--space-2)', marginBottom: 'var(--space-6)', flexWrap: 'wrap' }}>
             <button 
-              className={`tab-btn ${activeTab === 'suburb' ? 'active' : ''}`}
+              className={`btn ${activeTab === 'suburb' ? 'btn-primary' : 'btn-secondary'}`}
               onClick={() => setActiveTab('suburb')}
-              style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}
             >
               <span style={{
                 display: 'inline-block',
                 width: '16px',
                 height: '16px',
-                background: 'var(--orange-primary)',
+                background: activeTab === 'suburb' ? 'var(--dark-900)' : 'var(--orange-primary)',
                 borderRadius: '50%',
                 position: 'relative',
                 flexShrink: 0
@@ -547,22 +546,21 @@ function Members() {
                   transform: 'translate(-50%, -50%)',
                   width: '8px',
                   height: '8px',
-                  background: 'var(--dark-950)',
+                  background: activeTab === 'suburb' ? 'var(--orange-primary)' : 'var(--dark-950)',
                   borderRadius: '50%'
                 }}></span>
               </span>
               <span>Suburb Analysis (A-Score)</span>
             </button>
             <button 
-              className={`tab-btn ${activeTab === 'property' ? 'active' : ''}`}
+              className={`btn ${activeTab === 'property' ? 'btn-primary' : 'btn-secondary'}`}
               onClick={() => setActiveTab('property')}
-              style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}
             >
               <span style={{
                 display: 'inline-block',
                 width: '16px',
                 height: '14px',
-                border: '2px solid var(--orange-primary)',
+                border: `2px solid ${activeTab === 'property' ? 'var(--dark-900)' : 'var(--orange-primary)'}`,
                 borderRadius: '2px 2px 0 0',
                 position: 'relative',
                 flexShrink: 0
@@ -574,22 +572,21 @@ function Members() {
                   transform: 'translateX(-50%)',
                   width: '20px',
                   height: '4px',
-                  background: 'var(--orange-primary)',
+                  background: activeTab === 'property' ? 'var(--dark-900)' : 'var(--orange-primary)',
                   borderRadius: '0 0 2px 2px'
                 }}></span>
               </span>
               <span>Property Evaluation (B-Score)</span>
             </button>
             <button 
-              className={`tab-btn ${activeTab === 'ranked' ? 'active' : ''}`}
+              className={`btn ${activeTab === 'ranked' ? 'btn-primary' : 'btn-secondary'}`}
               onClick={() => setActiveTab('ranked')}
-              style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}
             >
               <span style={{
                 display: 'inline-block',
                 width: '16px',
                 height: '16px',
-                background: 'var(--orange-primary)',
+                background: activeTab === 'ranked' ? 'var(--dark-900)' : 'var(--orange-primary)',
                 clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
                 flexShrink: 0
               }}></span>
