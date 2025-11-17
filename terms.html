@@ -4,576 +4,352 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - HomeScorePro</title>
-    <meta name="description" content="HomeScorePro Terms of Service. Read our terms and conditions for using our property scoring platform.">
-    
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#000428">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Design Master - Single Source of Truth -->
+    <link rel="stylesheet" href="css/design-master.css">
+    <link rel="stylesheet" href="css/ui-enhancements.css">
     
     <style>
-        :root {
-            --primary: #000428;
-            --secondary: #764ba2;
-            --accent: #00AEEF;
-            --gradient: linear-gradient(135deg, #000428 0%, #764ba2 100%);
-            --white: #ffffff;
-            --gray-50: #f9fafb;
-            --gray-200: #e5e7eb;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-900: #111827;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --space-sm: 0.5rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
-            --space-2xl: 3rem;
-            --space-3xl: 4rem;
-            --radius-lg: 1rem;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
+        /* All design variables now imported from css/design-master.css */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: var(--font-sans);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.8;
-            color: var(--gray-900);
-            background: var(--white);
         }
-        
-        .nav {
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        nav, main { position: relative; z-index: 1; }
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
         }
-        
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: var(--space-md) var(--space-xl);
+            padding: var(--space-5) var(--space-6);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
         .nav-logo {
             font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
         }
-        
-        .nav-menu {
+        .nav-links {
             display: flex;
-            gap: var(--space-xl);
+            gap: var(--space-8);
             list-style: none;
         }
-        
         .nav-link {
-            color: var(--gray-700);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .nav-link:hover { color: var(--primary); }
-        
-        .nav-cta {
-            background: var(--gradient);
-            color: var(--white);
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--radius-lg);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 600;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
         }
-        
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .page-hero {
+        .nav-link:hover { color: var(--orange-light); }
+        .legal-container {
             margin-top: 80px;
-            padding: var(--space-3xl) var(--space-xl);
-            background: linear-gradient(135deg, rgba(0,4,40,0.03) 0%, rgba(118,75,162,0.03) 100%);
-            text-align: center;
-        }
-        
-        .page-hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: var(--space-md);
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .page-hero p {
-            font-size: 1.25rem;
-            color: var(--gray-600);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .content-section {
-            padding: var(--space-3xl) var(--space-xl);
-        }
-        
-        .section-container {
             max-width: 900px;
-            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding: var(--space-16) var(--space-6);
         }
-        
-        .terms-section {
-            margin-bottom: var(--space-3xl);
+        .legal-header {
+            margin-bottom: var(--space-12);
         }
-        
-        .terms-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: var(--space-lg);
-            margin-top: var(--space-2xl);
+        .legal-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: var(--space-4);
         }
-        
-        .terms-section h2:first-of-type {
-            margin-top: 0;
+        .legal-updated {
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
         }
-        
-        .terms-section h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: var(--space-md);
-            margin-top: var(--space-xl);
+        .legal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-12);
         }
-        
-        .terms-section p {
-            color: var(--gray-700);
-            margin-bottom: var(--space-md);
-            line-height: 1.8;
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-top: var(--space-10);
+            margin-bottom: var(--space-4);
+            color: var(--orange-light);
         }
-        
-        .terms-section ul {
-            margin-left: var(--space-xl);
-            margin-bottom: var(--space-md);
-            color: var(--gray-700);
+        h2:first-child { margin-top: 0; }
+        p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-4);
         }
-        
-        .terms-section li {
-            margin-bottom: var(--space-sm);
-            line-height: 1.8;
+        ul {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-4);
+            padding-left: var(--space-8);
         }
-        
-        .highlight-box {
-            background: var(--gray-50);
-            border-left: 4px solid var(--accent);
-            padding: var(--space-xl);
-            border-radius: var(--radius-lg);
-            margin: var(--space-xl) 0;
+        li {
+            margin-bottom: var(--space-2);
         }
-        
-        .footer {
-            background: var(--gradient);
-            color: var(--white);
-            padding: var(--space-3xl) var(--space-xl) var(--space-xl);
+        strong {
+            color: var(--text-primary);
         }
-        
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--glass-border);
+            padding: var(--space-12) var(--space-6) var(--space-8);
+        }
         .footer-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: var(--space-3xl);
-            margin-bottom: var(--space-xl);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-12);
+            margin-bottom: var(--space-8);
         }
-        
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            margin-bottom: var(--space-md);
+        .footer-section h4 {
+            font-size: 0.875rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-4);
         }
-        
-        .footer-brand p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-        }
-        
-        .footer-column h4 {
-            font-size: 1rem;
-            margin-bottom: var(--space-md);
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .footer-column ul {
+        .footer-links {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
         }
-        
-        .footer-column a {
-            color: rgba(255, 255, 255, 0.7);
+        .footer-link {
+            color: var(--text-tertiary);
             text-decoration: none;
-            display: block;
-            padding: var(--space-sm) 0;
-            transition: var(--transition);
         }
-        
-        .footer-column a:hover {
-            color: var(--white);
-            transform: translateX(5px);
-        }
-        
+        .footer-link:hover { color: var(--orange-light); }
         .footer-bottom {
-            padding-top: var(--space-xl);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
         }
-        
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .footer-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .legal-content { padding: var(--space-8); }
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
+    <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">HomeScorePro</a>
-            <ul class="nav-menu">
-                <li><a href="index.html#location-scout" class="nav-link">Suburb Scout</a></li>
-                <li><a href="index.html#calculator" class="nav-link">Property Evaluator</a></li>
+            <a href="index.html" class="nav-logo">🏡 HomeScorePro</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="calculator.html" class="nav-link">Calculator</a></li>
                 <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <div>
-                <a href="members.html" class="nav-cta">Sign Up</a>
-            </div>
         </div>
     </nav>
-    
-    <section class="page-hero">
-        <div class="section-container">
-            <h1>Terms of Service</h1>
-            <p>Please read these terms carefully before using HomeScorePro services.</p>
-            <p style="font-size: 0.875rem; color: var(--gray-600); margin-top: var(--space-md);">
-                <strong>Last Updated:</strong> January 13, 2025<br>
-                <strong>PLACEHOLDER:</strong> These terms need legal review before publication
+
+    <div class="legal-container">
+        <div class="legal-header">
+            <h1 class="legal-title">Terms of Service</h1>
+            <p class="legal-updated">Last updated: November 15, 2024</p>
+        </div>
+
+        <div class="legal-content">
+            <h2>Agreement to Terms</h2>
+            <p>
+                By accessing or using HomeScorePro, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any part of these terms, you may not use our service.
+            </p>
+
+            <h2>Description of Service</h2>
+            <p>
+                HomeScorePro is a property analysis platform that provides data-driven scores and insights for Melbourne properties. Our service includes:
+            </p>
+            <ul>
+                <li>A-Score: Suburb-level analysis across 15 metrics</li>
+                <li>B-Score: Property-level evaluation using 38+ data points</li>
+                <li>Search functionality for suburbs, postcodes, and addresses</li>
+                <li>Property comparison tools (Pro plan)</li>
+                <li>Saved searches and alerts (Pro plan)</li>
+            </ul>
+
+            <h2>User Accounts</h2>
+            <p><strong>Account Creation:</strong></p>
+            <ul>
+                <li>You must provide accurate and complete information</li>
+                <li>You are responsible for maintaining account security</li>
+                <li>You must be at least 18 years old to create an account</li>
+                <li>One account per person; no sharing of accounts</li>
+            </ul>
+
+            <p><strong>Account Termination:</strong></p>
+            <ul>
+                <li>We reserve the right to suspend or terminate accounts for violations</li>
+                <li>You may cancel your account at any time</li>
+                <li>Upon termination, your data will be deleted as per our Privacy Policy</li>
+            </ul>
+
+            <h2>Subscription Plans</h2>
+            <p><strong>Free Plan:</strong></p>
+            <ul>
+                <li>3 property searches per account</li>
+                <li>Basic score access</li>
+                <li>No payment required</li>
+            </ul>
+
+            <p><strong>Pro Plan ($29/month):</strong></p>
+            <ul>
+                <li>Unlimited searches</li>
+                <li>Full breakdowns and insights</li>
+                <li>Save and compare properties</li>
+                <li>Billed monthly; cancel anytime</li>
+                <li>30-day money-back guarantee</li>
+            </ul>
+
+            <p><strong>Enterprise Plan (Custom pricing):</strong></p>
+            <ul>
+                <li>API access and bulk analysis</li>
+                <li>White-label reports</li>
+                <li>Custom terms apply per contract</li>
+            </ul>
+
+            <h2>Payment Terms</h2>
+            <ul>
+                <li>All payments are processed securely through third-party providers</li>
+                <li>Subscriptions auto-renew unless cancelled</li>
+                <li>Refunds available within 30 days of purchase (Pro plan only)</li>
+                <li>Price changes will be communicated 30 days in advance</li>
+                <li>Failed payments may result in service suspension</li>
+            </ul>
+
+            <h2>Acceptable Use</h2>
+            <p>You agree NOT to:</p>
+            <ul>
+                <li>Use automated tools to scrape or extract data</li>
+                <li>Share your account credentials with others</li>
+                <li>Attempt to circumvent search limits or paywalls</li>
+                <li>Reverse engineer or copy our scoring algorithms</li>
+                <li>Use the service for illegal or fraudulent purposes</li>
+                <li>Resell or redistribute our data without authorization</li>
+            </ul>
+
+            <h2>Intellectual Property</h2>
+            <p>
+                All content, including scores, algorithms, designs, and data, is owned by HomeScorePro and protected by copyright and intellectual property laws. You may not reproduce, distribute, or create derivative works without written permission.
+            </p>
+
+            <h2>Data Accuracy and Disclaimers</h2>
+            <p><strong>Important:</strong> HomeScorePro provides informational tools only. We do not:</p>
+            <ul>
+                <li>Provide financial, legal, or real estate advice</li>
+                <li>Guarantee accuracy of scores or data</li>
+                <li>Make property recommendations or endorsements</li>
+                <li>Act as real estate agents or brokers</li>
+            </ul>
+            <p>
+                Our scores are based on publicly available data and proprietary analysis. Property values, market conditions, and other factors change constantly. Always conduct your own due diligence and consult professionals before making property decisions.
+            </p>
+
+            <h2>Limitation of Liability</h2>
+            <p>
+                HomeScorePro is provided "as is" without warranties of any kind. We are not liable for:
+            </p>
+            <ul>
+                <li>Financial losses from property decisions</li>
+                <li>Data inaccuracies or service interruptions</li>
+                <li>Third-party actions or content</li>
+                <li>Indirect, incidental, or consequential damages</li>
+            </ul>
+            <p>
+                Our total liability shall not exceed the amount you paid for the service in the past 12 months.
+            </p>
+
+            <h2>Data Sources</h2>
+            <p>Our scores are derived from multiple sources including:</p>
+            <ul>
+                <li>Government statistics and public records</li>
+                <li>School performance data</li>
+                <li>Transport network information</li>
+                <li>Real estate market analysis</li>
+                <li>Safety and crime statistics</li>
+            </ul>
+
+            <h2>Changes to Service</h2>
+            <p>
+                We reserve the right to modify, suspend, or discontinue any part of the service at any time. We will provide reasonable notice for significant changes affecting paid subscribers.
+            </p>
+
+            <h2>Governing Law</h2>
+            <p>
+                These Terms are governed by the laws of Victoria, Australia. Any disputes shall be resolved in the courts of Melbourne, Victoria.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+                For questions about these Terms, contact us at:
+            </p>
+            <p>
+                <strong>Email:</strong> legal@homescorepro.com.au<br>
+                <strong>Mail:</strong> HomeScorePro, Melbourne, VIC, Australia
             </p>
         </div>
-    </section>
-    
-    <section class="content-section">
-        <div class="section-container">
-            <div class="terms-section">
-                <h2>1. Acceptance of Terms</h2>
-                <p>
-                    By accessing or using HomeScorePro ("the Service"), you agree to be bound by these Terms of Service. 
-                    If you disagree with any part of these terms, you may not access the Service.
-                </p>
-                <p>
-                    <!-- PLACEHOLDER: Company legal name and details -->
-                    <strong>PLACEHOLDER:</strong> Company legal name, ABN, and registered address need to be added here.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>2. Description of Service</h2>
-                <p>
-                    HomeScorePro provides property scoring and analysis services for suburbs and individual properties in Melbourne, Australia. 
-                    Our services include:
-                </p>
-                <ul>
-                    <li>A-Score calculations for suburb analysis</li>
-                    <li>B-Score calculations for individual property evaluation</li>
-                    <li>Data visualization and comparison tools</li>
-                    <li>Property saving and management features (for paid users)</li>
-                </ul>
-                <p>
-                    We reserve the right to modify, suspend, or discontinue any part of the Service at any time with or without notice.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>3. User Accounts</h2>
-                
-                <h3>3.1 Account Creation</h3>
-                <p>
-                    To access paid features, you must create an account. You agree to:
-                </p>
-                <ul>
-                    <li>Provide accurate, current, and complete information</li>
-                    <li>Maintain and update your information to keep it accurate</li>
-                    <li>Maintain the security of your account credentials</li>
-                    <li>Notify us immediately of any unauthorized access</li>
-                </ul>
-                
-                <h3>3.2 Account Responsibility</h3>
-                <p>
-                    You are responsible for all activities that occur under your account. We are not liable for any loss or damage 
-                    arising from unauthorized use of your account.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>4. Free and Paid Services</h2>
-                
-                <h3>4.1 Free Tier</h3>
-                <p>
-                    Our free tier provides limited access to basic features:
-                </p>
-                <ul>
-                    <li>3 suburb searches per session</li>
-                    <li>Limited property evaluations</li>
-                    <li>Blurred detailed metrics</li>
-                    <li>Sample property showcase</li>
-                </ul>
-                
-                <h3>4.2 Paid Subscriptions</h3>
-                <p>
-                    Paid subscriptions provide unlimited access to all features. Subscription terms:
-                </p>
-                <ul>
-                    <li>Subscriptions are billed monthly or annually</li>
-                    <li>Payment is processed through our payment provider (Stripe/PayPal)</li>
-                    <li>Subscriptions automatically renew unless cancelled</li>
-                    <li>Price changes will be communicated 30 days in advance</li>
-                </ul>
-                <!-- PLACEHOLDER: Payment processing details need to be finalized -->
-                <div class="highlight-box">
-                    <p>
-                        <strong>PLACEHOLDER:</strong> Payment processing integration (Stripe/PayPal) needs to be implemented. 
-                        Currently using password-based testing access.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="terms-section">
-                <h2>5. Cancellation and Refunds</h2>
-                
-                <h3>5.1 Cancellation</h3>
-                <p>
-                    <!-- PLACEHOLDER: Cancellation policy needs to be defined -->
-                    You may cancel your subscription at any time through your account settings. 
-                    <strong>PLACEHOLDER:</strong> Specific cancellation process and timing need to be defined.
-                </p>
-                
-                <h3>5.2 Refunds</h3>
-                <p>
-                    <!-- PLACEHOLDER: Refund policy needs to be defined -->
-                    We offer a 30-day money-back guarantee for new subscriptions. 
-                    <strong>PLACEHOLDER:</strong> Specific refund terms, process, and conditions need to be defined.
-                </p>
-                
-                <h3>5.3 No Refunds After Period</h3>
-                <p>
-                    <!-- PLACEHOLDER: Refund policy details -->
-                    After the refund period, subscriptions are non-refundable. You will continue to have access until the end of your billing period.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>6. Intellectual Property</h2>
-                <p>
-                    All content, features, and functionality of the Service are owned by HomeScorePro and are protected by 
-                    copyright, trademark, and other intellectual property laws.
-                </p>
-                <p>
-                    You may not:
-                </p>
-                <ul>
-                    <li>Copy, modify, or distribute our content without permission</li>
-                    <li>Use our data or algorithms for commercial purposes without a license</li>
-                    <li>Reverse engineer or attempt to extract our scoring algorithms</li>
-                    <li>Use our trademarks or branding without permission</li>
-                </ul>
-            </div>
-            
-            <div class="terms-section">
-                <h2>7. User Content</h2>
-                <p>
-                    When you save property evaluations or other content:
-                </p>
-                <ul>
-                    <li>You retain ownership of your data</li>
-                    <li>You grant us a license to store and process your data to provide the Service</li>
-                    <li>You are responsible for ensuring you have the right to use any data you provide</li>
-                    <li>You can export or delete your data at any time</li>
-                </ul>
-            </div>
-            
-            <div class="terms-section">
-                <h2>8. Disclaimers and Limitations</h2>
-                
-                <h3>8.1 No Warranty</h3>
-                <p>
-                    The Service is provided "as is" without warranties of any kind. We do not guarantee:
-                </p>
-                <ul>
-                    <li>Accuracy of scores or data (scores are estimates based on available data)</li>
-                    <li>Uninterrupted or error-free service</li>
-                    <li>That the Service will meet your specific requirements</li>
-                </ul>
-                
-                <h3>8.2 Limitation of Liability</h3>
-                <p>
-                    <!-- PLACEHOLDER: Liability limitations need legal review -->
-                    To the maximum extent permitted by law, HomeScorePro shall not be liable for any indirect, incidental, 
-                    special, or consequential damages arising from your use of the Service.
-                    <strong>PLACEHOLDER:</strong> Specific liability limitations need to be defined with legal review.
-                </p>
-                
-                <h3>8.3 Property Decisions</h3>
-                <p>
-                    Our scores are tools to assist in property decisions, not financial or legal advice. You should:
-                </p>
-                <ul>
-                    <li>Consult with qualified professionals (real estate agents, lawyers, financial advisors)</li>
-                    <li>Conduct your own due diligence</li>
-                    <li>Not rely solely on our scores for property purchase decisions</li>
-                </ul>
-            </div>
-            
-            <div class="terms-section">
-                <h2>9. Prohibited Uses</h2>
-                <p>You agree not to:</p>
-                <ul>
-                    <li>Use the Service for any illegal purpose</li>
-                    <li>Attempt to gain unauthorized access to our systems</li>
-                    <li>Interfere with or disrupt the Service</li>
-                    <li>Use automated systems to scrape or extract data</li>
-                    <li>Resell or redistribute our data without permission</li>
-                    <li>Impersonate others or provide false information</li>
-                </ul>
-            </div>
-            
-            <div class="terms-section">
-                <h2>10. Data and Privacy</h2>
-                <p>
-                    Your use of the Service is also governed by our <a href="privacy.html" style="color: var(--accent);">Privacy Policy</a>. 
-                    By using the Service, you consent to our collection and use of your information as described in the Privacy Policy.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>11. Termination</h2>
-                <p>
-                    We may terminate or suspend your account and access to the Service immediately, without prior notice, 
-                    for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.
-                </p>
-                <p>
-                    You may terminate your account at any time by contacting us or using account deletion features.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>12. Changes to Terms</h2>
-                <p>
-                    We reserve the right to modify these Terms at any time. We will notify users of material changes by:
-                </p>
-                <ul>
-                    <li>Posting the updated Terms on this page</li>
-                    <li>Updating the "Last Updated" date</li>
-                    <li>Sending email notifications to paid users (for significant changes)</li>
-                </ul>
-                <p>
-                    Your continued use of the Service after changes constitutes acceptance of the new Terms.
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>13. Governing Law and Dispute Resolution</h2>
-                <p>
-                    <!-- PLACEHOLDER: Jurisdiction needs to be defined -->
-                    These Terms shall be governed by the laws of [Jurisdiction - PLACEHOLDER: Define jurisdiction, e.g., "Victoria, Australia"].
-                </p>
-                <p>
-                    <!-- PLACEHOLDER: Dispute resolution process needs to be defined -->
-                    Any disputes arising from these Terms or the Service shall be resolved through:
-                    <strong>PLACEHOLDER:</strong> Define dispute resolution process (mediation, arbitration, courts, etc.)
-                </p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>14. Contact Information</h2>
-                <p>
-                    If you have questions about these Terms, please contact us:
-                </p>
-                <div class="highlight-box">
-                    <p>
-                        <!-- PLACEHOLDER: Contact details -->
-                        <strong>HomeScorePro</strong><br>
-                        [Company Address - PLACEHOLDER]<br>
-                        Melbourne, VIC, Australia<br><br>
-                        Email: <a href="mailto:legal@homescorepro.com" style="color: var(--accent);">legal@homescorepro.com</a><br>
-                        <!-- PLACEHOLDER: Legal contact email needs to be confirmed -->
-                    </p>
-                </div>
-            </div>
-            
-            <div class="highlight-box" style="margin-top: var(--space-3xl);">
-                <p>
-                    <strong>⚠️ IMPORTANT:</strong> These Terms of Service are a template and require legal review before publication. 
-                    Please consult with a lawyer to ensure compliance with Australian Consumer Law and other applicable regulations.
-                </p>
-            </div>
-        </div>
-    </section>
-    
-    <footer class="footer">
+    </div>
+
+    <footer>
         <div class="footer-container">
-            <div class="footer-brand">
-                <h3>HomeScorePro</h3>
-                <p>Australia's most transparent property scoring system. Every calculation exposed, every weight adjustable, every data source verified.</p>
-            </div>
-            <div class="footer-column">
+            <div class="footer-section">
                 <h4>Product</h4>
-                <ul>
-                    <li><a href="index.html#location-scout">Suburb Scout</a></li>
-                    <li><a href="index.html#calculator">Property Evaluator</a></li>
-                    <li><a href="index.html#my-properties">My Properties</a></li>
-                    <li><a href="index.html#data">Suburb Data</a></li>
+                <ul class="footer-links">
+                    <li><a href="calculator.html" class="footer-link">Calculator</a></li>
+                    <li><a href="pricing.html" class="footer-link">Pricing</a></li>
                 </ul>
             </div>
-            <div class="footer-column">
+            <div class="footer-section">
                 <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
+                <ul class="footer-links">
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-column">
-                <h4>Data Sources</h4>
-                <ul>
-                    <li><a href="#" title="PLACEHOLDER - Add ABS SEIFA link">ABS SEIFA</a></li>
-                    <li><a href="#" title="PLACEHOLDER - Add Victoria Police link">Victoria Police</a></li>
-                    <li><a href="#" title="PLACEHOLDER - Add Walk Score link">Walk Score</a></li>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy.html" class="footer-link">Privacy</a></li>
+                    <li><a href="terms.html" class="footer-link">Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Account</h4>
+                <ul class="footer-links">
+                    <li><a href="members.html" class="footer-link">Sign In</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 HomeScorePro. Built with complete transparency in Melbourne.</p>
+            © 2024 HomeScorePro. Built with precision. Powered by data.
         </div>
     </footer>
 </body>
 </html>
-

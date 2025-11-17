@@ -4,611 +4,559 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing - HomeScorePro</title>
-    <meta name="description" content="Choose the perfect plan for your property search. Free tier available, or upgrade for unlimited access and advanced features.">
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#000428">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <!-- Professional Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Design Master - Single Source of Truth -->
+    <link rel="stylesheet" href="css/design-master.css">
+    <!-- UI Enhancements -->
+    <link rel="stylesheet" href="css/ui-enhancements.css">
     
     <style>
-        :root {
-            --primary: #000428;
-            --secondary: #764ba2;
-            --accent: #00AEEF;
-            --gradient: linear-gradient(135deg, #000428 0%, #764ba2 100%);
-            --gradient-soft: linear-gradient(135deg, rgba(0,4,40,0.1) 0%, rgba(118,75,162,0.1) 100%);
-            --success: #22c55e;
-            --white: #ffffff;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-900: #111827;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --space-xs: 0.25rem;
-            --space-sm: 0.5rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
-            --space-2xl: 3rem;
-            --space-3xl: 4rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.5rem;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
+        /* All design variables now imported from css/design-master.css */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: var(--font-sans);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: var(--gray-900);
-            background: var(--white);
         }
-        
-        .nav {
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        nav, main, section, footer { position: relative; z-index: 1; }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
         }
-        
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: var(--space-md) var(--space-xl);
+            padding: var(--space-5) var(--space-6);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
         .nav-logo {
             font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
         }
-        
-        .nav-menu {
+        .nav-links {
             display: flex;
-            gap: var(--space-xl);
+            gap: var(--space-8);
             list-style: none;
+            align-items: center;
         }
-        
         .nav-link {
-            color: var(--gray-700);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .nav-link:hover { color: var(--primary); }
-        
-        .nav-cta {
-            background: var(--gradient);
-            color: var(--white);
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--radius-lg);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 600;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
+            transition: color var(--transition-base);
         }
-        
+        .nav-link:hover { color: var(--orange-light); }
+        .nav-cta {
+            padding: var(--space-3) var(--space-6);
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+            color: var(--dark-900);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md), var(--shadow-orange);
         }
-        
-        .page-hero {
+        .pricing-hero {
             margin-top: 80px;
-            padding: var(--space-3xl) var(--space-xl);
-            background: linear-gradient(135deg, rgba(0,4,40,0.03) 0%, rgba(118,75,162,0.03) 100%);
+            padding: var(--space-20) var(--space-6) var(--space-16);
             text-align: center;
         }
-        
-        .page-hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: var(--space-md);
-            background: var(--gradient);
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: var(--space-4);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
-        .page-hero p {
+        .hero-subtitle {
             font-size: 1.25rem;
-            color: var(--gray-600);
-            max-width: 800px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto var(--space-12);
+        }
+        .pricing-container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 var(--space-6) var(--space-20);
         }
-        
-        .pricing-section {
-            padding: var(--space-3xl) var(--space-xl);
-        }
-        
-        .section-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-xl);
-            margin-top: var(--space-3xl);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-8);
+            margin-bottom: var(--space-16);
         }
-        
         .pricing-card {
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            padding: var(--space-2xl);
-            box-shadow: var(--shadow);
-            border: 2px solid var(--gray-200);
-            transition: var(--transition);
+            background: var(--bg-secondary);
+            border: 2px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-10);
+            transition: all var(--transition-base);
+        }
+        .pricing-card.featured {
+            border-color: var(--orange-primary);
+            box-shadow: 0 0 0 1px var(--orange-subtle), var(--shadow-lg);
             position: relative;
         }
-        
-        .pricing-card:hover {
-            box-shadow: var(--shadow-xl);
-            transform: translateY(-5px);
-        }
-        
-        .pricing-card.featured {
-            border-color: var(--accent);
-            border-width: 3px;
-        }
-        
-        .pricing-badge {
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
             position: absolute;
             top: -12px;
-            right: var(--space-xl);
-            background: var(--accent);
-            color: var(--white);
-            padding: var(--space-xs) var(--space-md);
-            border-radius: var(--radius-md);
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+            color: var(--dark-900);
+            padding: var(--space-2) var(--space-6);
+            border-radius: var(--radius-full);
             font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.1em;
         }
-        
-        .pricing-header {
-            text-align: center;
-            margin-bottom: var(--space-xl);
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
         }
-        
-        .pricing-name {
+        .plan-name {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: var(--space-sm);
+            font-weight: 800;
+            margin-bottom: var(--space-2);
         }
-        
-        .pricing-price {
+        .plan-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-6);
+            font-size: 0.9375rem;
+        }
+        .plan-price {
             font-size: 3rem;
-            font-weight: 700;
-            background: var(--gradient);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: var(--space-xs);
+            margin-bottom: var(--space-2);
         }
-        
-        .pricing-period {
-            color: var(--gray-600);
-            font-size: 0.875rem;
+        .plan-price-period {
+            color: var(--text-tertiary);
+            font-size: 1rem;
+            font-weight: 600;
         }
-        
-        .pricing-description {
-            color: var(--gray-600);
-            margin-bottom: var(--space-xl);
-            text-align: center;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            margin-bottom: var(--space-xl);
-        }
-        
-        .pricing-features li {
-            padding: var(--space-sm) 0;
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-        }
-        
-        .pricing-features li::before {
-            content: '✓';
-            color: var(--success);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        .pricing-cta {
+        .plan-cta {
             width: 100%;
-            padding: var(--space-md) var(--space-xl);
+            padding: var(--space-4);
+            margin: var(--space-6) 0;
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+            color: var(--dark-900);
             border: none;
             border-radius: var(--radius-lg);
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            display: block;
-            text-align: center;
+            transition: all var(--transition-base);
         }
-        
-        .pricing-cta-primary {
-            background: var(--gradient);
-            color: var(--white);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .pricing-cta-primary:hover {
+        .plan-cta:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-md), var(--shadow-orange);
         }
-        
-        .pricing-cta-secondary {
-            background: var(--white);
-            color: var(--primary);
-            border: 2px solid var(--primary);
+        .plan-cta.secondary {
+            background: var(--bg-tertiary);
+            color: var(--orange-light);
+            border: 2px solid var(--glass-border);
         }
-        
-        .pricing-cta-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
+        .plan-cta.secondary:hover {
+            background: var(--orange-subtle);
+            border-color: var(--orange-primary);
         }
-        
-        .comparison-table {
-            margin-top: var(--space-3xl);
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow);
-            overflow-x: auto;
+        .plan-features {
+            list-style: none;
+            padding: var(--space-6) 0 0;
+            border-top: 1px solid var(--glass-border);
         }
-        
-        .comparison-table table {
-            width: 100%;
-            border-collapse: collapse;
+        .plan-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            padding: var(--space-3) 0;
+            color: var(--text-secondary);
         }
-        
-        .comparison-table th,
-        .comparison-table td {
-            padding: var(--space-md);
-            text-align: left;
-            border-bottom: 1px solid var(--gray-200);
+        .feature-icon {
+            color: var(--orange-light);
+            font-size: 1.25rem;
+            flex-shrink: 0;
         }
-        
-        .comparison-table th {
-            font-weight: 600;
-            color: var(--primary);
-            background: var(--gray-50);
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto var(--space-20);
+            padding: 0 var(--space-6);
         }
-        
-        .comparison-table .feature-name {
-            font-weight: 600;
-            color: var(--gray-700);
-        }
-        
-        .comparison-table .check {
-            color: var(--success);
-            font-weight: 700;
+        .faq-title {
+            font-size: 2.5rem;
+            font-weight: 900;
             text-align: center;
+            margin-bottom: var(--space-12);
         }
-        
-        .footer {
-            background: var(--gradient);
-            color: var(--white);
-            padding: var(--space-3xl) var(--space-xl) var(--space-xl);
+        .faq-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            margin-bottom: var(--space-4);
+            transition: all var(--transition-base);
         }
-        
+        .faq-item:hover {
+            border-color: var(--orange-primary);
+        }
+        .faq-question {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+        }
+        .faq-answer {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--glass-border);
+            padding: var(--space-12) var(--space-6) var(--space-8);
+        }
         .footer-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: var(--space-3xl);
-            margin-bottom: var(--space-xl);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-12);
+            margin-bottom: var(--space-8);
         }
-        
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            margin-bottom: var(--space-md);
+        .footer-section h4 {
+            font-size: 0.875rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-4);
         }
-        
-        .footer-brand p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-        }
-        
-        .footer-column h4 {
-            font-size: 1rem;
-            margin-bottom: var(--space-md);
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .footer-column ul {
+        .footer-links {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
         }
-        
-        .footer-column a {
-            color: rgba(255, 255, 255, 0.7);
+        .footer-link {
+            color: var(--text-tertiary);
             text-decoration: none;
-            display: block;
-            padding: var(--space-xs) 0;
-            transition: var(--transition);
+            transition: color var(--transition-base);
         }
-        
-        .footer-column a:hover {
-            color: var(--white);
-            transform: translateX(5px);
-        }
-        
+        .footer-link:hover { color: var(--orange-light); }
         .footer-bottom {
-            padding-top: var(--space-xl);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
         }
-        
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
+            .nav-links, .nav-cta { display: none; }
             .pricing-grid { grid-template-columns: 1fr; }
-            .footer-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- NAVIGATION                                                      -->
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    
-    <nav class="nav">
+    <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">HomeScorePro</a>
-            <ul class="nav-menu">
-                <li><a href="index.html#location-scout" class="nav-link">Suburb Scout</a></li>
-                <li><a href="index.html#calculator" class="nav-link">Property Evaluator</a></li>
+            <a href="index.html" class="nav-logo">🏡 HomeScorePro</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="calculator.html" class="nav-link">Calculator</a></li>
                 <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <div>
-                <a href="members.html" class="nav-cta">Sign Up</a>
-            </div>
+            <a href="members.html" class="nav-cta">Sign In</a>
         </div>
     </nav>
-    
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- HERO SECTION                                                    -->
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    
-    <section class="page-hero">
-        <div class="section-container">
-            <h1>Simple, Transparent Pricing</h1>
-            <p>Choose the plan that's right for you. Start free, upgrade when you need more.</p>
+
+    <div class="pricing-hero">
+        <h1 class="hero-title">Simple, <span class="hero-gradient">Transparent</span> Pricing</h1>
+        <p class="hero-subtitle">Choose the plan that fits your property search journey</p>
+    </div>
+
+    <div class="pricing-container">
+        <div class="pricing-grid">
+            <!-- Free Plan -->
+            <div class="pricing-card card-lift">
+                <div class="plan-name">Explorer</div>
+                <div class="plan-description">Perfect for getting started with suburb research</div>
+                <div class="plan-price">$0</div>
+                <div class="plan-price-period">Forever free</div>
+                <button class="plan-cta secondary" onclick="window.location.href='calculator.html'">
+                    Try Free Calculator
+                </button>
+                <ul class="plan-features">
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Unlimited A-Score (Suburb Analysis Score) calculations</strong></span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Access to 397 Melbourne suburbs</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Basic scoring breakdown (4 tiers)</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Compare up to 3 suburbs</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon" style="color: var(--text-tertiary);">○</span>
+                        <span style="color: var(--text-tertiary);">B-Score (Property Evaluation Score) calculations (blurred)</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon" style="color: var(--text-tertiary);">○</span>
+                        <span style="color: var(--text-tertiary);">Detailed 38-point analysis (blurred)</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon" style="color: var(--text-tertiary);">○</span>
+                        <span style="color: var(--text-tertiary);">Save & track properties</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="pricing-card featured card-lift">
+                <div class="plan-name">Pro Buyer</div>
+                <div class="plan-description">For serious buyers making informed decisions</div>
+                <div class="plan-price">$29</div>
+                <div class="plan-price-period">/month</div>
+                <button class="plan-cta btn-glow btn-ripple" onclick="window.location.href='members.html'">
+                    Start Free Trial
+                </button>
+                <ul class="plan-features">
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Everything in Explorer</strong></span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Unlimited B-Score (Property Evaluation Score) calculations</strong></span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Full 38-point detailed breakdown</strong></span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Save unlimited properties locally</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Side-by-side property comparison</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Export reports (PDF & JSON)</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Priority email support</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>14-day free trial</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="pricing-card card-lift">
+                <div class="plan-name">Investor Pro</div>
+                <div class="plan-description">For investors & professionals managing portfolios</div>
+                <div class="plan-price">$79</div>
+                <div class="plan-price-period">/month</div>
+                <button class="plan-cta secondary btn-ripple" onclick="window.location.href='contact.html'">
+                    Contact Sales
+                </button>
+                <ul class="plan-features">
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Everything in Pro Buyer</strong></span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span><strong>Advanced analytics & trends</strong></span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Historical data access (5+ years)</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>API access for automation</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>White-label reports for clients</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Portfolio tracking (up to 50 properties)</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Custom scoring weights</span>
+                    </li>
+                    <li class="plan-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Priority phone & chat support</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- PRICING CARDS                                                    -->
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    
-    <section class="pricing-section">
-        <div class="section-container">
-            <div class="pricing-grid">
-                <!-- Free Tier -->
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <div class="pricing-name">Free</div>
-                        <div class="pricing-price">$0</div>
-                        <div class="pricing-period">Forever</div>
-                    </div>
-                    <p class="pricing-description">Perfect for exploring and getting started</p>
-                    <ul class="pricing-features">
-                        <li>3 suburb searches per session</li>
-                        <li>Top 3 suburb results</li>
-                        <li>Limited property evaluations</li>
-                        <li>Blurred detailed metrics</li>
-                        <li>Sample properties showcase</li>
-                        <li>Basic A-Score and B-Score</li>
-                    </ul>
-                    <a href="index.html#calculator" class="pricing-cta pricing-cta-secondary">Get Started Free</a>
-                </div>
-                
-                <!-- Professional Tier -->
-                <div class="pricing-card featured">
-                    <div class="pricing-badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <div class="pricing-name">Professional</div>
-                        <div class="pricing-price">$29</div>
-                        <div class="pricing-period">per month</div>
-                    </div>
-                    <p class="pricing-description">For serious property buyers and investors</p>
-                    <ul class="pricing-features">
-                        <li>Unlimited suburb searches</li>
-                        <li>All suburbs accessible</li>
-                        <li>Unlimited property evaluations</li>
-                        <li>Full unblurred metrics</li>
-                        <li>Personalized onboarding</li>
-                        <li>Save unlimited properties</li>
-                        <li>Export property data</li>
-                        <li>Custom strategy weightings</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <a href="members.html" class="pricing-cta pricing-cta-primary">Start Free Trial</a>
-                </div>
-                
-                <!-- Enterprise Tier -->
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <div class="pricing-name">Enterprise</div>
-                        <div class="pricing-price">$99</div>
-                        <div class="pricing-period">per month</div>
-                    </div>
-                    <p class="pricing-description">For real estate professionals and teams</p>
-                    <ul class="pricing-features">
-                        <li>Everything in Professional</li>
-                        <li>API access</li>
-                        <li>Bulk property analysis</li>
-                        <li>Custom reports</li>
-                        <li>White-label options</li>
-                        <li>Dedicated account manager</li>
-                        <li>Custom integrations</li>
-                    </ul>
-                    <a href="contact.html" class="pricing-cta pricing-cta-secondary">Contact Sales</a>
+
+        <!-- Guarantee Section -->
+        <div style="background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary)); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: var(--space-16) var(--space-8); text-align: center; margin-bottom: var(--space-16);">
+            <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: var(--space-4); color: var(--text-primary);">🔒 100% Money-Back Guarantee</h2>
+            <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                Try HomeScorePro Pro risk-free for 14 days. If you're not completely satisfied, 
+                we'll refund your money—no questions asked.
+            </p>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I start with the free plan and upgrade later?</div>
+                <div class="faq-answer">
+                    Absolutely! Start with our free Explorer plan and upgrade to Pro anytime. 
+                    Your saved data stays with you, and you'll instantly unlock all Pro features.
                 </div>
             </div>
             
-            <!-- Feature Comparison Table -->
-            <div class="comparison-table">
-                <h2 style="margin-bottom: var(--space-xl); color: var(--primary); text-align: center;">Feature Comparison</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>Free</th>
-                            <th>Professional</th>
-                            <th>Enterprise</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="feature-name">Suburb Searches</td>
-                            <td class="check">3 per session</td>
-                            <td class="check">Unlimited</td>
-                            <td class="check">Unlimited</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Property Evaluations</td>
-                            <td class="check">Limited</td>
-                            <td class="check">Unlimited</td>
-                            <td class="check">Unlimited</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Detailed Metrics</td>
-                            <td>Blurred</td>
-                            <td class="check">Full Access</td>
-                            <td class="check">Full Access</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Save Properties</td>
-                            <td>Limited</td>
-                            <td class="check">Unlimited</td>
-                            <td class="check">Unlimited</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Personalized Onboarding</td>
-                            <td>—</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Export Data</td>
-                            <td>—</td>
-                            <td class="check">✓</td>
-                            <td class="check">✓</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">API Access</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td class="check">✓</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Bulk Analysis</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td class="check">✓</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Support</td>
-                            <td>Community</td>
-                            <td>Priority</td>
-                            <td>Dedicated Manager</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="faq-item">
+                <div class="faq-question">What's included in the 14-day free trial?</div>
+                <div class="faq-answer">
+                    Full access to all Pro Buyer features—unlimited B-Scores, detailed breakdowns, 
+                    property saving, comparisons, and exports. No credit card required to start.
+                </div>
             </div>
             
-            <!-- PLACEHOLDER: Payment processing not implemented -->
-            <!-- Note: Actual payment integration needs to be added -->
-            <div style="margin-top: var(--space-3xl); padding: var(--space-xl); background: var(--gray-50); border-radius: var(--radius-xl); text-align: center;">
-                <p style="color: var(--gray-600); margin-bottom: var(--space-md);">
-                    <strong>PLACEHOLDER:</strong> Payment processing will be integrated with Stripe/PayPal
-                </p>
-                <p style="color: var(--gray-600); font-size: 0.875rem;">
-                    Currently using password-based testing access ("Hampz" for testing)
-                </p>
+            <div class="faq-item">
+                <div class="faq-question">How do annual subscriptions work?</div>
+                <div class="faq-answer">
+                    Save 20% with annual billing. Pro Buyer annual is $279/year (vs $348/year monthly), 
+                    and Investor Pro annual is $758/year (vs $948/year monthly). 
+                    Billed once per year.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I cancel anytime?</div>
+                <div class="faq-answer">
+                    Yes! Cancel anytime from your account settings. No contracts, no cancellation fees. 
+                    If you cancel, you'll retain access until the end of your billing period.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is my data private and secure?</div>
+                <div class="faq-answer">
+                    Yes! All your saved properties and preferences are stored locally on your device. 
+                    We don't store or access your personal property data on our servers.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Do you offer discounts for students or first home buyers?</div>
+                <div class="faq-answer">
+                    Yes! We offer a 30% discount for verified students and first home buyers. 
+                    Contact us at pricing@homescorepro.com with proof of eligibility.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What makes HomeScorePro different from other property tools?</div>
+                <div class="faq-answer">
+                    Complete transparency. Unlike other tools with "black box" algorithms, we show you 
+                    every data point, every weight, and every calculation. Plus, our scoring is based on 
+                    30+ years of professional auctioneer experience in Melbourne.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I use HomeScorePro for investment properties?</div>
+                <div class="faq-answer">
+                    Absolutely! Our scoring adapts to your strategy—investment, lifestyle, or balanced. 
+                    The Investor Pro plan is specifically designed for property investors and includes 
+                    portfolio tracking, historical data, and advanced analytics.
+                </div>
             </div>
         </div>
-    </section>
-    
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    <!-- FOOTER                                                          -->
-    <!-- ═══════════════════════════════════════════════════════════════ -->
-    
-    <footer class="footer">
+    </div>
+
+    <footer>
         <div class="footer-container">
-            <div class="footer-brand">
-                <h3>HomeScorePro</h3>
-                <p>Australia's most transparent property scoring system. Every calculation exposed, every weight adjustable, every data source verified.</p>
-            </div>
-            <div class="footer-column">
+            <div class="footer-section">
                 <h4>Product</h4>
-                <ul>
-                    <li><a href="index.html#location-scout">Suburb Scout</a></li>
-                    <li><a href="index.html#calculator">Property Evaluator</a></li>
-                    <li><a href="index.html#my-properties">My Properties</a></li>
-                    <li><a href="index.html#data">Suburb Data</a></li>
+                <ul class="footer-links">
+                    <li><a href="calculator.html" class="footer-link">Calculator</a></li>
+                    <li><a href="pricing.html" class="footer-link">Pricing</a></li>
                 </ul>
             </div>
-            <div class="footer-column">
+            <div class="footer-section">
                 <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
+                <ul class="footer-links">
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-column">
-                <h4>Data Sources</h4>
-                <ul>
-                    <li><a href="#" title="PLACEHOLDER - Add ABS SEIFA link">ABS SEIFA</a></li>
-                    <li><a href="#" title="PLACEHOLDER - Add Victoria Police link">Victoria Police</a></li>
-                    <li><a href="#" title="PLACEHOLDER - Add Walk Score link">Walk Score</a></li>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy.html" class="footer-link">Privacy</a></li>
+                    <li><a href="terms.html" class="footer-link">Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Account</h4>
+                <ul class="footer-links">
+                    <li><a href="members.html" class="footer-link">Sign In</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 HomeScorePro. Built with complete transparency in Melbourne.</p>
+            © 2024 HomeScorePro. Built with precision. Powered by data.
         </div>
     </footer>
 </body>
 </html>
-

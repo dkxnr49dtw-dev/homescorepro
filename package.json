@@ -10,10 +10,23 @@
     "test:firefox": "playwright test --project=firefox",
     "test:safari": "playwright test --project=webkit",
     "test:edge": "playwright test --project=msedge",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "download-listings": "node scripts/download-realestate-listings.js",
+    "download-human": "node scripts/download-listings-human-like.js",
+    "download-coords": "node scripts/download-listings-coordinates.js",
+    "capture-coords": "node scripts/capture-coordinates.js",
+    "open-browser": "node scripts/open-browser.js",
+    "open-browser-stealth": "node scripts/open-browser-stealth.js",
+    "diagnose": "node scripts/diagnose-browser.js",
+    "download-domain": "node scripts/download-domain-listings.js",
+    "scrape-properties": "node scripts/scrape-properties-comprehensive.js",
+    "test-bot-detection": "node scripts/test-bot-detection.js",
+    "check-ip": "node scripts/check-ip-info.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0"
+  },
+  "dependencies": {
+    "pdf-parse": "^2.4.5"
   }
 }
-

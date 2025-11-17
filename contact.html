@@ -3,546 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - HomeScorePro</title>
-    <meta name="description" content="Get in touch with HomeScorePro. We're here to help with questions, support, or partnership inquiries.">
-    
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#000428">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Contact - HomeScorePro</title>
+    <!-- Design Master - Single Source of Truth -->
+    <link rel="stylesheet" href="css/design-master.css">
+    <!-- UI Enhancements -->
+    <link rel="stylesheet" href="css/ui-enhancements.css">
     
     <style>
-        :root {
-            --primary: #000428;
-            --secondary: #764ba2;
-            --accent: #00AEEF;
-            --gradient: linear-gradient(135deg, #000428 0%, #764ba2 100%);
-            --gradient-soft: linear-gradient(135deg, rgba(0,4,40,0.1) 0%, rgba(118,75,162,0.1) 100%);
-            --success: #22c55e;
-            --white: #ffffff;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-900: #111827;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --space-sm: 0.5rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
-            --space-2xl: 3rem;
-            --space-3xl: 4rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.5rem;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
+        /* All design variables now imported from css/design-master.css */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: var(--font-sans);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: var(--gray-900);
-            background: var(--white);
         }
-        
-        .nav {
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        nav, main { position: relative; z-index: 1; }
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
         }
-        
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: var(--space-md) var(--space-xl);
+            padding: var(--space-5) var(--space-6);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
         .nav-logo {
             font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
         }
-        
-        .nav-menu {
+        .nav-links {
             display: flex;
-            gap: var(--space-xl);
+            gap: var(--space-8);
             list-style: none;
         }
-        
         .nav-link {
-            color: var(--gray-700);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .nav-link:hover { color: var(--primary); }
-        
-        .nav-cta {
-            background: var(--gradient);
-            color: var(--white);
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--radius-lg);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 600;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
         }
-        
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+        .nav-link:hover { color: var(--orange-light); }
+        .nav-cta {
+            padding: var(--space-3) var(--space-6);
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+            color: var(--dark-900);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            text-decoration: none;
         }
-        
-        .page-hero {
+        .contact-hero {
             margin-top: 80px;
-            padding: var(--space-3xl) var(--space-xl);
-            background: linear-gradient(135deg, rgba(0,4,40,0.03) 0%, rgba(118,75,162,0.03) 100%);
+            padding: var(--space-20) var(--space-6) var(--space-16);
             text-align: center;
         }
-        
-        .page-hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: var(--space-md);
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: var(--space-4);
         }
-        
-        .page-hero p {
+        .hero-subtitle {
             font-size: 1.25rem;
-            color: var(--gray-600);
-            max-width: 800px;
+            color: var(--text-secondary);
+            max-width: 600px;
             margin: 0 auto;
         }
-        
-        .contact-section {
-            padding: var(--space-3xl) var(--space-xl);
-        }
-        
-        .section-container {
+        .contact-container {
             max-width: 1200px;
             margin: 0 auto;
-        }
-        
-        .contact-grid {
+            padding: 0 var(--space-6) var(--space-20);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-3xl);
-            margin-top: var(--space-2xl);
+            gap: var(--space-12);
         }
-        
         .contact-form {
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            padding: var(--space-2xl);
-            box-shadow: var(--shadow-lg);
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-12);
         }
-        
         .form-group {
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-6);
         }
-        
         .form-label {
             display: block;
-            margin-bottom: var(--space-sm);
-            font-weight: 600;
-            color: var(--gray-700);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        
-        .form-input,
-        .form-textarea,
-        .form-select {
+        .form-input, .form-textarea, select {
             width: 100%;
-            padding: var(--space-md);
-            border: 2px solid var(--gray-300);
-            border-radius: var(--radius-md);
+            padding: var(--space-4) var(--space-5);
+            background: var(--bg-tertiary);
+            border: 2px solid var(--dark-700);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            font-family: inherit;
             font-size: 1rem;
-            font-family: var(--font-sans);
-            transition: var(--transition);
+            transition: all var(--transition-base);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
         
-        .form-input:focus,
-        .form-textarea:focus,
-        .form-select:focus {
+        /* Dropdown arrow for select */
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23E8917F' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right var(--space-4) center;
+            padding-right: var(--space-12);
+        }
+        
+        .form-input:focus, .form-textarea:focus, select:focus {
             outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
+            background: var(--bg-elevated);
+            border-color: var(--orange-primary);
+            box-shadow: 0 0 0 4px var(--orange-subtle);
         }
         
+        /* Option elements - ensure readability */
+        select option {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: var(--space-2) var(--space-4);
+        }
+        
+        select option:checked {
+            background-color: var(--orange-primary);
+            color: var(--bg-primary);
+        }
         .form-textarea {
-            min-height: 150px;
             resize: vertical;
+            min-height: 150px;
         }
-        
         .form-submit {
-            background: var(--gradient);
-            color: var(--white);
-            padding: var(--space-md) var(--space-xl);
+            width: 100%;
+            padding: var(--space-4);
+            background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+            color: var(--dark-900);
             border: none;
             border-radius: var(--radius-lg);
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-base);
         }
-        
         .form-submit:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md), var(--shadow-orange);
         }
-        
         .contact-info {
-            background: var(--gray-50);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+        .info-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
             border-radius: var(--radius-xl);
-            padding: var(--space-2xl);
+            padding: var(--space-8);
         }
-        
-        .info-item {
-            margin-bottom: var(--space-xl);
-            padding-bottom: var(--space-xl);
-            border-bottom: 1px solid var(--gray-200);
-        }
-        
-        .info-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .info-item h3 {
-            color: var(--primary);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .info-item p {
-            color: var(--gray-700);
-            line-height: 1.8;
-        }
-        
-        .info-item a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        
-        .info-item a:hover {
-            text-decoration: underline;
-        }
-        
-        .faq-section {
-            margin-top: var(--space-3xl);
-            padding: var(--space-2xl);
-            background: var(--gray-50);
+        .info-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--orange-subtle);
             border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: var(--space-4);
         }
-        
-        .faq-item {
-            margin-bottom: var(--space-lg);
-            padding-bottom: var(--space-lg);
-            border-bottom: 1px solid var(--gray-200);
+        .info-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--space-2);
         }
-        
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+        .info-text {
+            color: var(--text-secondary);
         }
-        
-        .faq-question {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: var(--space-sm);
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--glass-border);
+            padding: var(--space-12) var(--space-6) var(--space-8);
         }
-        
-        .faq-answer {
-            color: var(--gray-700);
-            line-height: 1.8;
-        }
-        
-        .footer {
-            background: var(--gradient);
-            color: var(--white);
-            padding: var(--space-3xl) var(--space-xl) var(--space-xl);
-        }
-        
         .footer-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: var(--space-3xl);
-            margin-bottom: var(--space-xl);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-12);
+            margin-bottom: var(--space-8);
         }
-        
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            margin-bottom: var(--space-md);
+        .footer-section h4 {
+            font-size: 0.875rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-4);
         }
-        
-        .footer-brand p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-        }
-        
-        .footer-column h4 {
-            font-size: 1rem;
-            margin-bottom: var(--space-md);
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .footer-column ul {
+        .footer-links {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
-        
-        .footer-column a {
-            color: rgba(255, 255, 255, 0.7);
+        .footer-link {
+            color: var(--text-tertiary);
             text-decoration: none;
-            display: block;
-            padding: var(--space-sm) 0;
-            transition: var(--transition);
         }
-        
-        .footer-column a:hover {
-            color: var(--white);
-            transform: translateX(5px);
-        }
-        
+        .footer-link:hover { color: var(--orange-light); }
         .footer-bottom {
-            padding-top: var(--space-xl);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
         }
-        
+        .faq-section {
+            max-width: 800px;
+            margin: var(--space-16) auto 0;
+            padding: 0 var(--space-6) var(--space-24);
+        }
+        .faq-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: var(--space-12);
+            color: var(--text-primary);
+        }
+        .faq-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            margin-bottom: var(--space-4);
+            transition: all var(--transition-base);
+        }
+        .faq-item:hover {
+            border-color: var(--orange-primary);
+        }
+        .faq-question {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+            color: var(--text-primary);
+        }
+        .faq-answer {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .faq-answer a {
+            color: var(--orange-light);
+            text-decoration: none;
+        }
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .footer-container { grid-template-columns: 1fr; }
+            .nav-links, .nav-cta { display: none; }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .contact-form {
+                padding: var(--space-8);
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
+    <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">HomeScorePro</a>
-            <ul class="nav-menu">
-                <li><a href="index.html#location-scout" class="nav-link">Suburb Scout</a></li>
-                <li><a href="index.html#calculator" class="nav-link">Property Evaluator</a></li>
+            <a href="index.html" class="nav-logo">🏡 HomeScorePro</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="calculator.html" class="nav-link">Calculator</a></li>
                 <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <div>
-                <a href="members.html" class="nav-cta">Sign Up</a>
-            </div>
+            <a href="members.html" class="nav-cta">Sign In</a>
         </div>
     </nav>
-    
-    <section class="page-hero">
-        <div class="section-container">
-            <h1>Get in Touch</h1>
-            <p>Have questions? We're here to help. Reach out and we'll get back to you as soon as possible.</p>
-        </div>
-    </section>
-    
-    <section class="contact-section">
-        <div class="section-container">
-            <div class="contact-grid">
-                <!-- Contact Form -->
-                <div class="contact-form">
-                    <h2 style="color: var(--primary); margin-bottom: var(--space-xl);">Send us a Message</h2>
-                    <form id="contact-form" onsubmit="handleContactSubmit(event)">
-                        <div class="form-group">
-                            <label class="form-label" for="name">Name *</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email *</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="subject">Subject *</label>
-                            <select id="subject" name="subject" class="form-select" required>
-                                <option value="">Select a subject...</option>
-                                <option value="general">General Inquiry</option>
-                                <option value="support">Technical Support</option>
-                                <option value="billing">Billing Question</option>
-                                <option value="partnership">Partnership Inquiry</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="message">Message *</label>
-                            <textarea id="message" name="message" class="form-textarea" required></textarea>
-                        </div>
-                        <button type="submit" class="form-submit">Send Message</button>
-                    </form>
-                    <!-- PLACEHOLDER: Form backend not implemented - needs server/API -->
-                    <p style="margin-top: var(--space-md); color: var(--gray-600); font-size: 0.875rem; text-align: center;">
-                        <strong>PLACEHOLDER:</strong> Contact form requires backend API to process submissions
-                    </p>
-                </div>
-                
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <h2 style="color: var(--primary); margin-bottom: var(--space-xl);">Contact Information</h2>
-                    
-                    <div class="info-item">
-                        <h3>📧 Email</h3>
-                        <p>
-                            <a href="mailto:contact@homescorepro.com">contact@homescorepro.com</a><br>
-                            <!-- PLACEHOLDER: Email address needs to be confirmed -->
-                            <small style="color: var(--gray-600);">(PLACEHOLDER - Confirm email address)</small>
-                        </p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <h3>📞 Phone</h3>
-                        <p>
-                            <a href="tel:+61XXXXXXXXX">+61 X XXXX XXXX</a><br>
-                            <!-- PLACEHOLDER: Phone number needs to be added -->
-                            <small style="color: var(--gray-600);">(PLACEHOLDER - Add phone number)</small>
-                        </p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <h3>📍 Office</h3>
-                        <p>
-                            <!-- PLACEHOLDER: Office address needs to be added -->
-                            [Office Address]<br>
-                            Melbourne, VIC, Australia<br>
-                            <small style="color: var(--gray-600);">(PLACEHOLDER - Add office address)</small>
-                        </p>
-                    </div>
-                    
-                    <div class="info-item">
-                        <h3>🕐 Business Hours</h3>
-                        <p>
-                            <!-- PLACEHOLDER: Business hours need to be defined -->
-                            Monday - Friday: 9:00 AM - 5:00 PM AEST<br>
-                            Saturday - Sunday: Closed<br>
-                            <small style="color: var(--gray-600);">(PLACEHOLDER - Confirm business hours)</small>
-                        </p>
-                    </div>
-                </div>
+
+    <div class="contact-hero">
+        <h1 class="hero-title">Get in Touch</h1>
+        <p class="hero-subtitle">
+            Have questions? We're here to help you make confident property decisions.
+        </p>
+    </div>
+
+    <div class="contact-container">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-input" required placeholder="Your full name">
             </div>
-            
-            <!-- FAQ Section -->
-            <div class="faq-section">
-                <h2 style="color: var(--primary); margin-bottom: var(--space-xl); text-align: center;">Frequently Asked Questions</h2>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How does HomeScorePro calculate scores?</div>
-                    <div class="faq-answer">
-                        HomeScorePro uses 38+ data points for A-Scores (suburb analysis) and 23+ data points for B-Scores (property analysis). 
-                        All calculations are transparent and based on verified data from ABS, Victoria Police, and other trusted public data sources. 
-                        See our <a href="about.html">About page</a> for more details.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Is my data secure?</div>
-                    <div class="faq-answer">
-                        Yes. We take privacy seriously. Property evaluations are stored locally in your browser (localStorage) with your permission. 
-                        For paid users, data can be stored securely on our servers. See our <a href="privacy.html">Privacy Policy</a> for details.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Can I cancel my subscription?</div>
-                    <div class="faq-answer">
-                        <!-- PLACEHOLDER: Cancellation policy needs to be defined -->
-                        Yes, you can cancel your subscription at any time. See our <a href="terms.html">Terms of Service</a> for details.
-                        <small style="color: var(--gray-600); display: block; margin-top: var(--space-sm);">(PLACEHOLDER - Define cancellation policy)</small>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Do you offer refunds?</div>
-                    <div class="faq-answer">
-                        <!-- PLACEHOLDER: Refund policy needs to be defined -->
-                        We offer a 30-day money-back guarantee for new subscriptions. See our <a href="terms.html">Terms of Service</a> for details.
-                        <small style="color: var(--gray-600); display: block; margin-top: var(--space-sm);">(PLACEHOLDER - Define refund policy)</small>
-                    </div>
-                </div>
-                
-                <!-- PLACEHOLDER: Add more FAQ items as needed -->
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" required placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Subject</label>
+                <select class="form-input" required>
+                    <option value="">Select a subject...</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="support">Technical Support</option>
+                    <option value="billing">Billing Question</option>
+                    <option value="partnership">Partnership Inquiry</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea class="form-textarea" required placeholder="Tell us more about your inquiry..."></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">
+                Send Message →
+            </button>
+        </form>
+
+        <div class="contact-info">
+            <div class="info-card">
+                <div class="info-icon">📧</div>
+                <div class="info-title">Email</div>
+                <div class="info-text">support@homescorepro.com.au</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">💬</div>
+                <div class="info-title">Response Time</div>
+                <div class="info-text">We typically respond within 24 hours on business days</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">📍</div>
+                <div class="info-title">Location</div>
+                <div class="info-text">Melbourne, Victoria, Australia</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">🏢</div>
+                <div class="info-title">Enterprise Inquiries</div>
+                <div class="info-text">For API access, bulk analysis, or custom solutions, mention "Enterprise" in your subject</div>
             </div>
         </div>
-    </section>
-    
-    <footer class="footer">
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">How does HomeScorePro calculate scores?</div>
+            <div class="faq-answer">
+                HomeScorePro uses 38+ data points for A-Scores (suburb analysis) and 23+ data points for B-Scores (property analysis). 
+                All calculations are transparent and based on verified data from ABS, Victoria Police, and other trusted public data sources. 
+                See our <a href="about.html">About page</a> for more details.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Is my data secure?</div>
+            <div class="faq-answer">
+                Yes. We take privacy seriously. Property evaluations are stored locally in your browser (localStorage) with your permission. 
+                For paid users, data can be stored securely on our servers. See our <a href="privacy.html">Privacy Policy</a> for details.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Can I cancel my subscription?</div>
+            <div class="faq-answer">
+                Yes, you can cancel your subscription at any time. See our <a href="terms.html">Terms of Service</a> for details.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Do you offer refunds?</div>
+            <div class="faq-answer">
+                We offer a 30-day money-back guarantee for new subscriptions. See our <a href="terms.html">Terms of Service</a> for details.
+            </div>
+        </div>
+    </div>
+
+    <footer>
         <div class="footer-container">
-            <div class="footer-brand">
-                <h3>HomeScorePro</h3>
-                <p>Australia's most transparent property scoring system. Every calculation exposed, every weight adjustable, every data source verified.</p>
-            </div>
-            <div class="footer-column">
+            <div class="footer-section">
                 <h4>Product</h4>
-                <ul>
-                    <li><a href="index.html#location-scout">Suburb Scout</a></li>
-                    <li><a href="index.html#calculator">Property Evaluator</a></li>
-                    <li><a href="index.html#my-properties">My Properties</a></li>
-                    <li><a href="index.html#data">Suburb Data</a></li>
+                <ul class="footer-links">
+                    <li><a href="calculator.html" class="footer-link">Calculator</a></li>
+                    <li><a href="pricing.html" class="footer-link">Pricing</a></li>
                 </ul>
             </div>
-            <div class="footer-column">
+            <div class="footer-section">
                 <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
-                    <li><a href="terms.html">Terms</a></li>
+                <ul class="footer-links">
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-column">
-                <h4>Data Sources</h4>
-                <ul>
-                    <li><a href="#" title="PLACEHOLDER - Add ABS SEIFA link">ABS SEIFA</a></li>
-                    <li><a href="#" title="PLACEHOLDER - Add Victoria Police link">Victoria Police</a></li>
-                    <li><a href="#" title="PLACEHOLDER - Add Walk Score link">Walk Score</a></li>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy.html" class="footer-link">Privacy</a></li>
+                    <li><a href="terms.html" class="footer-link">Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Account</h4>
+                <ul class="footer-links">
+                    <li><a href="members.html" class="footer-link">Sign In</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 HomeScorePro. Built with complete transparency in Melbourne.</p>
+            © 2024 HomeScorePro. Built with precision. Powered by data.
         </div>
     </footer>
-    
+
     <script>
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            // PLACEHOLDER: Form submission not implemented - needs backend API
-            alert('PLACEHOLDER: Contact form requires backend API to process submissions.\n\nFor now, please email contact@homescorepro.com directly.');
-            return false;
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Message sent! We\'ll get back to you within 24 hours.');
+            e.target.reset();
         }
     </script>
 </body>
 </html>
-

@@ -1,6 +1,13 @@
 # Dependencies
 node_modules/
 package-lock.json
+server/node_modules/
+server/package-lock.json
+
+# Environment variables
+.env
+server/.env
+*.env.local
 
 # Test results
 test-results/
@@ -26,4 +33,18 @@ create_standalone_embedded.py
 
 # Logs
 *.log
+server/*.log
 
+# Database
+*.sqlite
+*.db
+server/database.sqlite
+
+# Build outputs
+dist/
+build/
+*.zip
+
+# Temporary files
+*.tmp
+*.temp

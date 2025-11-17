@@ -1,0 +1,872 @@
+/* =================================================
+   HOMESCOREPRO UI ENHANCEMENTS
+   Advanced visual design system with animations,
+   micro-interactions, and modern components
+   ================================================= */
+
+/* =================================================
+   ANIMATIONS & KEYFRAMES
+   ================================================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes savedPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+/* =================================================
+   CARD LIFT EFFECT
+   ================================================= */
+
+.card-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), var(--shadow-orange);
+}
+
+/* =================================================
+   BUTTON ENHANCEMENTS
+   ================================================= */
+
+/* Glow Effect */
+.btn-glow {
+    position: relative;
+    box-shadow: 0 0 20px rgba(204, 120, 92, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.btn-glow:hover {
+    box-shadow: 0 0 30px rgba(204, 120, 92, 0.5);
+}
+
+/* Ripple Effect */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* =================================================
+   SCORE CIRCLE PROGRESS
+   ================================================= */
+
+.score-circle-progress {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.score-circle-progress::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        var(--orange-primary) calc(var(--score, 0) * 3.6deg),
+        var(--dark-700) calc(var(--score, 0) * 3.6deg)
+    );
+    mask: radial-gradient(circle at center, transparent 60%, black 60%);
+    -webkit-mask: radial-gradient(circle at center, transparent 60%, black 60%);
+}
+
+.score-circle-inner {
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.score-value-animated {
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 0.8s ease;
+}
+
+.score-grade {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--orange-light);
+    margin-top: var(--space-1);
+}
+
+/* =================================================
+   SCORE BAR GRADIENT
+   ================================================= */
+
+.score-bar-gradient {
+    width: 100%;
+    height: 24px;
+    background: var(--dark-700);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+}
+
+.score-bar-fill-gradient {
+    height: 100%;
+    background: linear-gradient(90deg, var(--orange-primary), var(--orange-light));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: var(--space-2);
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: width 1s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.score-bar-fill-gradient::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+/* =================================================
+   GLASSMORPHISM EFFECTS
+   ================================================= */
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+}
+
+.glass-nav {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* =================================================
+   GRADIENT BACKGROUNDS
+   ================================================= */
+
+.gradient-primary {
+    background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+}
+
+.gradient-success {
+    background: linear-gradient(135deg, #10B981, #059669);
+}
+
+.gradient-warm {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+}
+
+.gradient-cool {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+}
+
+.gradient-animated {
+    background: linear-gradient(
+        270deg,
+        var(--orange-primary),
+        var(--orange-light),
+        var(--orange-primary)
+    );
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* =================================================
+   MODERN INPUT FIELDS
+   ================================================= */
+
+.input-modern {
+    position: relative;
+}
+
+.input-modern input {
+    width: 100%;
+    padding: var(--space-4) var(--space-4) var(--space-4) 3rem;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--dark-700);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-modern input:focus {
+    outline: none;
+    border-color: var(--orange-primary);
+    box-shadow: 0 0 0 3px var(--orange-subtle);
+}
+
+.input-modern .input-icon {
+    position: absolute;
+    left: var(--space-4);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    transition: color 0.3s ease;
+}
+
+.input-modern input:focus + .input-icon,
+.input-modern:has(input:focus) .input-icon {
+    color: var(--orange-light);
+}
+
+.input-floating {
+    position: relative;
+}
+
+.input-floating input {
+    width: 100%;
+    padding: var(--space-4);
+    background: var(--bg-tertiary);
+    border: 2px solid var(--dark-700);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-floating input:focus,
+.input-floating input:not(:placeholder-shown) {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.input-floating label {
+    position: absolute;
+    left: var(--space-4);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.input-floating input:focus + label,
+.input-floating input:not(:placeholder-shown) + label {
+    top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--orange-light);
+}
+
+/* =================================================
+   TOGGLE SWITCHES
+   ================================================= */
+
+.toggle-modern {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.toggle-modern input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--dark-700);
+    transition: 0.3s;
+    border-radius: var(--radius-full);
+}
+
+.toggle-slider::before {
+    position: absolute;
+    content: '';
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--text-primary);
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.toggle-modern input:checked + .toggle-slider {
+    background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+}
+
+.toggle-modern input:checked + .toggle-slider::before {
+    transform: translateX(20px);
+}
+
+/* =================================================
+   TOOLTIPS
+   ================================================= */
+
+.tooltip {
+    position: relative;
+    cursor: help;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark-900);
+    color: var(--text-primary);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    white-space: nowrap;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+    border: 1px solid var(--dark-700);
+    box-shadow: var(--shadow-lg);
+}
+
+.tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--dark-900);
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* =================================================
+   BADGES & TAGS
+   ================================================= */
+
+.badge-modern {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+    color: var(--dark-900);
+}
+
+.badge-outline {
+    background: transparent;
+    border: 2px solid var(--orange-primary);
+    color: var(--orange-light);
+}
+
+.badge-pulse {
+    animation: pulse 2s infinite;
+}
+
+.tag {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--dark-700);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tag:hover {
+    background: var(--orange-subtle);
+    border-color: var(--orange-primary);
+    color: var(--orange-light);
+}
+
+/* =================================================
+   EMPTY STATES
+   ================================================= */
+
+.empty-state-modern {
+    text-align: center;
+    padding: var(--space-16) var(--space-6);
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-4);
+    animation: pulse 2s infinite;
+}
+
+.empty-state-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.empty-state-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto var(--space-6);
+    line-height: 1.6;
+}
+
+/* =================================================
+   PROGRESS INDICATORS
+   ================================================= */
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: var(--dark-700);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--orange-primary), var(--orange-light));
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease;
+}
+
+.progress-indeterminate {
+    width: 30%;
+    animation: progressIndeterminate 1.5s infinite;
+}
+
+@keyframes progressIndeterminate {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(400%);
+    }
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    margin: var(--space-8) 0;
+}
+
+.step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.step::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--dark-700);
+    z-index: 0;
+}
+
+.step:last-child::after {
+    display: none;
+}
+
+.step.completed::after {
+    background: var(--orange-primary);
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--dark-700);
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+.step.completed .step-circle {
+    background: var(--orange-primary);
+    color: var(--dark-900);
+}
+
+.step.active .step-circle {
+    background: var(--orange-light);
+    color: var(--dark-900);
+    box-shadow: 0 0 0 4px var(--orange-subtle);
+}
+
+/* =================================================
+   CHART BARS
+   ================================================= */
+
+.chart-bar {
+    margin-bottom: var(--space-4);
+}
+
+.chart-bar-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+.chart-bar-track {
+    width: 100%;
+    height: 24px;
+    background: var(--dark-700);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.chart-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--orange-primary), var(--orange-light));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: var(--space-2);
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: width 1s ease;
+}
+
+.comparison-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.comparison-arrow.up {
+    color: var(--success);
+}
+
+.comparison-arrow.down {
+    color: var(--error);
+}
+
+/* =================================================
+   NOTIFICATION BADGES
+   ================================================= */
+
+.notification-dot {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 10px;
+    height: 10px;
+    background: var(--error);
+    border-radius: 50%;
+    border: 2px solid var(--bg-secondary);
+    animation: pulse 2s infinite;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 var(--space-1);
+    background: var(--error);
+    color: var(--text-primary);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-secondary);
+}
+
+/* =================================================
+   SKELETON LOADERS
+   ================================================= */
+
+.skeleton-card {
+    padding: var(--space-6);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--glass-border);
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--dark-700) 0%,
+        var(--dark-600) 50%,
+        var(--dark-700) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-md);
+}
+
+.skeleton-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.skeleton-text {
+    height: 16px;
+    margin-bottom: var(--space-2);
+}
+
+.skeleton-text:last-child {
+    margin-bottom: 0;
+}
+
+/* =================================================
+   CARD WITH GRADIENT BORDER
+   ================================================= */
+
+.card-gradient-border {
+    position: relative;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+    border-radius: var(--radius-xl);
+}
+
+.card-gradient-border-inner {
+    background: var(--bg-secondary);
+    border-radius: calc(var(--radius-xl) - 2px);
+    padding: var(--space-6);
+}
+
+/* =================================================
+   MICRO-INTERACTIONS
+   ================================================= */
+
+.saving {
+    opacity: 0.6;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.saved {
+    background: var(--success) !important;
+    animation: savedPulse 0.5s ease;
+}
+
+.loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    opacity: 0.9;
+    width: 100%;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--dark-700);
+    border-top-color: var(--orange-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-message {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+}
+
+.pulse-animation {
+    animation: pulse 1s infinite;
+}
+
+.shake-animation {
+    animation: shake 0.5s ease;
+}
+
+/* =================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================= */
+
+@media (max-width: 768px) {
+    .score-circle-progress {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .score-value-animated {
+        font-size: 1.5rem;
+    }
+    
+    .badge-modern {
+        font-size: 0.7rem;
+        padding: var(--space-1) var(--space-2);
+    }
+    
+    .chart-bar {
+        flex-direction: column;
+    }
+    
+    .steps {
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+    
+    .step::after {
+        display: none;
+    }
+}
+
+/* =================================================
+   ACCESSIBILITY - REDUCED MOTION
+   ================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+

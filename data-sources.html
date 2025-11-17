@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Sources - HomeScorePro</title>
+    <link rel="stylesheet" href="css/design-master.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .data-sources-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-16) var(--space-6);
+        }
+        .data-source-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            margin-bottom: var(--space-6);
+        }
+        .data-source-card h3 {
+            color: var(--orange-primary);
+            margin-bottom: var(--space-4);
+        }
+        .data-source-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-3);
+        }
+        .attribution {
+            background: var(--orange-subtle);
+            border-left: 3px solid var(--orange-primary);
+            padding: var(--space-4);
+            margin-top: var(--space-4);
+            border-radius: var(--radius-md);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏡 HomeScorePro</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="calculator.html" class="nav-link">Calculator</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="members.html" class="nav-cta">Sign In</a>
+        </div>
+    </nav>
+
+    <section class="data-sources-container">
+        <div class="section-header">
+            <h1 class="section-title">Data Sources & Attribution</h1>
+            <p class="section-subtitle">
+                HomeScorePro uses data from multiple authoritative sources to provide accurate property intelligence.
+            </p>
+        </div>
+
+        <div class="data-source-card">
+            <h3>Australian Bureau of Statistics (ABS) - SEIFA Data</h3>
+            <p>
+                Socio-Economic Indexes for Areas (SEIFA) data provides measures of relative socio-economic advantage 
+                and disadvantage for suburbs. This includes:
+            </p>
+            <ul style="color: var(--text-secondary); margin-left: var(--space-6); margin-bottom: var(--space-4);">
+                <li>Index of Relative Socio-economic Disadvantage (IRSD)</li>
+                <li>Index of Education and Occupation (IEO)</li>
+                <li>Index of Economic Resources (IER)</li>
+            </ul>
+            <div class="attribution">
+                <strong>Attribution:</strong> This product incorporates data from the Australian Bureau of Statistics 
+                (ABS) SEIFA 2021. The ABS does not endorse this product.
+            </div>
+        </div>
+
+        <div class="data-source-card">
+            <h3>Victoria Police - Crime Statistics</h3>
+            <p>
+                Crime rate data is sourced from Victoria Police statistics, providing suburb-level crime information 
+                for safety scoring.
+            </p>
+            <div class="attribution">
+                <strong>Attribution:</strong> Crime data sourced from Victoria Police via data.vic.gov.au. 
+                Data is aggregated at Local Government Area (LGA) level.
+            </div>
+        </div>
+
+        <div class="data-source-card">
+            <h3>Property Price Data</h3>
+            <p>
+                Median property prices and growth data are sourced from publicly available property market data 
+                and aggregated statistics.
+            </p>
+            <div class="attribution">
+                <strong>Note:</strong> Property prices are estimates based on market data and may not reflect 
+                current market conditions. Always verify with current listings.
+            </div>
+        </div>
+
+        <div class="data-source-card">
+            <h3>School Ratings</h3>
+            <p>
+                School quality ratings are based on publicly available school performance data and MySchool 
+                information from the Australian Curriculum, Assessment and Reporting Authority (ACARA).
+            </p>
+            <div class="attribution">
+                <strong>Attribution:</strong> School data sourced from ACARA MySchool website. 
+                Ratings are aggregated at suburb level.
+            </div>
+        </div>
+
+        <div class="data-source-card">
+            <h3>Transport & Accessibility Data</h3>
+            <p>
+                Transit scores, walk scores, and commute times are calculated using geographic data and 
+                public transport information.
+            </p>
+            <div class="attribution">
+                <strong>Note:</strong> Commute times are estimates based on geographic distance and public 
+                transport routes. Actual commute times may vary.
+            </div>
+        </div>
+
+        <div class="data-source-card">
+            <h3>Data Accuracy & Updates</h3>
+            <p>
+                We strive to provide accurate and up-to-date information. However, data is subject to change 
+                and may contain estimates or aggregated values. Users should verify critical information 
+                independently before making property decisions.
+            </p>
+            <p style="margin-top: var(--space-4);">
+                <strong>Last Updated:</strong> November 2025
+            </p>
+        </div>
+
+        <div style="margin-top: var(--space-12); padding: var(--space-6); background: var(--warning-dim); border: 1px solid var(--warning); border-radius: var(--radius-lg);">
+            <h3 style="color: var(--warning); margin-bottom: var(--space-3);">⚠️ Important Disclaimer</h3>
+            <p style="color: var(--text-secondary);">
+                HomeScorePro provides property intelligence tools for informational purposes only. 
+                Our scores and data should not be considered as financial, legal, or investment advice. 
+                Always consult with qualified professionals before making property decisions.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul class="footer-links">
+                    <li><a href="calculator.html" class="footer-link">Calculator</a></li>
+                    <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                    <li><a href="#" class="footer-link">Features</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    <li><a href="#" class="footer-link">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacy.html" class="footer-link">Privacy</a></li>
+                    <li><a href="terms.html" class="footer-link">Terms</a></li>
+                    <li><a href="data-sources.html" class="footer-link">Data Sources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Account</h4>
+                <ul class="footer-links">
+                    <li><a href="members.html" class="footer-link">Sign In</a></li>
+                    <li><a href="pricing.html" class="footer-link">Upgrade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 HomeScorePro. Built with precision. Powered by data.</p>
+            <p style="margin-top: var(--space-2); font-size: 0.875rem; color: var(--text-tertiary);">
+                Data Sources: Australian Bureau of Statistics (SEIFA), Victoria Police, 
+                <a href="data-sources.html" style="color: var(--orange-primary); text-decoration: none;">View all sources</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+

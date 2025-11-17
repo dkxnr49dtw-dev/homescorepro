@@ -1,12 +1,23 @@
-# Netlify configuration
-[build]
-  publish = "."
+# Netlify configuration for automatic builds from GitHub
+# This file tells Netlify how to build your React app
 
+[build]
+  # Base directory where package.json is located
+  base = "react-app"
+  
+  # Command to build the app
+  command = "npm install && npm run build"
+  
+  # Directory where built files are output (relative to base)
+  publish = "../dist"
+
+# SPA routing - ensures all routes work
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
+# Build environment
 [build.environment]
   NODE_VERSION = "18"
 

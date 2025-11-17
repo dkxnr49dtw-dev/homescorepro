@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeScorePro - Property Intelligence</title>
+    <link rel="stylesheet" href="css/design-master.css">
+    <link rel="stylesheet" href="css/calculator.css">
+    <link rel="stylesheet" href="css/ui-enhancements.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                🏡 HomeScorePro
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="calculator.html" class="nav-link">Calculator</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="members.html" class="nav-cta">Sign In</a>
+            <button class="nav-mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                ☰
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="nav-mobile-menu" id="mobileMenu">
+            <ul class="nav-mobile-links">
+                <li><a href="#hero" class="nav-mobile-link" onclick="toggleMobileMenu()">Home</a></li>
+                <li><a href="#calculator" class="nav-mobile-link" onclick="toggleMobileMenu()">Calculator</a></li>
+                <li><a href="#samples" class="nav-mobile-link" onclick="toggleMobileMenu()">Properties</a></li>
+                <li><a href="#" class="nav-mobile-link" onclick="toggleMobileMenu()">About</a></li>
+                <li><a href="#" class="nav-mobile-link" onclick="toggleMobileMenu()">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <div class="hero-badge">
+                ✨ Data-Driven Property Intelligence
+            </div>
+            <h1>
+                Find Your Perfect <span class="hero-gradient">Melbourne Home</span> with Confidence
+            </h1>
+            <p class="hero-subtitle">
+                Sophisticated property analysis powered by 38+ data points. Make smarter decisions with transparent, data-driven suburb and property scores.
+            </p>
+            <div class="hero-cta">
+                <a href="#calculator" class="btn btn-primary btn-lg btn-glow btn-ripple">
+                    Start Scoring
+                    <span>→</span>
+                </a>
+                <button class="btn btn-secondary btn-lg" onclick="document.getElementById('samples').scrollIntoView({behavior: 'smooth'})">
+                    See Sample Properties
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <input 
+                type="text" 
+                class="search-input" 
+                id="smartSearch"
+                placeholder="Search suburb, address, or postcode..."
+                onkeypress="if(event.key === 'Enter') performSmartSearch()"
+                oninput="if(typeof performSmartSearchDebounced === 'function') performSmartSearchDebounced()"
+            >
+            <button class="search-btn" onclick="performSmartSearch()">
+                🔍 Search
+            </button>
+        </div>
+        <div class="search-hint">
+            Try: "Hawthorn", "3122", or "123 Glenferrie Road"
+        </div>
+        <div id="searchLimitWarning" class="hidden" style="text-align: center;">
+            <span class="search-limit">
+                ⚠️ <span id="searchesRemaining">3</span> free searches remaining
+            </span>
+        </div>
+    </section>
+
+    <!-- Stats Section with Count-Up Animation -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item" data-animate="true" data-target="397" data-delay="100">
+                <div class="stat-value" data-count-up="true">0</div>
+                <div class="stat-label">Melbourne Suburbs</div>
+            </div>
+            <div class="stat-item" data-animate="true" data-target="38" data-delay="200">
+                <div class="stat-value" data-count-up="true">0</div>
+                <div class="stat-label">Data Points</div>
+            </div>
+            <div class="stat-item" data-animate="true" data-target="2" data-delay="300">
+                <div class="stat-value" data-count-up="true">0</div>
+                <div class="stat-label">Score Types</div>
+            </div>
+            <div class="stat-item" data-animate="true" data-target="100" data-delay="400">
+                <div class="stat-value" data-count-up="true">0</div>
+                <div class="stat-label">Transparent</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="calculator-section">
+        <div class="section-header">
+            <div class="section-pretitle">Property Intelligence</div>
+            <h2 class="section-title">Score Your Property</h2>
+            <p class="section-subtitle">
+                Analyze suburbs and properties with our comprehensive scoring system
+            </p>
+            
+            <!-- Dual-Score Explanation -->
+            <div class="score-explanation-box" style="
+                background: var(--orange-subtle);
+                border: 2px solid var(--orange-glow);
+                border-radius: var(--radius-xl);
+                padding: var(--space-6);
+                margin-top: var(--space-8);
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            ">
+                <h3 style="
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    color: var(--orange-light);
+                    margin-bottom: var(--space-4);
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                ">
+                    <span>💡</span> Understanding Our Dual-Score System
+                </h3>
+                <div style="
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: var(--space-6);
+                    margin-top: var(--space-4);
+                ">
+                    <div class="score-type-card" style="
+                        background: var(--bg-secondary);
+                        padding: var(--space-5);
+                        border-radius: var(--radius-lg);
+                        border: 1px solid var(--glass-border);
+                    ">
+                        <div style="
+                            font-size: 2rem;
+                            margin-bottom: var(--space-2);
+                        ">📍</div>
+                        <h4 style="
+                            font-weight: 700;
+                            color: var(--text-primary);
+                            margin-bottom: var(--space-2);
+                            font-size: 1.125rem;
+                        ">A-Score: Suburb Quality</h4>
+                        <p style="
+                            color: var(--text-secondary);
+                            font-size: 0.9375rem;
+                            line-height: 1.6;
+                            margin-bottom: var(--space-3);
+                        ">
+                            Evaluates the suburb itself across 15 key metrics including location quality, amenities, safety, schools, and growth potential.
+                        </p>
+                        <div style="
+                            font-size: 0.875rem;
+                            color: var(--text-tertiary);
+                            font-style: italic;
+                        ">
+                            "How good is this suburb?"
+                        </div>
+                    </div>
+                    <div class="score-type-card" style="
+                        background: var(--bg-secondary);
+                        padding: var(--space-5);
+                        border-radius: var(--radius-lg);
+                        border: 1px solid var(--glass-border);
+                    ">
+                        <div style="
+                            font-size: 2rem;
+                            margin-bottom: var(--space-2);
+                        ">🏠</div>
+                        <h4 style="
+                            font-weight: 700;
+                            color: var(--text-primary);
+                            margin-bottom: var(--space-2);
+                            font-size: 1.125rem;
+                        ">B-Score: Property Match</h4>
+                        <p style="
+                            color: var(--text-secondary);
+                            font-size: 0.9375rem;
+                            line-height: 1.6;
+                            margin-bottom: var(--space-3);
+                        ">
+                            Combines A-Score with property-specific factors across 23 metrics for comprehensive analysis including investment potential and lifestyle fit.
+                        </p>
+                        <div style="
+                            font-size: 0.875rem;
+                            color: var(--text-tertiary);
+                            font-style: italic;
+                        ">
+                            "How well does this property match your needs?"
+                        </div>
+                    </div>
+                </div>
+                <div style="
+                    margin-top: var(--space-4);
+                    padding-top: var(--space-4);
+                    border-top: 1px solid var(--glass-border);
+                    text-align: center;
+                    color: var(--text-secondary);
+                    font-size: 0.875rem;
+                ">
+                    <strong>💡 Tip:</strong> Start with A-Score to find great suburbs, then use B-Score to evaluate specific properties within those suburbs.
+                </div>
+            </div>
+        </div>
+
+        <!-- Suburb Scout Section -->
+        <div id="ascore-tab">
+            <div class="calculator-grid">
+                <!-- Input Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📍</div>
+                        <div>
+                            <div class="card-title">Suburb Scout</div>
+                            <div class="card-subtitle">Select a suburb to analyze</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="form-label-icon">🗺️</span>
+                            Suburb Name
+                        </label>
+                        <select 
+                            id="suburb" 
+                            class="form-select"
+                            onchange="calculateAScore()"
+                        >
+                            <option value="">Select a suburb...</option>
+                            <optgroup label="High A-Score (88-95)">
+                                <option value="Hawthorn" selected>Hawthorn</option>
+                                <option value="Brighton">Brighton</option>
+                                <option value="Balwyn">Balwyn</option>
+                            </optgroup>
+                            <optgroup label="Medium A-Score (75-85)">
+                                <option value="Box Hill">Box Hill</option>
+                                <option value="Blackburn">Blackburn</option>
+                                <option value="Bentleigh">Bentleigh</option>
+                                <option value="Ascot Vale">Ascot Vale</option>
+                                <option value="Camberwell">Camberwell</option>
+                            </optgroup>
+                            <optgroup label="Low A-Score (60-70)">
+                                <option value="Albanvale">Albanvale</option>
+                                <option value="Ardeer">Ardeer</option>
+                                <option value="Bellfield">Bellfield</option>
+                                <option value="Broadmeadows">Broadmeadows</option>
+                            </optgroup>
+                        </select>
+                        <div class="form-hint">This is a limited subset of suburbs provided as a demonstration. The full version includes all 397 Melbourne suburbs with comprehensive data.</div>
+                    </div>
+
+                    <button onclick="calculateAScore()" class="btn btn-primary btn-glow btn-ripple" id="ascoreBtn" style="width: 100%;">
+                        <span class="btn-text">Calculate A-Score</span>
+                        <span class="btn-icon">✨</span>
+                        <span class="loading-state" style="display: none;">
+                            <span class="loading-spinner"></span>
+                            <span class="loading-message">Calculating...</span>
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Results Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div>
+                            <div class="card-title">Score Results</div>
+                            <div class="card-subtitle">Suburb-level analysis</div>
+                        </div>
+                    </div>
+
+                    <div id="ascoreResults">
+                        <!-- Empty State -->
+                        <div id="ascoreEmptyState" class="empty-state-modern">
+                            <div class="empty-state-icon">📍</div>
+                            <h3 class="empty-state-title">Ready to Analyze a Suburb?</h3>
+                            <p class="empty-state-description">
+                                Select a suburb from the dropdown above to see its A-Score and detailed analysis.
+                            </p>
+                            <button onclick="
+                                document.getElementById('suburb').value = 'Hawthorn';
+                                calculateAScore();
+                            " class="btn btn-secondary">
+                                <span>✨</span> Try Example: Hawthorn
+                            </button>
+                        </div>
+                        
+                        <!-- Score Display (hidden initially) -->
+                        <div class="score-display" id="ascoreDisplay" style="display: none;">
+                            <div class="score-label">
+                                <span class="tooltip">
+                                    A-Score (Suburb Quality)
+                                    <span class="tooltip-text">A-Score evaluates the suburb itself across 15 key metrics including location quality, amenities, safety, schools, and growth potential.</span>
+                                </span>
+                            </div>
+                            <div class="score-value-container">
+                                <div class="score-value" id="ascoreValue">--</div>
+                            </div>
+                            <div class="score-rating" id="ascoreRating">
+                                <span>⏳</span>
+                                Calculate to see results
+                            </div>
+                            <div class="score-percentile" id="ascorePercentile"></div>
+                            <div class="score-description">
+                                <strong>Suburb Quality Score:</strong> Evaluates how good this suburb is overall based on location, amenities, safety, schools, and growth potential (15 metrics).
+                            </div>
+                        </div>
+
+                        <div id="ascoreBreakdown" class="breakdown-section hidden">
+                            <h4 class="breakdown-title">📈 Score Breakdown</h4>
+                            <div id="ascoreBreakdownItems"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ascoreInsights" class="insights-section hidden">
+                <h3 class="section-title" style="margin-bottom: var(--space-8); font-size: 2rem;">🎯 Key Insights</h3>
+                <div id="ascoreInsightsContainer" class="insights-grid"></div>
+            </div>
+        </div>
+
+        <!-- B-Score Section (Separate, not in tabs) -->
+        <div class="section-header" style="margin-top: var(--space-20);">
+            <div class="section-pretitle">Property Analysis</div>
+            <h2 class="section-title">Property Analysis</h2>
+            <p class="section-subtitle">
+                Evaluate specific properties with our simplified property scoring system
+            </p>
+        </div>
+
+        <div class="calculator-section" style="padding-top: 0;">
+            <div class="calculator-grid">
+                <!-- Input Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🏠</div>
+                        <div>
+                            <div class="card-title">Property Analysis</div>
+                            <div class="card-subtitle">Select a property profile to analyze</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="form-label-icon">🏡</span>
+                            Property Profile
+                        </label>
+                        <select 
+                            id="propertyProfile" 
+                            class="form-select"
+                            onchange="loadPropertyProfile()"
+                        >
+                            <option value="">Select a property profile...</option>
+                            <option value="starter">Starter Home ($650K, 2 bed, 1 bath, 400sqm, Unit)</option>
+                            <option value="family">Family Home ($1.2M, 4 bed, 2 bath, 600sqm, House)</option>
+                            <option value="investment">Investment Property ($850K, 3 bed, 2 bath, 500sqm, Townhouse)</option>
+                            <option value="luxury">Luxury Home ($2.5M, 5 bed, 3 bath, 800sqm, House)</option>
+                        </select>
+                        <div class="form-hint" style="margin-top: var(--space-4); padding: var(--space-4); background: var(--warning-dim); border: 1px solid var(--warning); border-radius: var(--radius-md);">
+                            <strong>⚠️ Limited Version:</strong> This is a simplified demonstration version. Members get access to all 397 suburbs, unlimited searches, property saving, comparison tools, and detailed 23-point B-Score breakdowns.
+                        </div>
+                    </div>
+
+                    <!-- Hidden fields for B-Score calculation -->
+                    <input type="hidden" id="price" value="1250000">
+                    <input type="hidden" id="cbdDistance" value="6">
+                    <input type="hidden" id="trainDistance" value="400">
+                    <input type="hidden" id="safetyRating" value="8">
+                    <input type="hidden" id="lifestyleType" value="family">
+
+                    <button onclick="calculateBScore()" class="btn btn-primary btn-glow btn-ripple" id="bscoreBtn" style="width: 100%; margin-top: var(--space-6);">
+                        <span class="btn-text">Calculate B-Score</span>
+                        <span class="btn-icon">🚀</span>
+                        <span class="loading-state" style="display: none;">
+                            <span class="loading-spinner"></span>
+                            <span class="loading-message">Calculating...</span>
+                        </span>
+                    </button>
+
+                    <a href="members.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--space-4); text-align: center;">
+                        Upgrade to Members for Full Features
+                        <span>→</span>
+                    </a>
+                </div>
+
+                <!-- Results Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div>
+                            <div class="card-title">Comprehensive Analysis</div>
+                            <div class="card-subtitle">Property-level evaluation</div>
+                        </div>
+                    </div>
+
+                    <div id="bscoreResults">
+                        <!-- Empty State -->
+                        <div id="bscoreEmptyState" class="empty-state-modern">
+                            <div class="empty-state-icon">🏠</div>
+                            <h3 class="empty-state-title">Ready to Evaluate a Property?</h3>
+                            <p class="empty-state-description">
+                                Select a property profile from the dropdown above to see its B-Score and comprehensive analysis.
+                            </p>
+                            <button onclick="
+                                document.getElementById('propertyProfile').value = 'family';
+                                loadPropertyProfile();
+                                calculateBScore();
+                            " class="btn btn-secondary">
+                                <span>✨</span> Try Example: Family Home
+                            </button>
+                        </div>
+                        
+                        <!-- Score Display (hidden initially) -->
+                        <div class="score-display" id="bscoreDisplay" style="display: none;">
+                            <div class="score-label">
+                                <span class="tooltip">
+                                    B-Score (Property Match)
+                                    <span class="tooltip-text">B-Score (Property Evaluation Score) combines A-Score with property-specific factors across 23 metrics for comprehensive analysis including investment potential and lifestyle fit.</span>
+                                </span>
+                            </div>
+                            <div class="score-value-container">
+                                <div class="score-value" id="bscoreValue">--</div>
+                            </div>
+                            <div class="score-rating" id="bscoreRating">
+                                <span>⏳</span>
+                                Calculate to see results
+                            </div>
+                            <div class="score-percentile" id="bscorePercentile"></div>
+                            <div class="score-description">
+                                <strong>Property Match Score:</strong> Combines suburb quality (A-Score) with property-specific factors to show how well this property matches your needs (23 metrics).
+                            </div>
+                        </div>
+
+                        <div id="bscoreBreakdown" class="breakdown-section hidden">
+                            <h4 class="breakdown-title">📈 Detailed Breakdown</h4>
+                            <div id="bscoreBreakdownItems"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bscoreInsights" class="insights-section hidden">
+                <h3 class="section-title" style="margin-bottom: var(--space-8); font-size: 2rem;">🎯 Expert Insights</h3>
+                <div id="bscoreInsightsContainer" class="insights-grid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Properties Section -->
+    <section id="samples" class="samples-section">
+        <div class="samples-container">
+            <div class="section-header">
+                <div class="section-pretitle">Live Examples</div>
+                <h2 class="section-title">Sample Properties</h2>
+                <p class="section-subtitle">
+                    Explore real property scores from our database of Melbourne homes
+                </p>
+            </div>
+
+            <div class="samples-grid">
+                <!-- Sample Property 1 -->
+                <div class="property-card">
+                    <div class="property-image">🏡</div>
+                    <div class="property-content">
+                        <div class="property-location">Hawthorn, VIC 3122</div>
+                        <div class="property-address">123 Glenferrie Road</div>
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-label">A-Score</div>
+                                <div class="property-stat-value">92.5</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-label">B-Score</div>
+                                <div class="property-stat-value">89.3</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-label">Price</div>
+                                <div class="property-stat-value">$1.2M</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Property 2 -->
+                <div class="property-card">
+                    <div class="property-image">🏠</div>
+                    <div class="property-content">
+                        <div class="property-location">Richmond, VIC 3121</div>
+                        <div class="property-address">45 Church Street</div>
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-label">A-Score</div>
+                                <div class="property-stat-value">88.7</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-label">B-Score</div>
+                                <div class="property-stat-value">91.2</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-label">Price</div>
+                                <div class="property-stat-value">$980K</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Property 3 -->
+                <div class="property-card">
+                    <div class="property-image">🏡</div>
+                    <div class="property-content">
+                        <div class="property-location">Brighton, VIC 3186</div>
+                        <div class="property-address">78 Bay Street</div>
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-label">A-Score</div>
+                                <div class="property-stat-value">95.1</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-label">B-Score</div>
+                                <div class="property-stat-value">87.6</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-label">Price</div>
+                                <div class="property-stat-value">$2.8M</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Property 4 -->
+                <div class="property-card">
+                    <div class="property-image">🏠</div>
+                    <div class="property-content">
+                        <div class="property-location">Frankston, VIC 3199</div>
+                        <div class="property-address">12 Nepean Highway</div>
+                        <div class="property-stats">
+                            <div class="property-stat">
+                                <div class="property-stat-label">A-Score</div>
+                                <div class="property-stat-value">72.4</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-label">B-Score</div>
+                                <div class="property-stat-value">78.9</div>
+                            </div>
+                            <div class="property-stat">
+                                <div class="property-stat-label">Price</div>
+                                <div class="property-stat-value">$650K</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="footer-logo">🏡 HomeScorePro</div>
+                    <p class="footer-description">
+                        Intelligent property analysis for Melbourne. Make confident decisions with transparent, data-driven insights.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🔗</a>
+                    </div>
+                </div>
+
+                <!-- Product -->
+                <div>
+                    <h4 class="footer-section-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="calculator.html" class="footer-link">Calculator</a></li>
+                        <li><a href="pricing.html" class="footer-link">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 class="footer-section-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html" class="footer-link">About</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="footer-section-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html" class="footer-link">Privacy</a></li>
+                        <li><a href="terms.html" class="footer-link">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © 2024 HomeScorePro. Built with precision. Powered by data.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/access-control.js"></script>
+    <script src="js/calculator.js"></script>
+</body>
+</html>

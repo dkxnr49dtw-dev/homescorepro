@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /members.html
+Disallow: /server/
+Disallow: /tests/
+Disallow: /test-results/
+Disallow: /playwright-report/
+Disallow: /archive/
+Disallow: /working-documents/
+Disallow: /user-testing/
+
+Sitemap: https://homescorepro.com/sitemap.xml
+
+
