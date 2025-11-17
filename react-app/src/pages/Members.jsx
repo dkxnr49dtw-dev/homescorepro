@@ -20,7 +20,7 @@ function Members() {
   const [onboardingStep, setOnboardingStep] = useState(1)
   const [showOnboarding, setShowOnboarding] = useState(false)
   const [showPasswordModal, setShowPasswordModal] = useState(false)
-  const [activeTab, setActiveTab] = useState('suburb')
+  const [activeTab, setActiveTab] = useState('property')
   const [suburbsData, setSuburbsData] = useState([])
   const [propertiesData, setPropertiesData] = useState([])
   const [savedProperties, setSavedProperties] = useState([])
@@ -525,33 +525,7 @@ function Members() {
             </p>
           </div>
           
-          <div className="calculator-tabs" style={{ display: 'flex', gap: 'var(--space-2)', marginBottom: 'var(--space-6)', flexWrap: 'wrap' }}>
-            <button 
-              className={`btn ${activeTab === 'suburb' ? 'btn-primary' : 'btn-secondary'}`}
-              onClick={() => setActiveTab('suburb')}
-            >
-              <span style={{
-                display: 'inline-block',
-                width: '16px',
-                height: '16px',
-                background: activeTab === 'suburb' ? 'var(--dark-900)' : 'var(--orange-primary)',
-                borderRadius: '50%',
-                position: 'relative',
-                flexShrink: 0
-              }}>
-                <span style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '8px',
-                  height: '8px',
-                  background: activeTab === 'suburb' ? 'var(--orange-primary)' : 'var(--dark-950)',
-                  borderRadius: '50%'
-                }}></span>
-              </span>
-              <span>Suburb Analysis (A-Score)</span>
-            </button>
+          <div style={{ display: 'flex', gap: 'var(--space-2)', marginBottom: 'var(--space-6)', flexWrap: 'wrap', justifyContent: 'center' }}>
             <button 
               className={`btn ${activeTab === 'property' ? 'btn-primary' : 'btn-secondary'}`}
               onClick={() => setActiveTab('property')}
@@ -593,15 +567,6 @@ function Members() {
               <span>Ranked Properties</span>
             </button>
           </div>
-          
-          {activeTab === 'suburb' && (
-            <div style={{ textAlign: 'center', padding: 'var(--space-8)', color: 'var(--text-secondary)' }}>
-              <p>Use the "📍 Suburb Scout (A-Score)" section above to analyze suburbs.</p>
-              <p style={{ marginTop: 'var(--space-4)' }}>
-                Or select a property tab to evaluate individual properties, or view ranked properties below.
-              </p>
-            </div>
-          )}
           
           {activeTab === 'property' && (
             <div className="calculator-grid">
