@@ -14,10 +14,11 @@ import {
 } from '../utils/members'
 import { animateCountUp } from '../utils/calculator'
 import { PropertyDetailModal } from '../components/PropertyDetailModal'
+import Onboarding from '../components/Onboarding'
+import MembersNavigation from '../components/MembersNavigation'
 
 function Members() {
   // State management
-  const [onboardingStep, setOnboardingStep] = useState(1)
   const [showOnboarding, setShowOnboarding] = useState(false)
   const [showPasswordModal, setShowPasswordModal] = useState(false)
   const [activeTab, setActiveTab] = useState('property')
@@ -41,16 +42,6 @@ function Members() {
     bathrooms: 2,
     landSize: '',
     streetQuality: 3
-  })
-  
-  // Onboarding state
-  const [onboardingData, setOnboardingData] = useState({
-    primaryGoal: '',
-    budgetMin: 500000,
-    budgetMax: 750000,
-    familyStatus: '',
-    safetyPriority: 8,
-    geographicCategories: []
   })
   
   // Refs
@@ -228,74 +219,18 @@ function Members() {
   
 
   // Onboarding handlers
-  const nextStep = () => {
-    if (!validateStep()) return
-    
-    if (onboardingStep < 6) {
-      setOnboardingStep(onboardingStep + 1)
-    } else {
-      completeOnboarding()
-    }
-  }
-
-  const previousStep = () => {
-    if (onboardingStep > 1) {
-      setOnboardingStep(onboardingStep - 1)
-    }
-  }
-
-  const skipOnboarding = () => {
-    completeOnboarding()
-  }
-
-  const completeOnboarding = () => {
-    const preferences = {
-      primaryGoal: onboardingData.primaryGoal || 'Balanced',
-      budgetMin: onboardingData.budgetMin || 500000,
-      budgetMax: onboardingData.budgetMax || 750000,
-      familyStatus: onboardingData.familyStatus || 'Couple',
-      safetyPriority: onboardingData.safetyPriority || 8,
-      geographicCategories: onboardingData.geographicCategories || []
-    }
+  const handleOnboardingComplete = (preferences) => {
     saveUserPreferences(preferences)
     setUserPreferences(preferences)
-    localStorage.setItem('homescorepro_onboarding_complete', 'true')
     setShowOnboarding(false)
   }
-  
-  // Onboarding handlers
-  const selectOption = (key, value) => {
-    setOnboardingData({ ...onboardingData, [key]: value })
+
+  const handleOnboardingSkip = () => {
+    setShowOnboarding(false)
   }
-  
-  const toggleGeographicCategory = (category) => {
-    const categories = [...onboardingData.geographicCategories]
-    const index = categories.indexOf(category)
-    if (index > -1) {
-      categories.splice(index, 1)
-    } else {
-      categories.push(category)
-    }
-    setOnboardingData({ ...onboardingData, geographicCategories: categories })
-  }
-  
-  const selectAllGeographic = () => {
-    setOnboardingData({ 
-      ...onboardingData, 
-      geographicCategories: ['BAYSIDE', 'HILLS & RANGES', 'INNER METRO', 'OUTER GROWTH'] 
-    })
-  }
-  
-  const validateStep = () => {
-    if (onboardingStep === 1 && !onboardingData.primaryGoal) {
-      alert('Please select your primary goal')
-      return false
-    }
-    if (onboardingStep === 3 && !onboardingData.familyStatus) {
-      alert('Please select your family situation')
-      return false
-    }
-    return true
+
+  const handleResetOnboarding = () => {
+    setShowOnboarding(true)
   }
 
   // Password modal handlers
@@ -405,6 +340,16 @@ function Members() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
+      <MembersNavigation onResetOnboarding={handleResetOnboarding} />
+      
+      <Onboarding
+        isOpen={showOnboarding}
+        onComplete={handleOnboardingComplete}
+        onSkip={handleOnboardingSkip}
+        userPreferences={userPreferences}
+        onSavePreferences={saveUserPreferences}
+      />
+      
       {/* Hero Section */}
       <section className="hero" style={{ paddingTop: '120px', paddingBottom: '80px' }}>
         <div className="hero-container">
@@ -957,354 +902,6 @@ function Members() {
         )}
       </AnimatePresence>
 
-      {/* Onboarding Modal - Simplified for now */}
-      <AnimatePresence>
-        {showOnboarding && (
-          <motion.div
-            className="onboarding-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(0, 0, 0, 0.9)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 10001
-            }}
-          >
-            <motion.div
-              className="onboarding-container"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              style={{
-                background: 'var(--bg-secondary)',
-                padding: 'var(--space-8)',
-                borderRadius: 'var(--radius-xl)',
-                maxWidth: '600px',
-                width: '90%',
-                maxHeight: '90vh',
-                overflow: 'auto'
-              }}
-            >
-              <h2 style={{ marginBottom: 'var(--space-4)' }}>Welcome to HomeScorePro</h2>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-8)' }}>
-                Let's personalize your experience
-              </p>
-              <div style={{ marginBottom: 'var(--space-8)' }}>
-                <p>Step {onboardingStep} of 6</p>
-                <div style={{ 
-                  display: 'flex', 
-                  gap: 'var(--space-2)', 
-                  marginTop: 'var(--space-4)' 
-                }}>
-                  {[1, 2, 3, 4, 5, 6].map((step) => (
-                    <div
-                      key={step}
-                      style={{
-                        flex: 1,
-                        height: '4px',
-                        background: step <= onboardingStep ? 'var(--orange-primary)' : 'var(--bg-tertiary)',
-                        borderRadius: '2px'
-                      }}
-                    />
-                  ))}
-                </div>
-              </div>
-              <div style={{ marginBottom: 'var(--space-8)', minHeight: '300px' }}>
-                {/* Step 1: Primary Goal */}
-                {onboardingStep === 1 && (
-                  <div>
-                    <h3 style={{ color: 'var(--orange-primary)', marginBottom: 'var(--space-4)', fontSize: '1.5rem' }}>
-                      What's your primary goal?
-                    </h3>
-                    <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-6)' }}>
-                      This helps us tailor the scoring to your needs
-                    </p>
-                    <div style={{ display: 'grid', gap: 'var(--space-4)', marginBottom: 'var(--space-6)' }}>
-                      {[
-                        { value: 'Investment', icon: '💰', title: 'Investment Focus', desc: 'Maximize growth and rental yield' },
-                        { value: 'Balanced', icon: '⚖️', title: 'Balanced', desc: 'Equal focus on investment and lifestyle' },
-                        { value: 'Lifestyle', icon: '🏖️', title: 'Lifestyle Focus', desc: 'Prioritize amenities and quality of life' }
-                      ].map((option) => (
-                        <div
-                          key={option.value}
-                          onClick={() => selectOption('primaryGoal', option.value)}
-                          style={{
-                            padding: 'var(--space-5)',
-                            border: `2px solid ${onboardingData.primaryGoal === option.value ? 'var(--orange-primary)' : 'var(--glass-border)'}`,
-                            borderRadius: 'var(--radius-lg)',
-                            cursor: 'pointer',
-                            transition: 'all 0.3s',
-                            textAlign: 'center',
-                            background: onboardingData.primaryGoal === option.value ? 'var(--orange-subtle)' : 'var(--bg-tertiary)'
-                          }}
-                        >
-                          <h4 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-2)' }}>
-                            {option.icon} {option.title}
-                          </h4>
-                          <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>{option.desc}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 2: Budget Range */}
-                {onboardingStep === 2 && (
-                  <div>
-                    <h3 style={{ color: 'var(--orange-primary)', marginBottom: 'var(--space-4)', fontSize: '1.5rem' }}>
-                      What's your budget range?
-                    </h3>
-                    <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-6)' }}>
-                      This determines which suburbs match your strategy
-                    </p>
-                    <div style={{ display: 'grid', gap: 'var(--space-4)' }}>
-                      <div>
-                        <label style={{ display: 'block', marginBottom: 'var(--space-2)', color: 'var(--text-primary)' }}>
-                          Minimum Budget ($)
-                        </label>
-                        <input
-                          type="number"
-                          value={onboardingData.budgetMin}
-                          min="100000"
-                          max="5000000"
-                          step="10000"
-                          onChange={(e) => selectOption('budgetMin', parseInt(e.target.value))}
-                          style={{
-                            width: '100%',
-                            padding: 'var(--space-3)',
-                            background: 'var(--bg-tertiary)',
-                            border: '1px solid var(--glass-border)',
-                            borderRadius: 'var(--radius-md)',
-                            color: 'var(--text-primary)',
-                            fontSize: '1rem'
-                          }}
-                        />
-                      </div>
-                      <div>
-                        <label style={{ display: 'block', marginBottom: 'var(--space-2)', color: 'var(--text-primary)' }}>
-                          Maximum Budget ($)
-                        </label>
-                        <input
-                          type="number"
-                          value={onboardingData.budgetMax}
-                          min="100000"
-                          max="5000000"
-                          step="10000"
-                          onChange={(e) => selectOption('budgetMax', parseInt(e.target.value))}
-                          style={{
-                            width: '100%',
-                            padding: 'var(--space-3)',
-                            background: 'var(--bg-tertiary)',
-                            border: '1px solid var(--glass-border)',
-                            borderRadius: 'var(--radius-md)',
-                            color: 'var(--text-primary)',
-                            fontSize: '1rem'
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 3: Family Status */}
-                {onboardingStep === 3 && (
-                  <div>
-                    <h3 style={{ color: 'var(--orange-primary)', marginBottom: 'var(--space-4)', fontSize: '1.5rem' }}>
-                      What's your family situation?
-                    </h3>
-                    <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-6)' }}>
-                      This helps prioritize relevant amenities
-                    </p>
-                    <div style={{ display: 'grid', gap: 'var(--space-4)', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-                      {[
-                        { value: 'Single', icon: '👤' },
-                        { value: 'Couple', icon: '👫' },
-                        { value: 'Family', icon: '👨‍👩‍👧‍👦', title: 'Family with Children' },
-                        { value: 'Empty Nesters', icon: '👴👵' }
-                      ].map((option) => (
-                        <div
-                          key={option.value}
-                          onClick={() => selectOption('familyStatus', option.value)}
-                          style={{
-                            padding: 'var(--space-5)',
-                            border: `2px solid ${onboardingData.familyStatus === option.value ? 'var(--orange-primary)' : 'var(--glass-border)'}`,
-                            borderRadius: 'var(--radius-lg)',
-                            cursor: 'pointer',
-                            transition: 'all 0.3s',
-                            textAlign: 'center',
-                            background: onboardingData.familyStatus === option.value ? 'var(--orange-subtle)' : 'var(--bg-tertiary)'
-                          }}
-                        >
-                          <h4 style={{ fontSize: '1.125rem' }}>
-                            {option.icon} {option.title || option.value}
-                          </h4>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 4: Safety Priority */}
-                {onboardingStep === 4 && (
-                  <div>
-                    <h3 style={{ color: 'var(--orange-primary)', marginBottom: 'var(--space-4)', fontSize: '1.5rem' }}>
-                      How important is safety to you?
-                    </h3>
-                    <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-6)' }}>
-                      Rate from 1 (not important) to 10 (very important)
-                    </p>
-                    <div>
-                      <label style={{ display: 'block', marginBottom: 'var(--space-4)', color: 'var(--text-primary)' }}>
-                        Safety Priority (1-10)
-                      </label>
-                      <input
-                        type="range"
-                        min="1"
-                        max="10"
-                        value={onboardingData.safetyPriority}
-                        onChange={(e) => selectOption('safetyPriority', parseInt(e.target.value))}
-                        style={{
-                          width: '100%',
-                          marginBottom: 'var(--space-4)'
-                        }}
-                      />
-                      <div style={{ textAlign: 'center' }}>
-                        <span style={{ fontSize: '3rem', fontWeight: 700, color: 'var(--orange-primary)' }}>
-                          {onboardingData.safetyPriority}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 5: Geographic Categories */}
-                {onboardingStep === 5 && (
-                  <div>
-                    <h3 style={{ color: 'var(--orange-primary)', marginBottom: 'var(--space-4)', fontSize: '1.5rem' }}>
-                      Which areas interest you?
-                    </h3>
-                    <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-6)' }}>
-                      Select all that apply, or choose "See All"
-                    </p>
-                    <div style={{ display: 'grid', gap: 'var(--space-3)', marginBottom: 'var(--space-6)' }}>
-                      {[
-                        { value: 'BAYSIDE', icon: '🌊' },
-                        { value: 'HILLS & RANGES', icon: '⛰️' },
-                        { value: 'INNER METRO', icon: '🏙️' },
-                        { value: 'OUTER GROWTH', icon: '🏘️' }
-                      ].map((option) => {
-                        const isSelected = onboardingData.geographicCategories.includes(option.value)
-                        return (
-                          <div
-                            key={option.value}
-                            onClick={() => toggleGeographicCategory(option.value)}
-                            style={{
-                              padding: 'var(--space-4)',
-                              border: `2px solid ${isSelected ? 'var(--orange-primary)' : 'var(--glass-border)'}`,
-                              borderRadius: 'var(--radius-md)',
-                              cursor: 'pointer',
-                              transition: 'all 0.3s',
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: 'var(--space-3)',
-                              background: isSelected ? 'var(--orange-subtle)' : 'var(--bg-tertiary)'
-                            }}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={isSelected}
-                              onChange={() => toggleGeographicCategory(option.value)}
-                              style={{ width: '20px', height: '20px', cursor: 'pointer' }}
-                            />
-                            <label style={{ cursor: 'pointer', flex: 1, fontSize: '1rem' }}>
-                              {option.icon} {option.value}
-                            </label>
-                          </div>
-                        )
-                      })}
-                    </div>
-                    <div style={{ textAlign: 'center' }}>
-                      <button
-                        className="btn btn-secondary"
-                        onClick={selectAllGeographic}
-                        style={{ width: '100%' }}
-                      >
-                        I want to see all
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 6: Review */}
-                {onboardingStep === 6 && (
-                  <div>
-                    <h3 style={{ color: 'var(--orange-primary)', marginBottom: 'var(--space-4)', fontSize: '1.5rem' }}>
-                      Review your preferences
-                    </h3>
-                    <div style={{
-                      background: 'var(--bg-tertiary)',
-                      padding: 'var(--space-6)',
-                      borderRadius: 'var(--radius-md)',
-                      marginBottom: 'var(--space-6)'
-                    }}>
-                      <div style={{ marginBottom: 'var(--space-4)' }}>
-                        <strong>Primary Goal:</strong> {onboardingData.primaryGoal || 'Not selected'}
-                      </div>
-                      <div style={{ marginBottom: 'var(--space-4)' }}>
-                        <strong>Budget Range:</strong> ${onboardingData.budgetMin.toLocaleString()} - ${onboardingData.budgetMax.toLocaleString()}
-                      </div>
-                      <div style={{ marginBottom: 'var(--space-4)' }}>
-                        <strong>Family Status:</strong> {onboardingData.familyStatus || 'Not selected'}
-                      </div>
-                      <div style={{ marginBottom: 'var(--space-4)' }}>
-                        <strong>Safety Priority:</strong> {onboardingData.safetyPriority}/10
-                      </div>
-                      <div>
-                        <strong>Geographic Areas:</strong>{' '}
-                        {onboardingData.geographicCategories.length > 0
-                          ? onboardingData.geographicCategories.join(', ')
-                          : 'All areas'}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 'var(--space-4)' }}>
-                <button 
-                  className="btn btn-secondary"
-                  onClick={skipOnboarding}
-                >
-                  Skip
-                </button>
-                <div style={{ display: 'flex', gap: 'var(--space-4)' }}>
-                  {onboardingStep > 1 && (
-                    <button 
-                      className="btn btn-secondary"
-                      onClick={previousStep}
-                    >
-                      Back
-                    </button>
-                  )}
-                  <button 
-                    className="btn btn-primary"
-                    onClick={nextStep}
-                  >
-                    {onboardingStep === 6 ? 'Complete' : 'Next'}
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
   )
 }

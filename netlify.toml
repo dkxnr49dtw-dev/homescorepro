@@ -1,17 +1,17 @@
-# Netlify configuration for static HTML site deployment
-# IMPORTANT: This deploys the STATIC HTML site from root, NOT the React app
+# Netlify configuration for React app deployment
+# This deploys the React app from react-app directory
 
 [build]
-  # No build command needed - static HTML site
-  command = ""
+  # Build command for React app
+  command = "cd react-app && npm install && npm run build"
   
-  # Publish from ROOT directory (not react-app)
-  publish = "."
+  # Publish from React app dist directory
+  publish = "react-app/dist"
   
-  # Base directory is root (not react-app)
-  base = "."
+  # Base directory is react-app
+  base = "react-app"
 
-# Redirects - serve HTML files directly
+# Redirects - SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
