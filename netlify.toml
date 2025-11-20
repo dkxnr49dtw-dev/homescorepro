@@ -1,23 +1,16 @@
-# Netlify configuration for automatic builds from GitHub
-# This file tells Netlify how to build your React app
+# Netlify configuration for static HTML site deployment
+# This file tells Netlify how to deploy your static HTML files
 
 [build]
-  # Base directory where package.json is located
-  base = "react-app"
+  # No build needed for static HTML site
+  command = ""
   
-  # Command to build the app
-  command = "npm install && npm run build"
-  
-  # Directory where built files are output (relative to base)
-  publish = "../dist"
+  # Publish the root directory with static HTML files
+  publish = "."
 
-# SPA routing - ensures all routes work
+# SPA routing - ensures all routes work for HTML files
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Build environment
-[build.environment]
-  NODE_VERSION = "18"
 
