@@ -1,22 +1,25 @@
 # Netlify configuration for static HTML site deployment
-# This file tells Netlify how to deploy your static HTML files
+# IMPORTANT: This deploys the STATIC HTML site from root, NOT the React app
 
 [build]
-  # No build needed for static HTML site
+  # No build command needed - static HTML site
   command = ""
   
-  # Publish the root directory with static HTML files
-  # Explicitly exclude react-app and server directories
+  # Publish from ROOT directory (not react-app)
   publish = "."
   
-  # Ignore directories that shouldn't be deployed
-  ignore = "react-app/*, server/*, dev-homescorepro/*, node_modules/*, .git/*"
+  # Base directory is root (not react-app)
+  base = "."
 
-# SPA routing - ensures all routes work for HTML files
-# Only redirect if file doesn't exist (for direct HTML file access)
+# Exclude React app and other directories from deployment
+[[plugins]]
+  package = "@netlify/plugin-functions"
+
+# Redirects - serve HTML files directly
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
   force = false
+  conditions = {Role = ["admin"]}
 

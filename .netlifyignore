@@ -1,0 +1,12 @@
+# Netlify ignore file - exclude these from deployment
+react-app/
+server/
+dev-homescorepro/
+node_modules/
+.git/
+*.md
+scripts/
+package.json
+package-lock.json
+homescorepro.code-workspace
+
