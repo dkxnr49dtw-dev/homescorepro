@@ -11,10 +11,6 @@
   # Base directory is root (not react-app)
   base = "."
 
-# Exclude React app and other directories from deployment
-[[plugins]]
-  package = "@netlify/plugin-functions"
-
 # Redirects - serve HTML files directly
 [[redirects]]
   from = "/*"
