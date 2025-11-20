@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -16,10 +17,12 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // CORS Configuration
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:8000'];
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:8000', 'http://localhost:3000'];
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -53,6 +56,22 @@ app.use('/api/payments', require('./routes/payments'));
 app.use('/api/subscriptions', require('./routes/subscriptions'));
 app.use('/api/contact', require('./routes/contact'));
 
+// Serve React app static files (in production)
+const reactAppPath = path.join(__dirname, '../react-app/dist');
+if (process.env.NODE_ENV === 'production' && require('fs').existsSync(reactAppPath)) {
+  console.log('Serving React app from:', reactAppPath);
+  app.use(express.static(reactAppPath));
+  
+  // SPA fallback - serve index.html for all non-API routes
+  app.get('*', (req, res, next) => {
+    // Don't serve React app for API routes
+    if (req.path.startsWith('/api/') || req.path.startsWith('/webhooks/')) {
+      return next();
+    }
+    res.sendFile(path.join(reactAppPath, 'index.html'));
+  });
+}
+
 // Error Handling Middleware
 app.use((err, req, res, next) => {
   console.error('Error:', err);
@@ -64,10 +83,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 Handler
-app.use((req, res) => {
-  res.status(404).json({ error: 'Route not found' });
-});
+// 404 Handler (only for API routes if React app is not being served)
+if (process.env.NODE_ENV !== 'production' || !require('fs').existsSync(reactAppPath)) {
+  app.use((req, res) => {
+    res.status(404).json({ error: 'Route not found' });
+  });
+}
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

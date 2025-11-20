@@ -1,18 +1,23 @@
 {
-  "name": "homescorepro-tests",
+  "name": "homescorepro",
   "version": "1.0.0",
-  "description": "Automated test suite for HomeScorePro using Playwright",
+  "description": "HomeScorePro - Property Intelligence Platform",
   "scripts": {
-    "test": "playwright test",
-    "test:ui": "playwright test --ui",
-    "test:headed": "playwright test --headed",
-    "test:chrome": "playwright test --project=chromium",
-    "test:firefox": "playwright test --project=firefox",
-    "test:safari": "playwright test --project=webkit",
-    "test:edge": "playwright test --project=msedge",
-    "test:report": "playwright show-report"
+    "build": "cd react-app && npm install && npm run build",
+    "start": "cd server && npm install && npm start",
+    "postinstall": "cd react-app && npm install && cd ../server && npm install",
+    "dev:react": "cd react-app && npm run dev",
+    "dev:server": "cd server && npm run dev"
   },
-  "devDependencies": {
-    "@playwright/test": "^1.40.0"
-  }
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dkxnr49dtw-dev/homescorepro.git"
+  },
+  "keywords": ["property", "scoring", "melbourne", "real-estate"],
+  "author": "",
+  "license": "ISC"
 }

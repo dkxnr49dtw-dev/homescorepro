@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: homescorepro
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd react-app && npm install && npm run build && cd ../server && npm install
+    startCommand: cd server && NODE_ENV=production npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    healthCheckPath: /health
+
