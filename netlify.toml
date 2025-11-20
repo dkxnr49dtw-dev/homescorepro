@@ -2,14 +2,14 @@
 # This deploys the React app from react-app directory
 
 [build]
-  # Build command for React app
-  command = "cd react-app && npm install && npm run build"
-  
-  # Publish from React app dist directory
-  publish = "react-app/dist"
-  
-  # Base directory is react-app
+  # Base directory is react-app (Netlify will cd here first)
   base = "react-app"
+  
+  # Build command (runs from react-app directory, no need to cd again)
+  command = "npm install && npm run build"
+  
+  # Publish directory (relative to base, so just "dist" not "react-app/dist")
+  publish = "dist"
 
 # Redirects - SPA routing
 [[redirects]]
