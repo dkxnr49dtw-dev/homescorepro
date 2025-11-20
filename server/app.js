@@ -16,6 +16,9 @@ const {
   sanitizeInput 
 } = require('./middleware/security');
 
+// Sandbox middleware - prevents file system access outside project
+const { preventSystemInfoLeak } = require('./middleware/sandbox');
+
 // Password authentication
 const { 
   sessionConfig, 
@@ -61,6 +64,7 @@ app.use(session(sessionConfig));
 app.use(blockSuspiciousIPs);
 app.use(detectBots);
 app.use(sanitizeInput);
+app.use(preventSystemInfoLeak); // Prevent access to system files
 
 // General middleware
 app.use(compression());
