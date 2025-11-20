@@ -1,6 +1,7 @@
 /* Import design master CSS from parent directory */
 @import '../../../css/design-master.css';
 @import '../../../css/index.css';
+@import '../../../css/calculator.css';
 
 /* Base styles */
 * {
@@ -191,9 +192,6 @@ nav, main, section, footer {
   .nav-logo { font-size: 1.1rem; }
   .nav-container { padding: var(--space-3) var(--space-4); }
 }
-
-/* Import calculator CSS */
-@import '../../../css/calculator.css';
 
 /* Members page styles - inline styles used in component, but keeping this for any additional styles */
 
