@@ -4,11 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "prebuild": "node scripts/copy-data.js",
-    "prebuild:validate": "node scripts/validate-build-config.js",
+    "prebuild": "node scripts/validate-build-config.js && node scripts/copy-data.js",
     "test:data": "node scripts/test-data-access.js",
     "dev": "vite",
-    "build": "npm run prebuild:validate && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "validate": "node scripts/validate-build-config.js"
