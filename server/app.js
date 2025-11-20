@@ -19,10 +19,18 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // CORS Configuration
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:8000', 'http://localhost:3000'];
+const allowAllOrigins = process.env.ALLOW_ALL_ORIGINS === 'true';
+
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
+    
+    // If ALLOW_ALL_ORIGINS is true, allow all origins (useful for local hosting)
+    if (allowAllOrigins) {
+      return callback(null, true);
+    }
+    
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
