@@ -10,8 +10,6 @@ server/.env
 *.env.local
 
 # Test results
-test-results/
-playwright-report/
 *.webm
 *.png
 
@@ -22,14 +20,12 @@ playwright-report/
 .DS_Store
 
 # Archives and backups
-archive/
 *.bak
 
 # Python
 __pycache__/
 *.pyc
 *.pyo
-create_standalone_embedded.py
 
 # Logs
 *.log
@@ -48,3 +44,6 @@ build/
 # Temporary files
 *.tmp
 *.temp
+
+# Development files (non-essential for website)
+dev-homescorepro/

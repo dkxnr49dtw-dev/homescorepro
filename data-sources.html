@@ -38,6 +38,10 @@
     </style>
 </head>
 <body>
+    <!-- PRIVATE RESEARCH PROTOTYPE WARNING BANNER -->
+    <div style="background: #dc2626; color: white; padding: 12px 20px; text-align: center; font-weight: 600; font-size: 14px; line-height: 1.5; position: relative; z-index: 10000; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+        ⚠️ PRIVATE RESEARCH PROTOTYPE - NOT FOR PUBLIC USE - Contains simulated/placeholder data - Not for commercial use or decision making
+    </div>
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">🏡 HomeScorePro</a>
@@ -56,7 +60,19 @@
         <div class="section-header">
             <h1 class="section-title">Data Sources & Attribution</h1>
             <p class="section-subtitle">
-                HomeScorePro uses data from multiple authoritative sources to provide accurate property intelligence.
+                HomeScorePro uses data from multiple authoritative sources. This page provides honest status of all data sources, licensing, and availability.
+            </p>
+        </div>
+
+        <div style="margin-bottom: var(--space-8); padding: var(--space-6); background: var(--warning-dim); border: 1px solid var(--warning); border-radius: var(--radius-lg);">
+            <h3 style="color: var(--warning); margin-bottom: var(--space-3);">⚠️ Current Status: Research Prototype</h3>
+            <p style="color: var(--text-secondary); margin-bottom: var(--space-3);">
+                This is a private research prototype. Some data sources require commercial licensing that has not yet been obtained. 
+                Data marked as "Not Available" or "License Required" is not included in current calculations.
+            </p>
+            <p style="color: var(--text-secondary);">
+                <strong>Data Completeness:</strong> 88.4% of suburbs have median price data, 18.9% have rental yield data, 54.9% have commute time data. 
+                Missing data is clearly marked as empty/null - no placeholder values are used.
             </p>
         </div>
 
@@ -116,12 +132,32 @@
         <div class="data-source-card">
             <h3>Transport & Accessibility Data</h3>
             <p>
-                Transit scores, walk scores, and commute times are calculated using geographic data and 
-                public transport information.
+                Commute times are calculated using geographic distance and public transport information where available.
             </p>
-            <div class="attribution">
-                <strong>Note:</strong> Commute times are estimates based on geographic distance and public 
-                transport routes. Actual commute times may vary.
+            <div class="attribution" style="background: var(--warning-dim); border-left-color: var(--warning);">
+                <strong>Status:</strong> 
+                <ul style="margin-top: var(--space-2); margin-left: var(--space-6);">
+                    <li><strong>Commute Times:</strong> Available for 218/397 suburbs (54.9%). Missing data marked as empty.</li>
+                    <li><strong>Transit Score:</strong> ❌ <strong>NOT AVAILABLE</strong> - Requires commercial API license (Walk Score API)</li>
+                    <li><strong>Walk Score:</strong> ❌ <strong>NOT AVAILABLE</strong> - Requires commercial API license (Walk Score API)</li>
+                </ul>
+                <p style="margin-top: var(--space-3);">
+                    <strong>Licensing:</strong> Walk Score API requires commercial license ($99-299/month estimated). 
+                    Not yet obtained. All transitScore and walkScore values have been cleared from the dataset.
+                </p>
+            </div>
+        </div>
+
+        <div class="data-source-card">
+            <h3>Rental Yield Data</h3>
+            <p>
+                Rental yield data provides investment return information for properties.
+            </p>
+            <div class="attribution" style="background: var(--warning-dim); border-left-color: var(--warning);">
+                <strong>Status:</strong> Available for 75/397 suburbs (18.9%). Missing data marked as empty (no placeholders).
+                <p style="margin-top: var(--space-2);">
+                    <strong>Data Quality:</strong> All placeholder values (4.0%) have been removed. Missing data is honestly marked as empty.
+                </p>
             </div>
         </div>
 

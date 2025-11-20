@@ -1,0 +1,202 @@
+# HomeScorePro - Agent Rules & Guidelines
+## AI Agent Behavior & Project Standards
+
+**Last Updated:** 2025-11-20  
+**Purpose:** Rules and guidelines for AI agents working on this project  
+**Reference:** See `dev-homescorepro/working-documents/core/AGENT_RULES.md` for complete rules
+
+---
+
+## ⚠️ MANDATORY: AGENT CONFIRMATION REQUIREMENT
+
+**CRITICAL:** At the end of every response, the agent MUST confirm:
+
+1. ✅ **Rules Read:** "I have read and checked against the project rules in `.cursorrules`"
+2. ✅ **Compliance Verified:** Confirm that all changes comply with:
+   - Project status (prototype phase maintained)
+   - Data integrity rules (no placeholders)
+   - Legal compliance (disclaimers preserved)
+   - Documentation standards (updates made)
+   - Code standards (design system followed)
+
+**Example confirmation format:**
+```
+---
+✅ **Rules Compliance Confirmed:**
+- Read and checked against `.cursorrules` and `AGENT_RULES.md`
+- Prototype status maintained
+- Data integrity rules followed
+- Documentation updated
+- Design system standards followed
+```
+
+---
+
+## ⚠️ CRITICAL PROJECT STATUS
+
+**Current Phase:** Private Research Prototype  
+**Strategic Decision Required:** Option A (Educational) vs Option B (Commercial)  
+**Status:** NOT ready for public launch or monetization
+
+**Before making any changes:**
+1. Check `dev-homescorepro/working-documents/planning/strategy-options.md` for strategic context
+2. Verify prototype disclaimers are maintained on all HTML pages
+3. Ensure payment features remain disabled
+4. Do NOT remove data limitation disclaimers
+
+---
+
+## 📚 SOURCE OF TRUTH DOCUMENTS
+
+**ALWAYS reference these documents before making changes:**
+
+1. **Project Understanding:** `dev-homescorepro/working-documents/core/project-understanding.md`
+   - Complete product documentation (v8.0.0)
+   - Architecture, data assets, scoring algorithms
+   - Current status and roadmap
+
+2. **Master Planning:** `dev-homescorepro/working-documents/planning/master-planning.md`
+   - Single source of truth for all tasks
+   - Active task management
+   - Dependencies and priorities
+
+3. **Documentation Index:** `dev-homescorepro/working-documents/core/documentation-index.md`
+   - Navigation to all documentation
+   - Document status and locations
+
+---
+
+## 🎯 KEY PROJECT RULES
+
+### Data Integrity Rules
+
+1. **NO Placeholder Data:**
+   - All placeholder values must be removed or marked as empty/null
+   - Missing data must be clearly marked as missing
+   - Never use fake or simulated data
+
+2. **Data Source Attribution:**
+   - All data sources must be properly attributed
+   - See `data-sources.html` for current attribution
+   - Check `legal-compliance-status.md` for licensing requirements
+
+3. **Data Quality:**
+   - Verify data completeness before using
+   - Check for duplicates (property IDs, etc.)
+   - Validate data ranges and formats
+
+### Code Standards
+
+1. **File Organization:**
+   - Follow existing file structure
+   - Use lowercase, kebab-case for multi-word files
+   - Keep CSS in `css/`, JS in `js/`, data in `data/`
+
+2. **Design System:**
+   - Use `css/design-master.css` as single source of truth
+   - Follow dark theme design system
+   - Maintain consistency across all pages
+
+3. **Documentation:**
+   - Update relevant documentation when making changes
+   - Update "Last Updated" dates
+   - Add entries to changelog.md for significant changes
+
+### Legal & Compliance Rules
+
+1. **Prototype Disclaimers:**
+   - Maintain "Private Research Prototype" warnings on all HTML pages
+   - Keep payment features disabled
+   - Preserve data limitation disclaimers
+
+2. **Data Licensing:**
+   - Check `legal-compliance-status.md` before using any data
+   - Verify licensing requirements
+   - Do NOT use data requiring commercial licenses without proper setup
+
+3. **Terms & Privacy:**
+   - Ensure terms.html and privacy.html have prototype disclaimers
+   - Maintain honest data status disclosures
+
+### Documentation Rules
+
+1. **Always Update:**
+   - Update `changelog.md` for significant changes
+   - Update relevant documentation files
+   - Update "Last Updated" dates
+
+2. **Reference Structure:**
+   - Use `project-understanding.md` as primary reference
+   - Check `master-planning.md` for task context
+   - Follow documentation-index.md for navigation
+
+3. **Version Control:**
+   - Maintain version numbers in key documents
+   - Document breaking changes
+   - Track major reorganizations
+
+---
+
+## 🔍 BEFORE MAKING CHANGES
+
+**Always check:**
+
+1. ✅ Current project status (prototype phase)
+2. ✅ Strategic decision context (Option A vs B)
+3. ✅ Relevant documentation (project-understanding.md)
+4. ✅ Task dependencies (master-planning.md)
+5. ✅ Data licensing requirements (legal-compliance-status.md)
+6. ✅ Design system standards (design-master.css)
+
+---
+
+## 📝 CHANGE WORKFLOW
+
+1. **Read relevant documentation first**
+2. **Check master-planning.md for task context**
+3. **Verify no breaking changes to prototype status**
+4. **Make changes following code standards**
+5. **Update documentation and changelog**
+6. **Update "Last Updated" dates**
+
+---
+
+## 🚫 DO NOT
+
+- Remove prototype disclaimers
+- Enable payment features
+- Remove data limitation disclaimers
+- Use placeholder/fake data
+- Break existing functionality
+- Skip documentation updates
+- Ignore legal/compliance requirements
+
+---
+
+## ✅ DO
+
+- Reference source of truth documents
+- Maintain prototype status
+- Follow design system
+- Update documentation
+- Check data licensing
+- Preserve data integrity
+- Follow code standards
+
+---
+
+**For complete rules and detailed guidelines, see:**  
+`dev-homescorepro/working-documents/core/AGENT_RULES.md`
+
+---
+
+## ⚠️ REMINDER: END-OF-RESPONSE CONFIRMATION REQUIRED
+
+**Every agent response MUST end with a confirmation that:**
+1. Rules have been read and checked
+2. All changes comply with project rules
+3. Prototype status is maintained
+4. Documentation is updated (if applicable)
+
+**This confirmation is MANDATORY for every response.**
+

@@ -54,6 +54,7 @@
             font-weight: 800;
             background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
         }
@@ -96,6 +97,7 @@
         .hero-gradient {
             background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero-subtitle {
@@ -289,6 +291,10 @@
     </style>
 </head>
 <body>
+    <!-- PRIVATE RESEARCH PROTOTYPE WARNING BANNER -->
+    <div style="background: #dc2626; color: white; padding: 12px 20px; text-align: center; font-weight: 600; font-size: 14px; line-height: 1.5; position: relative; z-index: 10000; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+        ⚠️ PRIVATE RESEARCH PROTOTYPE - NOT FOR PUBLIC USE - Contains simulated/placeholder data - Not for commercial use or decision making
+    </div>
     <nav class="nav" id="mainNav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">HomeScorePro</a>
@@ -374,9 +380,9 @@
                 <div class="plan-description">For serious buyers making informed decisions</div>
                 <div class="plan-price">$29</div>
                 <div class="plan-price-period">/month</div>
-                <button class="plan-cta btn-glow btn-ripple" onclick="window.location.href='members.html'">
-                    Start Free Trial
-                </button>
+                <div style="background: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); text-align: center; color: var(--text-secondary); font-size: 0.875rem;">
+                    Payment features disabled - Research prototype only
+                </div>
                 <ul class="plan-features">
                     <li class="plan-feature">
                         <span class="feature-icon">✓</span>
@@ -419,9 +425,9 @@
                 <div class="plan-description">For investors & professionals managing portfolios</div>
                 <div class="plan-price">$79</div>
                 <div class="plan-price-period">/month</div>
-                <button class="plan-cta secondary btn-ripple" onclick="window.location.href='contact.html'">
-                    Contact Sales
-                </button>
+                <div style="background: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); text-align: center; color: var(--text-secondary); font-size: 0.875rem;">
+                    Payment features disabled - Research prototype only
+                </div>
                 <ul class="plan-features">
                     <li class="plan-feature">
                         <span class="feature-icon">✓</span>
@@ -459,12 +465,12 @@
             </div>
         </div>
 
-        <!-- Guarantee Section -->
-        <div style="background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary)); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: var(--space-16) var(--space-8); text-align: center; margin-bottom: var(--space-16);">
-            <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: var(--space-4); color: var(--text-primary);">🔒 100% Money-Back Guarantee</h2>
+        <!-- Payment Disabled Notice -->
+        <div style="background: var(--bg-tertiary); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: var(--space-16) var(--space-8); text-align: center; margin-bottom: var(--space-16);">
+            <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: var(--space-4); color: var(--text-primary);">⚠️ Payment Features Disabled</h2>
             <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-                Try HomeScorePro Pro risk-free for 14 days. If you're not completely satisfied, 
-                we'll refund your money—no questions asked.
+                This is a research prototype. Payment features are disabled. 
+                All features are available for testing purposes only.
             </p>
         </div>
 
@@ -572,7 +578,11 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2024 HomeScorePro. Built with precision. Powered by data.
+            <p>© 2024 HomeScorePro. Built with precision. Powered by data.</p>
+            <p style="margin-top: var(--space-2); font-size: 0.875rem; color: var(--text-tertiary);">
+                Data Sources: Australian Bureau of Statistics (SEIFA), Victoria Police, 
+                <a href="data-sources.html" style="color: var(--orange-primary); text-decoration: none;">View all sources</a>
+            </p>
         </div>
     </footer>
     

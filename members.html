@@ -287,15 +287,17 @@
             max-width: 600px;
             width: 90%;
             max-height: 90vh;
-            overflow-y: auto;
             margin: var(--space-xl) auto;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         
         .onboarding-header {
             padding: var(--space-2xl);
             border-bottom: 1px solid var(--gray-200);
             text-align: center;
+            flex-shrink: 0;
         }
         
         .onboarding-header h2 {
@@ -305,6 +307,9 @@
         
         .onboarding-content {
             padding: var(--space-2xl);
+            overflow-y: auto;
+            flex: 1;
+            padding-bottom: 100px; /* Space for sticky buttons */
         }
         
         .onboarding-step {
@@ -317,14 +322,18 @@
         
         .onboarding-step h3 {
             color: var(--primary);
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-sm);
             font-size: 1.5rem;
+        }
+        
+        .onboarding-step p {
+            margin-bottom: var(--space-sm);
         }
         
         .onboarding-options {
             display: grid;
-            gap: var(--space-md);
-            margin-bottom: var(--space-xl);
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
         }
         
         .onboarding-option {
@@ -348,21 +357,22 @@
         
         .onboarding-option h4 {
             color: var(--primary);
-            margin-bottom: var(--space-xs);
+            margin-bottom: var(--space-1);
         }
         
         .onboarding-option p {
             color: var(--gray-600);
             font-size: 0.875rem;
+            margin: 0;
         }
         
         .onboarding-input-group {
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-md);
         }
         
         .onboarding-input-group label {
             display: block;
-            margin-bottom: var(--space-sm);
+            margin-bottom: var(--space-xs);
             color: var(--gray-700);
             font-weight: 600;
         }
@@ -411,8 +421,8 @@
         .onboarding-checkbox-group {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-md);
-            margin-bottom: var(--space-lg);
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
         }
         
         .onboarding-checkbox {
@@ -443,8 +453,14 @@
             display: flex;
             justify-content: space-between;
             gap: var(--space-md);
-            padding: var(--space-xl);
+            padding: var(--space-md) var(--space-xl);
             border-top: 1px solid var(--gray-200);
+            background: var(--white);
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+            flex-shrink: 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
         }
         
         .onboarding-btn {
@@ -492,6 +508,65 @@
         
         .onboarding-progress-dot.active {
             background: var(--primary);
+        }
+        
+        /* Responsive styles for onboarding */
+        @media (max-width: 768px) {
+            .onboarding-actions {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            
+            .onboarding-actions > div {
+                display: flex;
+                gap: var(--space-sm);
+                width: 100%;
+            }
+            
+            .onboarding-btn {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .onboarding-container {
+                max-height: 95vh;
+            }
+        }
+        
+        /* Impact Explanation Info Box */
+        .onboarding-impact-info {
+            background: var(--bg-tertiary);
+            border-left: 3px solid var(--orange-primary);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-md);
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+        
+        .onboarding-impact-info strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: var(--space-1);
+            font-size: 0.85rem;
+        }
+        
+        .onboarding-impact-info ul {
+            margin: var(--space-2) 0 0 0;
+            padding-left: var(--space-4);
+            list-style: none;
+        }
+        
+        .onboarding-impact-info li {
+            margin-bottom: var(--space-1);
+        }
+        
+        .onboarding-impact-info li:before {
+            content: "• ";
+            color: var(--orange-primary);
+            font-weight: bold;
+            margin-right: var(--space-1);
         }
         
         /* ═══════════════════════════════════════════════════════════════ */
@@ -1430,6 +1505,10 @@
     </style>
 </head>
 <body>
+    <!-- PRIVATE RESEARCH PROTOTYPE WARNING BANNER -->
+    <div style="background: #dc2626; color: white; padding: 12px 20px; text-align: center; font-weight: 600; font-size: 14px; line-height: 1.5; position: relative; z-index: 10000; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+        ⚠️ PRIVATE RESEARCH PROTOTYPE - NOT FOR PUBLIC USE - Contains simulated/placeholder data - Not for commercial use or decision making
+    </div>
     <!-- ═══════════════════════════════════════════════════════════════ -->
     <!-- NAVIGATION                                                      -->
     <!-- ═══════════════════════════════════════════════════════════════ -->
@@ -1444,7 +1523,8 @@
                 <li><a href="members.html#my-properties" class="nav-link" id="nav-my-properties">My Properties</a></li>
                 <li><a href="members.html#settings" class="nav-link">Settings</a></li>
             </ul>
-            <div>
+            <div style="display: flex; gap: var(--space-md); align-items: center;">
+                <button onclick="resetOnboarding()" class="nav-cta" style="background: var(--secondary); color: var(--white); border: none; cursor: pointer; font-size: 0.875rem; padding: var(--space-xs) var(--space-md);">Reset Onboarding</button>
                 <a href="index.html" class="nav-cta" style="background: var(--gray-200); color: var(--gray-700);">Back to Home</a>
             </div>
         </div>
@@ -1473,8 +1553,17 @@
                 <!-- Step 1: Primary Goal -->
                 <div class="onboarding-step active" id="step-1">
                     <h3>What's your primary goal?</h3>
-                    <p style="color: var(--gray-600); margin-bottom: var(--space-xl);">This helps us tailor the scoring to your needs</p>
-                    <div class="onboarding-options">
+                    <p style="color: var(--gray-600); margin-bottom: var(--space-sm);">This helps us tailor the scoring to your needs</p>
+                    <div class="onboarding-impact-info">
+                        <strong>How this affects your experience:</strong>
+                        <ul>
+                            <li><strong>Scoring:</strong> Investment = focuses on growth/yield (45%), Lifestyle = focuses on amenities (30%)</li>
+                            <li><strong>What You See:</strong> Scores change based on your choice</li>
+                            <li><strong>Data:</strong> All suburbs shown, but ranked differently</li>
+                            <li><strong>How It Works:</strong> Your choice changes which factors matter most</li>
+                        </ul>
+                    </div>
+                    <div class="onboarding-options" style="margin-top: var(--space-md);">
                         <div class="onboarding-option" onclick="selectOption(this, 'primaryGoal', 'Investment')">
                             <h4>💰 Investment Focus</h4>
                             <p>Maximize growth and rental yield</p>
@@ -1493,8 +1582,17 @@
                 <!-- Step 2: Budget Range -->
                 <div class="onboarding-step" id="step-2">
                     <h3>What's your budget range?</h3>
-                    <p style="color: var(--gray-600); margin-bottom: var(--space-xl);">This determines which suburbs match your strategy</p>
-                    <div class="onboarding-input-group">
+                    <p style="color: var(--gray-600); margin-bottom: var(--space-sm);">This determines which suburbs match your strategy</p>
+                    <div class="onboarding-impact-info">
+                        <strong>How this affects your experience:</strong>
+                        <ul>
+                            <li><strong>Scoring:</strong> Budget picks strategy automatically (Investment/Balanced/Lifestyle)</li>
+                            <li><strong>What You See:</strong> Properties matched to your budget get better scores</li>
+                            <li><strong>Data:</strong> All suburbs shown, affordable ones score higher</li>
+                            <li><strong>How It Works:</strong> System compares property prices to your budget range</li>
+                        </ul>
+                    </div>
+                    <div class="onboarding-input-group" style="margin-top: var(--space-md);">
                         <label>Minimum Budget ($)</label>
                         <input type="number" id="budget-min" value="500000" min="100000" max="5000000" step="10000">
                     </div>
@@ -1507,8 +1605,17 @@
                 <!-- Step 3: Family Status -->
                 <div class="onboarding-step" id="step-3">
                     <h3>What's your family situation?</h3>
-                    <p style="color: var(--gray-600); margin-bottom: var(--space-xl);">This helps prioritize relevant amenities</p>
-                    <div class="onboarding-options">
+                    <p style="color: var(--gray-600); margin-bottom: var(--space-sm);">This helps prioritize relevant amenities</p>
+                    <div class="onboarding-impact-info">
+                        <strong>How this affects your experience:</strong>
+                        <ul>
+                            <li><strong>Scoring:</strong> Saved for future use</li>
+                            <li><strong>What You See:</strong> No change right now</li>
+                            <li><strong>Data:</strong> All suburbs shown</li>
+                            <li><strong>How It Works:</strong> Will help prioritize schools and childcare later</li>
+                        </ul>
+                    </div>
+                    <div class="onboarding-options" style="margin-top: var(--space-md);">
                         <div class="onboarding-option" onclick="selectOption(this, 'familyStatus', 'Single')">
                             <h4>👤 Single</h4>
                         </div>
@@ -1527,8 +1634,17 @@
                 <!-- Step 4: Safety Priority -->
                 <div class="onboarding-step" id="step-4">
                     <h3>How important is safety to you?</h3>
-                    <p style="color: var(--gray-600); margin-bottom: var(--space-xl);">Rate from 1 (not important) to 10 (very important)</p>
-                    <div class="onboarding-input-group">
+                    <p style="color: var(--gray-600); margin-bottom: var(--space-sm);">Rate from 1 (not important) to 10 (very important)</p>
+                    <div class="onboarding-impact-info">
+                        <strong>How this affects your experience:</strong>
+                        <ul>
+                            <li><strong>Scoring:</strong> Saved for future use</li>
+                            <li><strong>What You See:</strong> No change right now</li>
+                            <li><strong>Data:</strong> All suburbs shown</li>
+                            <li><strong>How It Works:</strong> Will help prioritize safer areas later</li>
+                        </ul>
+                    </div>
+                    <div class="onboarding-input-group" style="margin-top: var(--space-md);">
                         <label>Safety Priority (1-10)</label>
                         <input type="range" id="safety-priority" min="1" max="10" value="8" oninput="document.getElementById('safety-value').textContent = this.value">
                         <div style="text-align: center; margin-top: var(--space-sm);">
@@ -1540,8 +1656,17 @@
                 <!-- Step 5: Geographic Categories -->
                 <div class="onboarding-step" id="step-5">
                     <h3>Which areas interest you?</h3>
-                    <p style="color: var(--gray-600); margin-bottom: var(--space-xl);">Select all that apply, or choose "See All"</p>
-                    <div class="onboarding-checkbox-group">
+                    <p style="color: var(--gray-600); margin-bottom: var(--space-sm);">Select all that apply, or choose "See All"</p>
+                    <div class="onboarding-impact-info">
+                        <strong>How this affects your experience:</strong>
+                        <ul>
+                            <li><strong>Scoring:</strong> Doesn't change scores</li>
+                            <li><strong>What You See:</strong> Only shows suburbs in selected areas</li>
+                            <li><strong>Data:</strong> Filters to your chosen areas (Bayside, Hills, Inner Metro, Outer Growth)</li>
+                            <li><strong>How It Works:</strong> Hides suburbs outside your selected areas</li>
+                        </ul>
+                    </div>
+                    <div class="onboarding-checkbox-group" style="margin-top: var(--space-md);">
                         <div class="onboarding-checkbox" onclick="toggleCheckbox(this, 'BAYSIDE')">
                             <input type="checkbox" id="geo-bayside" value="BAYSIDE">
                             <label for="geo-bayside">🌊 BAYSIDE</label>
@@ -2363,6 +2488,10 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 HomeScorePro. Built with complete transparency in Melbourne.</p>
+            <p style="margin-top: var(--space-2); font-size: 0.875rem; color: rgba(255, 255, 255, 0.6);">
+                Data Sources: Australian Bureau of Statistics (SEIFA), Victoria Police, 
+                <a href="data-sources.html" style="color: var(--orange-primary); text-decoration: none;">View all sources</a>
+            </p>
         </div>
     </footer>
     
@@ -2415,7 +2544,9 @@
                         <!-- PLACEHOLDER: Subscription management not implemented -->
                         <strong>PLACEHOLDER:</strong> Subscription management (view plan, upgrade/downgrade, cancel, billing history) needs to be implemented with payment processor integration.
                     </p>
-                    <a href="pricing.html" class="btn-primary" style="display: inline-block; margin-top: var(--space-md);">View Plans</a>
+                    <div style="background: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-md); text-align: center; color: var(--text-secondary); font-size: 0.875rem; margin-top: var(--space-md);">
+                        Payment features disabled - Research prototype only
+                    </div>
                 </div>
             </div>
         </div>
@@ -4339,6 +4470,74 @@
         // Manual trigger for onboarding (for testing/debugging)
         function showOnboardingManually() {
             showOnboarding();
+        }
+        
+        // Reset onboarding questionnaire
+        function resetOnboarding() {
+            if (confirm('Reset your onboarding preferences? This will clear your current preferences and show the onboarding questionnaire again.')) {
+                // Clear preferences from localStorage
+                localStorage.removeItem('homescorepro_preferences');
+                
+                // Reset onboarding data to defaults
+                onboardingData = {
+                    primaryGoal: null,
+                    budgetMin: 500000,
+                    budgetMax: 750000,
+                    familyStatus: null,
+                    safetyPriority: 8,
+                    geographicCategories: []
+                };
+                
+                // Reset to first step
+                currentStep = 1;
+                
+                // Reset all step visibility
+                for (let i = 1; i <= totalSteps; i++) {
+                    const step = document.getElementById(`step-${i}`);
+                    if (step) {
+                        step.classList.remove('active');
+                    }
+                }
+                
+                // Show first step
+                const firstStep = document.getElementById('step-1');
+                if (firstStep) {
+                    firstStep.classList.add('active');
+                }
+                
+                // Reset progress dots
+                updateProgress();
+                updateButtons();
+                
+                // Clear any selected options
+                document.querySelectorAll('.onboarding-option').forEach(opt => opt.classList.remove('selected'));
+                document.querySelectorAll('.onboarding-checkbox').forEach(cb => {
+                    cb.classList.remove('selected');
+                    const checkbox = cb.querySelector('input[type="checkbox"]');
+                    if (checkbox) checkbox.checked = false;
+                });
+                
+                // Reset form inputs
+                const budgetMin = document.getElementById('budget-min');
+                const budgetMax = document.getElementById('budget-max');
+                const safetyPriority = document.getElementById('safety-priority');
+                const safetyValue = document.getElementById('safety-value');
+                if (budgetMin) budgetMin.value = 500000;
+                if (budgetMax) budgetMax.value = 750000;
+                if (safetyPriority) {
+                    safetyPriority.value = 8;
+                    if (safetyValue) safetyValue.textContent = '8';
+                }
+                
+                // Clear window preferences
+                window.userPreferences = null;
+                
+                // Show onboarding modal
+                showOnboarding();
+                
+                // Update preferences display
+                displayPreferences();
+            }
         }
         
         function showOnboarding() {

@@ -94,7 +94,7 @@ function Pricing() {
               </li>
               <li className="plan-feature" style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', padding: '0.75rem 0', color: 'var(--text-secondary)' }}>
                 <span className="feature-icon" style={{ color: 'var(--orange-light)', fontSize: '1.25rem', flexShrink: 0 }}>✓</span>
-                <span>Export reports (PDF & JSON)</span>
+                <span>Export reports (JSON)</span>
               </li>
               <li className="plan-feature" style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', padding: '0.75rem 0', color: 'var(--text-secondary)' }}>
                 <span className="feature-icon" style={{ color: 'var(--orange-light)', fontSize: '1.25rem', flexShrink: 0 }}>✓</span>

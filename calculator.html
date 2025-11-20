@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="css/ui-enhancements.css">
 </head>
 <body>
+    <!-- PRIVATE RESEARCH PROTOTYPE WARNING BANNER -->
+    <div style="background: #dc2626; color: white; padding: 12px 20px; text-align: center; font-weight: 600; font-size: 14px; line-height: 1.5; position: relative; z-index: 10000; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+        ⚠️ PRIVATE RESEARCH PROTOTYPE - NOT FOR PUBLIC USE - Contains simulated/placeholder data - Not for commercial use or decision making
+    </div>
     <!-- Navigation -->
     <nav class="nav" id="mainNav">
         <div class="nav-container">
@@ -52,6 +56,9 @@
             <p class="hero-subtitle">
                 Sophisticated property analysis powered by 38+ data points. Make smarter decisions with transparent, data-driven suburb and property scores.
             </p>
+            <div style="background: var(--bg-tertiary); border-left: 4px solid var(--orange-primary); padding: var(--space-4) var(--space-6); border-radius: var(--radius-md); margin: var(--space-6) 0; font-size: 0.875rem; color: var(--text-secondary);">
+                <strong style="color: var(--text-primary);">⚠️ Data Limitations:</strong> Data may contain placeholders and estimates. Scores are for demonstration purposes only. Not financial, investment, or real estate advice.
+            </div>
             <div class="hero-cta">
                 <a href="#calculator" class="btn btn-primary btn-lg btn-glow btn-ripple">
                     Start Scoring
@@ -327,6 +334,9 @@
                             <div class="score-description">
                                 <strong>Suburb Quality Score:</strong> Evaluates how good this suburb is overall based on location, amenities, safety, schools, and growth potential (15 metrics).
                             </div>
+                            <div style="margin-top: var(--space-4); padding: var(--space-3); background: var(--bg-tertiary); border-radius: var(--radius-md); font-size: 0.75rem; color: var(--text-tertiary); text-align: center;">
+                                ⚠️ Data may contain placeholders. Scores for demonstration only. Not financial advice.
+                            </div>
                         </div>
 
                         <div id="ascoreBreakdown" class="breakdown-section hidden">
@@ -401,10 +411,6 @@
                         </span>
                     </button>
 
-                    <a href="members.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--space-4); text-align: center;">
-                        Upgrade to Members for Full Features
-                        <span>→</span>
-                    </a>
                 </div>
 
                 <!-- Results Card -->
@@ -452,6 +458,9 @@
                             <div class="score-percentile" id="bscorePercentile"></div>
                             <div class="score-description">
                                 <strong>Property Match Score:</strong> Combines suburb quality (A-Score) with property-specific factors to show how well this property matches your needs (23 metrics).
+                            </div>
+                            <div style="margin-top: var(--space-4); padding: var(--space-3); background: var(--bg-tertiary); border-radius: var(--radius-md); font-size: 0.75rem; color: var(--text-tertiary); text-align: center;">
+                                ⚠️ Data may contain placeholders. Scores for demonstration only. Not financial advice.
                             </div>
                         </div>
 
@@ -624,7 +633,11 @@
             </div>
 
             <div class="footer-bottom">
-                © 2024 HomeScorePro. Built with precision. Powered by data.
+                <p>© 2024 HomeScorePro. Built with precision. Powered by data.</p>
+                <p style="margin-top: var(--space-2); font-size: 0.875rem; color: var(--text-tertiary);">
+                    Data Sources: Australian Bureau of Statistics (SEIFA), Victoria Police, 
+                    <a href="data-sources.html" style="color: var(--orange-primary); text-decoration: none;">View all sources</a>
+                </p>
             </div>
         </div>
     </footer>

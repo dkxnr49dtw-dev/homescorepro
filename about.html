@@ -186,6 +186,10 @@
     </style>
 </head>
 <body>
+    <!-- PRIVATE RESEARCH PROTOTYPE WARNING BANNER -->
+    <div style="background: #dc2626; color: white; padding: 12px 20px; text-align: center; font-weight: 600; font-size: 14px; line-height: 1.5; position: relative; z-index: 10000; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+        ⚠️ PRIVATE RESEARCH PROTOTYPE - NOT FOR PUBLIC USE - Contains simulated/placeholder data - Not for commercial use or decision making
+    </div>
     <nav class="nav" id="mainNav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">HomeScorePro</a>
@@ -222,6 +226,9 @@
         <p class="hero-subtitle">
             We believe finding the right property shouldn't require guesswork. That's why we built HomeScorePro.
         </p>
+        <div style="background: var(--bg-tertiary); border-left: 4px solid var(--orange-primary); padding: var(--space-4) var(--space-6); border-radius: var(--radius-md); margin: var(--space-6) auto; max-width: 800px; font-size: 0.875rem; color: var(--text-secondary);">
+            <strong style="color: var(--text-primary);">⚠️ Data Limitations:</strong> Data may contain placeholders and estimates. Scores are for demonstration purposes only. Not financial, investment, or real estate advice.
+        </div>
     </div>
 
     <div class="content-section">
@@ -397,7 +404,11 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2024 HomeScorePro. Built with precision. Powered by data.
+            <p>© 2024 HomeScorePro. Built with precision. Powered by data.</p>
+            <p style="margin-top: var(--space-2); font-size: 0.875rem; color: var(--text-tertiary);">
+                Data Sources: Australian Bureau of Statistics (SEIFA), Victoria Police, 
+                <a href="data-sources.html" style="color: var(--orange-primary); text-decoration: none;">View all sources</a>
+            </p>
         </div>
     </footer>
     
