@@ -8,14 +8,68 @@ const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
 
+// Security middleware
+const { 
+  blockSuspiciousIPs, 
+  detectBots, 
+  strictLimiter,
+  sanitizeInput 
+} = require('./middleware/security');
+
+// Password authentication
+const { 
+  sessionConfig, 
+  requireAuth, 
+  handleLogin, 
+  handleLogout, 
+  checkAuth,
+  loginLimiter 
+} = require('./middleware/passwordAuth');
+const session = require('express-session');
+
 const app = express();
 
-// Middleware
-app.use(helmet());
+// Enhanced security headers
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Needed for React
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'"],
+      fontSrc: ["'self'", "data:"],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      frameSrc: ["'none'"],
+    },
+  },
+  hsts: {
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true
+  },
+  noSniff: true,
+  xssFilter: true,
+  referrerPolicy: { policy: 'strict-origin-when-cross-origin' }
+}));
+
+// Session middleware (must be before other middleware)
+app.use(session(sessionConfig));
+
+// Security middleware
+app.use(blockSuspiciousIPs);
+app.use(detectBots);
+app.use(sanitizeInput);
+
+// General middleware
 app.use(compression());
 app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Apply strict rate limiting to all routes
+app.use(strictLimiter);
 
 // CORS Configuration
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:8000', 'http://localhost:3000'];
@@ -48,10 +102,21 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// Health Check
+// Robots.txt - Block all crawlers
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send('User-agent: *\nDisallow: /\n');
+});
+
+// Health Check (no auth required for monitoring)
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+
+// Authentication routes (public)
+app.get('/api/auth/status', checkAuth);
+app.post('/api/auth/login', loginLimiter, handleLogin);
+app.post('/api/auth/logout', handleLogout);
 
 // Webhooks (must be before JSON parsing, uses raw body)
 app.use('/webhooks/stripe', express.raw({ type: 'application/json' }), require('./webhooks/stripe'));
@@ -69,7 +134,38 @@ app.use('/api/contact', require('./routes/contact'));
 const reactAppPath = path.join(__dirname, '../react-app/dist');
 if (process.env.NODE_ENV === 'production' && fs.existsSync(reactAppPath)) {
   console.log('Serving React app from:', reactAppPath);
-  app.use(express.static(reactAppPath));
+  
+  // Serve static files (CSS, JS, images) - no auth required
+  app.use(express.static(reactAppPath, {
+    setHeaders: (res, path) => {
+      // Add security headers to static files
+      if (path.endsWith('.html')) {
+        res.setHeader('X-Content-Type-Options', 'nosniff');
+        res.setHeader('X-Frame-Options', 'DENY');
+        res.setHeader('X-XSS-Protection', '1; mode=block');
+      }
+    }
+  }));
+  
+  // Protect all routes with password authentication
+  // Allow login page and static assets
+  app.use((req, res, next) => {
+    // Allow static assets, login page, and API routes
+    if (
+      req.path.startsWith('/assets/') ||
+      req.path.startsWith('/data/') ||
+      req.path === '/login' ||
+      req.path.startsWith('/api/') ||
+      req.path.startsWith('/webhooks/') ||
+      req.path === '/robots.txt' ||
+      req.path === '/health'
+    ) {
+      return next();
+    }
+    
+    // Require authentication for all other routes
+    requireAuth(req, res, next);
+  });
   
   // SPA fallback - serve index.html for all non-API routes
   app.get('*', (req, res, next) => {
