@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
@@ -58,7 +59,7 @@ app.use('/api/contact', require('./routes/contact'));
 
 // Serve React app static files (in production)
 const reactAppPath = path.join(__dirname, '../react-app/dist');
-if (process.env.NODE_ENV === 'production' && require('fs').existsSync(reactAppPath)) {
+if (process.env.NODE_ENV === 'production' && fs.existsSync(reactAppPath)) {
   console.log('Serving React app from:', reactAppPath);
   app.use(express.static(reactAppPath));
   
@@ -84,7 +85,7 @@ app.use((err, req, res, next) => {
 });
 
 // 404 Handler (only for API routes if React app is not being served)
-if (process.env.NODE_ENV !== 'production' || !require('fs').existsSync(reactAppPath)) {
+if (process.env.NODE_ENV !== 'production' || !fs.existsSync(reactAppPath)) {
   app.use((req, res) => {
     res.status(404).json({ error: 'Route not found' });
   });
