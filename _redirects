@@ -1,0 +1,4 @@
+# Netlify redirects file
+# Serve HTML files directly, only redirect if file doesn't exist
+/*    /index.html   200
+
