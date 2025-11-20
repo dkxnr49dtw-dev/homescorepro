@@ -6,11 +6,17 @@
   command = ""
   
   # Publish the root directory with static HTML files
+  # Explicitly exclude react-app and server directories
   publish = "."
+  
+  # Ignore directories that shouldn't be deployed
+  ignore = "react-app/*, server/*, dev-homescorepro/*, node_modules/*, .git/*"
 
 # SPA routing - ensures all routes work for HTML files
+# Only redirect if file doesn't exist (for direct HTML file access)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
 
