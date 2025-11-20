@@ -512,9 +512,42 @@
         
         /* Responsive styles for onboarding */
         @media (max-width: 768px) {
+            .onboarding-container {
+                width: 95%;
+                max-height: 95vh;
+                margin: var(--space-2) auto;
+            }
+            
+            .onboarding-header {
+                padding: var(--space-lg) var(--space-md);
+            }
+            
+            .onboarding-content {
+                padding: var(--space-lg) var(--space-md);
+                padding-bottom: 120px; /* More space for sticky buttons */
+            }
+            
+            .onboarding-checkbox-group {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+            
+            .onboarding-step h3 {
+                font-size: 1.25rem;
+            }
+            
+            .onboarding-impact-info {
+                font-size: 0.75rem;
+                padding: var(--space-2) var(--space-3);
+            }
+            
+            .onboarding-impact-info strong {
+                font-size: 0.8rem;
+            }
+            
             .onboarding-actions {
                 flex-direction: column;
                 gap: var(--space-sm);
+                padding: var(--space-3) var(--space-md);
             }
             
             .onboarding-actions > div {
@@ -526,10 +559,29 @@
             .onboarding-btn {
                 flex: 1;
                 min-width: 0;
+                min-height: 44px;
+                font-size: 16px; /* Prevent iOS zoom */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .onboarding-container {
+                width: 100%;
+                border-radius: 0;
+                max-height: 100vh;
+                margin: 0;
             }
             
-            .onboarding-container {
-                max-height: 95vh;
+            .onboarding-header {
+                padding: var(--space-md) var(--space-3);
+            }
+            
+            .onboarding-content {
+                padding: var(--space-md) var(--space-3);
+            }
+            
+            .onboarding-step h3 {
+                font-size: 1.1rem;
             }
         }
         
@@ -1238,6 +1290,20 @@
             .table-container {
                 margin: 0 calc(-1 * var(--space-4));
                 padding: var(--space-4);
+                position: relative;
+            }
+            
+            .table-container::after {
+                content: '← Scroll →';
+                display: block;
+                text-align: center;
+                padding: var(--space-2);
+                color: var(--text-tertiary);
+                font-size: 0.75rem;
+                font-weight: 600;
+                background: var(--bg-tertiary);
+                border-radius: var(--radius-sm);
+                margin-top: var(--space-2);
             }
             
             .table-container table {
@@ -1513,7 +1579,7 @@
     <!-- NAVIGATION                                                      -->
     <!-- ═══════════════════════════════════════════════════════════════ -->
     
-    <nav class="nav">
+    <nav class="nav" id="mainNav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">HomeScorePro</a>
             <ul class="nav-menu">
@@ -1527,6 +1593,22 @@
                 <button onclick="resetOnboarding()" class="nav-cta" style="background: var(--secondary); color: var(--white); border: none; cursor: pointer; font-size: 0.875rem; padding: var(--space-xs) var(--space-md);">Reset Onboarding</button>
                 <a href="index.html" class="nav-cta" style="background: var(--gray-200); color: var(--gray-700);">Back to Home</a>
             </div>
+            <button class="nav-mobile-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="nav-mobile-menu" id="mobileMenu" aria-hidden="true">
+            <ul class="nav-mobile-links">
+                <li><a href="members.html#location-scout" class="nav-mobile-link" onclick="toggleMobileMenu()">Suburb Scout</a></li>
+                <li><a href="members.html#calculator" class="nav-mobile-link" onclick="toggleMobileMenu()">Property Evaluator</a></li>
+                <li><a href="members.html#my-properties" class="nav-mobile-link" onclick="toggleMobileMenu()">My Properties</a></li>
+                <li><a href="members.html#settings" class="nav-mobile-link" onclick="toggleMobileMenu()">Settings</a></li>
+                <li><a href="index.html" class="nav-mobile-link" onclick="toggleMobileMenu()">Back to Home</a></li>
+            </ul>
         </div>
     </nav>
     
@@ -4853,5 +4935,8 @@
                    localStorage.getItem('homescorepro_paid_access') === 'true';
         }
     </script>
+    
+    <!-- Mobile Navigation -->
+    <script src="js/navigation.js"></script>
 </body>
 </html>
