@@ -1,0 +1,220 @@
+/* =================================================
+   PROPERTY IMAGE COMPONENTS
+   Last Updated: 2025-11-25
+   ================================================= */
+
+/* =================================================
+   PROPERTY IMAGE CONTAINER
+   ================================================= */
+
+.property-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--dark-700) 0%, var(--dark-600) 100%);
+}
+
+.property-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.property-image--loaded {
+  opacity: 1;
+}
+
+/* =================================================
+   PROPERTY IMAGE PLACEHOLDER
+   ================================================= */
+
+.property-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.property-image-placeholder__icon {
+  font-size: 4rem;
+  opacity: 0.5;
+  filter: grayscale(50%);
+}
+
+/* =================================================
+   PROPERTY IMAGE SKELETON (Loading State)
+   ================================================= */
+
+.property-image-skeleton {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--dark-700) 0%, var(--dark-600) 100%);
+}
+
+.property-image-skeleton__icon {
+  font-size: 3rem;
+  opacity: 0.5;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.5; 
+    transform: scale(1.05); 
+  }
+}
+
+/* =================================================
+   PROPERTY MAP PREVIEW
+   ================================================= */
+
+.property-map-preview {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--dark-700);
+}
+
+.property-map-preview__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    linear-gradient(135deg, var(--dark-700) 0%, var(--dark-800) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      var(--dark-600) 20px,
+      var(--dark-600) 21px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      var(--dark-600) 20px,
+      var(--dark-600) 21px
+    );
+  position: relative;
+}
+
+.property-map-preview__icon {
+  font-size: 4rem;
+  opacity: 0.4;
+}
+
+.property-map-preview__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.property-map-preview__suburb {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.property-map-preview__postcode {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono, monospace);
+}
+
+.property-map-preview__coords {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  background: rgba(0, 0, 0, 0.6);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono, monospace);
+}
+
+/* =================================================
+   VIEW TOGGLE BUTTONS
+   ================================================= */
+
+.property-card__image-container {
+  position: relative;
+}
+
+.property-card__view-toggle {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  display: flex;
+  gap: var(--space-1);
+  background: rgba(0, 0, 0, 0.6);
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(4px);
+}
+
+.view-toggle-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 1rem;
+  opacity: 0.6;
+}
+
+.view-toggle-btn:hover {
+  opacity: 1;
+  background: var(--dark-600);
+}
+
+.view-toggle-btn--active {
+  opacity: 1;
+  background: var(--orange-primary);
+  color: var(--dark-900);
+}
+
+.view-toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--orange-subtle);
+}
+
+/* =================================================
+   SCREEN READER ONLY (utility)
+   ================================================= */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

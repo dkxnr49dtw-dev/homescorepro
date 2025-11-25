@@ -1,0 +1,196 @@
+/* =================================================
+   SUBURB AUTOCOMPLETE COMPONENT
+   Last Updated: 2025-11-25
+   ================================================= */
+
+.suburb-autocomplete {
+  position: relative;
+  width: 100%;
+}
+
+.suburb-autocomplete__input-wrapper {
+  position: relative;
+}
+
+.suburb-autocomplete__input {
+  padding-right: var(--space-10);
+  width: 100%;
+}
+
+.suburb-autocomplete__loading,
+.suburb-autocomplete__clear {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.suburb-autocomplete__loading .spinner {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--dark-600);
+  border-top-color: var(--orange-primary);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.suburb-autocomplete__clear {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: var(--dark-600);
+  border: none;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suburb-autocomplete__clear:hover {
+  background: var(--orange-primary);
+  color: var(--dark-900);
+}
+
+.suburb-autocomplete__clear:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--orange-subtle);
+}
+
+/* =================================================
+   DROPDOWN
+   ================================================= */
+
+.suburb-autocomplete__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: 1000;
+}
+
+/* =================================================
+   GROUPS
+   ================================================= */
+
+.suburb-autocomplete__group {
+  padding: var(--space-2) 0;
+}
+
+.suburb-autocomplete__group:not(:last-child) {
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.suburb-autocomplete__group-label {
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--orange-light);
+  background: var(--bg-tertiary);
+}
+
+/* =================================================
+   OPTIONS
+   ================================================= */
+
+.suburb-autocomplete__option {
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.suburb-autocomplete__option:hover,
+.suburb-autocomplete__option--highlighted {
+  background: var(--orange-subtle);
+}
+
+.suburb-autocomplete__option-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suburb-autocomplete__option-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.suburb-autocomplete__option-postcode {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono, monospace);
+}
+
+.suburb-autocomplete__option-lga {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+/* =================================================
+   HIGHLIGHT
+   ================================================= */
+
+.suburb-autocomplete__highlight {
+  background: var(--orange-primary);
+  color: var(--dark-900);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* =================================================
+   NO RESULTS
+   ================================================= */
+
+.suburb-autocomplete__no-results {
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+/* =================================================
+   SCROLLBAR STYLING
+   ================================================= */
+
+.suburb-autocomplete__dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.suburb-autocomplete__dropdown::-webkit-scrollbar-track {
+  background: var(--dark-700);
+  border-radius: 4px;
+}
+
+.suburb-autocomplete__dropdown::-webkit-scrollbar-thumb {
+  background: var(--dark-500);
+  border-radius: 4px;
+}
+
+.suburb-autocomplete__dropdown::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-primary);
+}
+
+/* =================================================
+   ANIMATIONS
+   ================================================= */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
