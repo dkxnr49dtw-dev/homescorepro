@@ -1,6 +1,44 @@
 import { useState, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Login from './Login';
+import './Skeleton.css';
+
+/**
+ * Loading screen component with animated branding
+ */
+function LoadingScreen() {
+  return (
+    <div className="loading-screen">
+      {/* Animated logo */}
+      <motion.div
+        className="loading-screen__logo"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        HomeScorePro
+      </motion.div>
+      
+      {/* Loading spinner */}
+      <motion.div
+        className="loading-screen__spinner"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+      />
+      
+      {/* Loading text */}
+      <motion.p
+        className="loading-screen__text"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      >
+        Verifying authentication...
+      </motion.p>
+    </div>
+  );
+}
 
 export function ProtectedRoute({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -21,22 +59,13 @@ export function ProtectedRoute({ children }) {
     } catch (err) {
       setIsAuthenticated(false);
     } finally {
-      setLoading(false);
+      // Add minimum loading time for smoother UX
+      setTimeout(() => setLoading(false), 500);
     }
   };
 
   if (loading) {
-    return (
-      <div style={{ 
-        minHeight: '100vh', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)'
-      }}>
-        <div style={{ color: '#fff' }}>Loading...</div>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   if (!isAuthenticated) {

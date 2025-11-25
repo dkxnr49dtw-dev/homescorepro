@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { calculateAScore, calculateBScore, propertyProfiles, getScoreRating, animateCountUp } from '../utils/calculator'
+import '../styles/calculator.css'
 
 function Calculator() {
   const [suburb, setSuburb] = useState('Hawthorn')
@@ -298,100 +299,33 @@ function Calculator() {
           </p>
           
           {/* Dual-Score Explanation */}
-          <div className="score-explanation-box" style={{
-            background: 'var(--orange-subtle)',
-            border: '2px solid var(--orange-glow)',
-            borderRadius: 'var(--radius-xl)',
-            padding: 'var(--space-6)',
-            marginTop: 'var(--space-8)',
-            maxWidth: '800px',
-            marginLeft: 'auto',
-            marginRight: 'auto'
-          }}>
-            <h3 style={{
-              fontSize: '1.25rem',
-              fontWeight: 700,
-              color: 'var(--orange-light)',
-              marginBottom: 'var(--space-4)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--space-2)'
-            }}>
+          <div className="score-explanation-box">
+            <h3 className="score-explanation-box__title">
               <span>💡</span> Understanding Our Dual-Score System
             </h3>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 'var(--space-6)',
-              marginTop: 'var(--space-4)'
-            }}>
-              <div className="score-type-card" style={{
-                background: 'var(--bg-secondary)',
-                padding: 'var(--space-5)',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--glass-border)'
-              }}>
-                <div style={{ fontSize: '2rem', marginBottom: 'var(--space-2)' }}>📍</div>
-                <h4 style={{
-                  fontWeight: 700,
-                  color: 'var(--text-primary)',
-                  marginBottom: 'var(--space-2)',
-                  fontSize: '1.125rem'
-                }}>A-Score: Suburb Quality</h4>
-                <p style={{
-                  color: 'var(--text-secondary)',
-                  fontSize: '0.9375rem',
-                  lineHeight: 1.6,
-                  marginBottom: 'var(--space-3)'
-                }}>
+            <div className="score-explanation-box__grid">
+              <div className="score-type-card">
+                <div className="score-type-card__icon">📍</div>
+                <h4 className="score-type-card__title">A-Score: Suburb Quality</h4>
+                <p className="score-type-card__description">
                   Evaluates the suburb itself across 15 key metrics including location quality, amenities, safety, schools, and growth potential.
                 </p>
-                <div style={{
-                  fontSize: '0.875rem',
-                  color: 'var(--text-tertiary)',
-                  fontStyle: 'italic'
-                }}>
+                <div className="score-type-card__tagline">
                   "How good is this suburb?"
                 </div>
               </div>
-              <div className="score-type-card" style={{
-                background: 'var(--bg-secondary)',
-                padding: 'var(--space-5)',
-                borderRadius: 'var(--radius-lg)',
-                border: '1px solid var(--glass-border)'
-              }}>
-                <div style={{ fontSize: '2rem', marginBottom: 'var(--space-2)' }}>🏠</div>
-                <h4 style={{
-                  fontWeight: 700,
-                  color: 'var(--text-primary)',
-                  marginBottom: 'var(--space-2)',
-                  fontSize: '1.125rem'
-                }}>B-Score: Property Match</h4>
-                <p style={{
-                  color: 'var(--text-secondary)',
-                  fontSize: '0.9375rem',
-                  lineHeight: 1.6,
-                  marginBottom: 'var(--space-3)'
-                }}>
+              <div className="score-type-card">
+                <div className="score-type-card__icon">🏠</div>
+                <h4 className="score-type-card__title">B-Score: Property Match</h4>
+                <p className="score-type-card__description">
                   Combines A-Score with property-specific factors across 38+ data points for comprehensive analysis including investment potential and lifestyle fit.
                 </p>
-                <div style={{
-                  fontSize: '0.875rem',
-                  color: 'var(--text-tertiary)',
-                  fontStyle: 'italic'
-                }}>
+                <div className="score-type-card__tagline">
                   "How well does this property match your needs?"
                 </div>
               </div>
             </div>
-            <div style={{
-              marginTop: 'var(--space-4)',
-              paddingTop: 'var(--space-4)',
-              borderTop: '1px solid var(--glass-border)',
-              textAlign: 'center',
-              color: 'var(--text-secondary)',
-              fontSize: '0.875rem'
-            }}>
+            <div className="score-explanation-box__footer">
               <strong>💡 Tip:</strong> Start with A-Score to find great suburbs, then use B-Score to evaluate specific properties within those suburbs.
             </div>
           </div>
@@ -445,7 +379,7 @@ function Calculator() {
                 </div>
               </div>
 
-              <button className="btn btn-primary" style={{ width: '100%' }} onClick={handleCalculateAScore}>
+              <button className="btn btn-primary btn--full-width" onClick={handleCalculateAScore}>
                 Calculate A-Score <span>✨</span>
               </button>
             </div>
@@ -463,29 +397,13 @@ function Calculator() {
               <div id="ascoreResults">
                 {/* Empty State */}
                 {!showAscoreDisplay && (
-                  <div className="empty-state" style={{
-                    textAlign: 'center',
-                    padding: 'var(--space-12) var(--space-6)',
-                    color: 'var(--text-secondary)'
-                  }}>
-                    <div style={{ fontSize: '4rem', marginBottom: 'var(--space-4)', opacity: 0.5 }}>📍</div>
-                    <h3 style={{
-                      fontSize: '1.5rem',
-                      fontWeight: 700,
-                      color: 'var(--text-primary)',
-                      marginBottom: 'var(--space-3)'
-                    }}>Ready to Analyze a Suburb?</h3>
-                    <p style={{
-                      fontSize: '1rem',
-                      color: 'var(--text-secondary)',
-                      marginBottom: 'var(--space-6)',
-                      maxWidth: '400px',
-                      marginLeft: 'auto',
-                      marginRight: 'auto'
-                    }}>
+                  <div className="calculator-empty-state">
+                    <div className="calculator-empty-state__icon">📍</div>
+                    <h3 className="calculator-empty-state__title">Ready to Analyze a Suburb?</h3>
+                    <p className="calculator-empty-state__description">
                       Select a suburb from the dropdown above to see its A-Score and detailed analysis.
                     </p>
-                    <button className="btn btn-secondary" style={{ marginTop: 'var(--space-4)' }} onClick={tryHawthornExample}>
+                    <button className="btn btn-secondary calculator-empty-state__cta" onClick={tryHawthornExample}>
                       <span>✨</span> Try Example: Hawthorn
                     </button>
                   </div>
@@ -496,20 +414,12 @@ function Calculator() {
                   <div className="score-display">
                     <div className="score-label">
                       A-Score (Suburb Quality)
-                      <span className="tooltip-icon" title="A-Score evaluates the suburb itself across 15 key metrics including location quality, amenities, safety, schools, and growth potential." style={{
-                        display: 'inline-block',
-                        width: '18px',
-                        height: '18px',
-                        borderRadius: '50%',
-                        background: 'var(--orange-subtle)',
-                        color: 'var(--orange-primary)',
-                        fontSize: '0.75rem',
-                        textAlign: 'center',
-                        lineHeight: '18px',
-                        marginLeft: 'var(--space-2)',
-                        cursor: 'help',
-                        fontWeight: 700
-                      }}>?</span>
+                      <span 
+                        className="score-tooltip-icon" 
+                        title="A-Score evaluates the suburb itself across 15 key metrics including location quality, amenities, safety, schools, and growth potential."
+                        role="img"
+                        aria-label="Information about A-Score"
+                      >?</span>
                     </div>
                     <div className="score-value-container">
                       <div className="score-value" ref={ascoreValueRef}>0.0</div>
@@ -570,7 +480,7 @@ function Calculator() {
           {/* Insights */}
           {showAscoreInsights && ascoreResult && (
             <div className="insights-section">
-              <h3 className="section-title" style={{ marginBottom: 'var(--space-8)', fontSize: '2rem' }}>🎯 Key Insights</h3>
+              <h3 className="section-title section-title--small">🎯 Key Insights</h3>
               <div className="insights-grid">
                 {generateInsights(ascoreResult.score, ascoreResult.breakdown).map((insight, index) => (
                   <motion.div
@@ -593,7 +503,7 @@ function Calculator() {
         </div>
 
         {/* B-Score Section */}
-        <div className="section-header" style={{ marginTop: 'var(--space-20)' }}>
+        <div className="section-header section-header--margin-top">
           <div className="section-pretitle">Property Analysis</div>
           <h2 className="section-title">Property Analysis</h2>
           <p className="section-subtitle">
@@ -601,7 +511,7 @@ function Calculator() {
           </p>
         </div>
 
-        <div className="calculator-section" style={{ paddingTop: 0 }}>
+        <div className="calculator-section calculator-section--no-padding-top">
           <div className="calculator-grid">
             {/* Input Card */}
             <div className="card">
@@ -629,22 +539,16 @@ function Calculator() {
                   <option value="investment">Investment Property ($850K, 3 bed, 2 bath, 500sqm, Townhouse)</option>
                   <option value="luxury">Luxury Home ($2.5M, 5 bed, 3 bath, 800sqm, House)</option>
                 </select>
-                <div className="form-hint" style={{
-                  marginTop: 'var(--space-4)',
-                  padding: 'var(--space-4)',
-                  background: 'var(--warning-dim)',
-                  border: '1px solid var(--warning)',
-                  borderRadius: 'var(--radius-md)'
-                }}>
+                <div className="form-hint form-hint-warning">
                   <strong>⚠️ Limited Version:</strong> This is a simplified demonstration version. Members get access to all 397 suburbs, unlimited searches, property saving, comparison tools, and detailed 23-point B-Score breakdowns.
                 </div>
               </div>
 
-              <button className="btn btn-primary" style={{ width: '100%', marginTop: 'var(--space-6)' }} onClick={handleCalculateBScore}>
+              <button className="btn btn-primary btn--full-width btn--margin-top" onClick={handleCalculateBScore}>
                 Calculate B-Score <span>🚀</span>
               </button>
 
-              <Link to="/members" className="btn btn-secondary" style={{ width: '100%', marginTop: 'var(--space-4)', textAlign: 'center' }}>
+              <Link to="/members" className="btn btn-secondary btn--full-width btn--margin-top-sm btn--text-center">
                 Upgrade to Members for Full Features <span>→</span>
               </Link>
             </div>
@@ -662,29 +566,13 @@ function Calculator() {
               <div id="bscoreResults">
                 {/* Empty State */}
                 {!showBscoreDisplay && (
-                  <div className="empty-state" style={{
-                    textAlign: 'center',
-                    padding: 'var(--space-12) var(--space-6)',
-                    color: 'var(--text-secondary)'
-                  }}>
-                    <div style={{ fontSize: '4rem', marginBottom: 'var(--space-4)', opacity: 0.5 }}>🏠</div>
-                    <h3 style={{
-                      fontSize: '1.5rem',
-                      fontWeight: 700,
-                      color: 'var(--text-primary)',
-                      marginBottom: 'var(--space-3)'
-                    }}>Ready to Evaluate a Property?</h3>
-                    <p style={{
-                      fontSize: '1rem',
-                      color: 'var(--text-secondary)',
-                      marginBottom: 'var(--space-6)',
-                      maxWidth: '400px',
-                      marginLeft: 'auto',
-                      marginRight: 'auto'
-                    }}>
+                  <div className="calculator-empty-state">
+                    <div className="calculator-empty-state__icon">🏠</div>
+                    <h3 className="calculator-empty-state__title">Ready to Evaluate a Property?</h3>
+                    <p className="calculator-empty-state__description">
                       Select a property profile from the dropdown above to see its B-Score and comprehensive analysis.
                     </p>
-                    <button className="btn btn-secondary" style={{ marginTop: 'var(--space-4)' }} onClick={tryFamilyHomeExample}>
+                    <button className="btn btn-secondary calculator-empty-state__cta" onClick={tryFamilyHomeExample}>
                       <span>✨</span> Try Example: Family Home
                     </button>
                   </div>
@@ -695,20 +583,12 @@ function Calculator() {
                   <div className="score-display">
                     <div className="score-label">
                       B-Score (Property Match)
-                      <span className="tooltip-icon" title="B-Score combines A-Score with property-specific factors across 38+ data points for comprehensive analysis including investment potential and lifestyle fit." style={{
-                        display: 'inline-block',
-                        width: '18px',
-                        height: '18px',
-                        borderRadius: '50%',
-                        background: 'var(--orange-subtle)',
-                        color: 'var(--orange-primary)',
-                        fontSize: '0.75rem',
-                        textAlign: 'center',
-                        lineHeight: '18px',
-                        marginLeft: 'var(--space-2)',
-                        cursor: 'help',
-                        fontWeight: 700
-                      }}>?</span>
+                      <span 
+                        className="score-tooltip-icon" 
+                        title="B-Score combines A-Score with property-specific factors across 38+ data points for comprehensive analysis including investment potential and lifestyle fit."
+                        role="img"
+                        aria-label="Information about B-Score"
+                      >?</span>
                     </div>
                     <div className="score-value-container">
                       <div className="score-value" ref={bscoreValueRef}>0.0</div>
@@ -769,7 +649,7 @@ function Calculator() {
           {/* Insights */}
           {showBscoreInsights && bscoreResult && (
             <div className="insights-section">
-              <h3 className="section-title" style={{ marginBottom: 'var(--space-8)', fontSize: '2rem' }}>🎯 Expert Insights</h3>
+              <h3 className="section-title section-title--small">🎯 Expert Insights</h3>
               <div className="insights-grid">
                 {generateInsights(bscoreResult.score, bscoreResult.breakdown).map((insight, index) => (
                   <motion.div

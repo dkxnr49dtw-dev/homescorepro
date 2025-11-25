@@ -1,0 +1,122 @@
+/* =================================================
+   ACCESSIBLE TOOLTIP COMPONENT
+   Last Updated: 2025-11-25
+   ================================================= */
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tooltip-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin-left: var(--space-2);
+  background: var(--orange-subtle);
+  border: 1px solid var(--orange-primary);
+  border-radius: 50%;
+  color: var(--orange-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tooltip-trigger:hover,
+.tooltip-trigger:focus {
+  background: var(--orange-primary);
+  color: var(--dark-900);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--orange-subtle);
+}
+
+/* =================================================
+   TOOLTIP CONTENT
+   ================================================= */
+
+.tooltip-content {
+  position: absolute;
+  z-index: 1000;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  white-space: normal;
+  max-width: 280px;
+  text-align: left;
+}
+
+/* =================================================
+   TOOLTIP POSITIONS
+   ================================================= */
+
+.tooltip-content--top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip-content--bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip-content--left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip-content--right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* =================================================
+   TOOLTIP ARROW
+   ================================================= */
+
+.tooltip-arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--bg-elevated);
+  border-right: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.tooltip-content--top .tooltip-arrow {
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip-content--bottom .tooltip-arrow {
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-135deg);
+}
+
+.tooltip-content--left .tooltip-arrow {
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.tooltip-content--right .tooltip-arrow {
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+}
